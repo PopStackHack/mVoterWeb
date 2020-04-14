@@ -1,0 +1,24 @@
+.BottomNav {
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 10px 15px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    color: #999999;
+    &:hover {
+      cursor: pointer;
+    }
+    .active {
+      color: #0071dd;
+    }
+  }
+}
