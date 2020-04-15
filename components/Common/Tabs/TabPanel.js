@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
+import propTypes from 'prop-types';
 import TabSlider from './TabSlider';
 
 import './TabPanel.scss';
+
+const offsettingWidth = 40;
+const offsettingPosition = offsettingWidth / 2;
 
 class TabPanel extends PureComponent {
   state = {
@@ -11,22 +15,22 @@ class TabPanel extends PureComponent {
   }
 
   componentDidMount() {
-    const totalTabs = this.props.children.filter(({ type: { name } }) => name === 'Tab').length;
-    const computedSliderWidth = this.refs.tabPanel.offsetWidth / totalTabs;
-
     this.setState({
-      computedSliderWidth,
+      computedSliderWidth: this.refs[`tab0`].getBoundingClientRect().width + offsettingWidth,
+      sliderPosition: this.refs[`tab0`].getBoundingClientRect().x - offsettingPosition,
     });
   }
 
   moveSlider = (sliderIndex) => {
     this.setState({
-      sliderPosition: this.state.computedSliderWidth * sliderIndex,
+      activeTabIndex: sliderIndex,
+      computedSliderWidth: this.refs[`tab${sliderIndex}`].getBoundingClientRect().width + offsettingWidth,
+      sliderPosition: this.refs[`tab${sliderIndex}`].getBoundingClientRect().x - offsettingPosition,
     });
   }
 
   render() {
-    const tabs = this.props.children.filter(({ type: { name } }) => name === 'Tab');
+    const tabs = this.props.children;
     return (
       <div {...this.props} className="TabPanel">
         <div className="TabPanel__Tabs" ref="tabPanel">
@@ -34,7 +38,14 @@ class TabPanel extends PureComponent {
             React.Children
               .map(
                 tabs,
-                (child, index) => React.cloneElement(child, { index: index, moveSlider: this.moveSlider })
+                (child, index) => React
+                  .cloneElement(child, {
+                    index,
+                    ref: `tab${index}`,
+                    moveSlider: this.moveSlider,
+                    active: index === this.state.activeTabIndex,
+                    activeClass: this.props.activeClass || 'tab-active',
+                  })
               )
           }
         </div>
@@ -45,6 +56,10 @@ class TabPanel extends PureComponent {
       </div>
     );
   }
+}
+
+TabPanel.propTypes = {
+  activeClass: propTypes.string,
 }
 
 export default TabPanel;
