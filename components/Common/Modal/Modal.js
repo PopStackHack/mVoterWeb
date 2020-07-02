@@ -1,11 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ReactModal from 'react-modal';
 
-export default function Modal() {
-  const [modalIsOpen, setIsOpen] = useState(false);
+ReactModal.setAppElement('#app');
+
+export default function Modal(props) {
+  const {
+    children,
+    isOpen = false,
+  } = props;
 
   return (
-    <div>
-
-    </div>
+    <ReactModal
+      { ...props }
+      shouldCloseOnOverlayClick={true}
+      style={
+        {
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          }
+        }
+      }
+      isOpen={isOpen}
+      closeTimeoutMS={200}
+    >
+      {children}
+    </ReactModal>
   );
 }

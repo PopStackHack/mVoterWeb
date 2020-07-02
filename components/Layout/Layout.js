@@ -2,7 +2,7 @@ import BottomNav from '../BottomNav/BottomNav';
 
 const Layout = ({ children, shouldHideBottomNav = false }) => {
   return (
-    <main>
+    <main id="app">
       {children}
       {
         !shouldHideBottomNav &&

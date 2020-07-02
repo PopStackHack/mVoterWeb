@@ -1,6 +1,6 @@
 import 'flexboxgrid';
 import Head from 'next/head';
-// import '../styles/normalize.scss';
+import '../styles/base.scss';
 import '../styles/helpers.scss';
 
 // https://fonts.googleapis.com/icon?family=Material+Icons
