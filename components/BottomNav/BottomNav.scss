@@ -2,8 +2,8 @@
 
 .BottomNav {
   font-size: 0.85rem;
-  margin: 0;
-  padding: 10px 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 100%;
   position: absolute;
   left: 0;
@@ -16,6 +16,8 @@
   }
   li {
     color: #999999;
+    margin: 0;
+    padding: 0;
     &:hover {
       cursor: pointer;
     }

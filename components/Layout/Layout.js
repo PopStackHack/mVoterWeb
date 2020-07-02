@@ -12,16 +12,16 @@ const Layout = ({ children, shouldHideBottomNav = false }) => {
       * {
         box-sizing: border-box;
       }
-
-      html,
-      body {
-        padding: 0;
-        margin: 0;
+      html, body {
+        padding: 0px;
+        margin: 0px;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
           Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         position: relative;
-        min-height: 100vh;
+        width: 100%;
+        height: 100vh;
         max-height: 100vh;
+        overflow: hidden;
       }
     `}</style>
     </main>
