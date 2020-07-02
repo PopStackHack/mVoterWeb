@@ -1,0 +1,22 @@
+@import '../../styles/partials/colors';
+
+.locationSelector {
+  // display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84px;
+  max-width: 120px;
+  margin: 0 auto;
+  padding: 10px 0px 10px 5px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid $primary-color;
+  background: $white-color;
+  span {
+    margin-right: 4px;
+  }
+  svg {
+    float: right;
+  }
+}

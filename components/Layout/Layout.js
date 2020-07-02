@@ -1,11 +1,18 @@
 import BottomNav from '../BottomNav/BottomNav';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, shouldHideBottomNav = false }) => {
   return (
     <main>
       {children}
-      <BottomNav />
-      <style jsx global>{`
+      {
+        !shouldHideBottomNav &&
+          <BottomNav />
+      }
+      <style jsx global>{`\
+      * {
+        box-sizing: border-box;
+      }
+
       html,
       body {
         padding: 0;
@@ -14,10 +21,7 @@ const Layout = ({ children }) => {
           Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         position: relative;
         min-height: 100vh;
-      }
-
-      * {
-        box-sizing: border-box;
+        max-height: 100vh;
       }
     `}</style>
     </main>
