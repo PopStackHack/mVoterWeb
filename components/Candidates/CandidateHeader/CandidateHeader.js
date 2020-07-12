@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Button from '../../Common/Button/Button';
 import './CandidateHeader.scss';
 
@@ -6,7 +7,7 @@ const CandidateHeader = () => {
     <div className="CandidateHeader">
       <div>ကိုယ်စားလှယ်လောင်းများ</div>
       <div className="CandidateHeader__buttonGroup">
-        <Button className="CandidateHeader__button"><i className="material-icons">location_on</i></Button>
+        <Link href="/location"><a><Button className="CandidateHeader__button"><i className="material-icons">location_on</i></Button></a></Link>
         <Button className="CandidateHeader__button"><i className="material-icons">search</i></Button>
       </div>
     </div>
