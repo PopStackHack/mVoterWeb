@@ -4,7 +4,7 @@ import '../styles/base.scss';
 import '../styles/helpers.scss';
 
 // https://fonts.googleapis.com/icon?family=Material+Icons
-export default function MyApp({ Component, pageProps }) {
+export default function mVoterApp({ Component, pageProps }) {
   return (
     <>
       <Head>
