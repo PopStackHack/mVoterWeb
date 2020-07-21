@@ -37,7 +37,7 @@ const BottomNav = () => {
             </div>
           </Link>
         </li>
-        {/* <li className="col-xs">
+        <li className="col-xs">
         <Link href="/results" activeClassName="active">
           <div>
             <i className="material-icons">star_border</i>
@@ -46,7 +46,7 @@ const BottomNav = () => {
             </div>
           </div>
         </Link>
-        </li> */}
+        </li>
       </ul>
     </nav>
   );
