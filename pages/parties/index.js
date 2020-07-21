@@ -3,19 +3,29 @@ import Layout from '../../components/Layout/Layout';
 import PartyCard from '../../components/Party/PartyCard';
 
 import './parties.scss';
+import AppHeader from '../../components/Layout/AppHeader/AppHeader';
+import Button from '../../components/Common/Button/Button';
 
-class Parties extends PureComponent {
-  render() {
-    return (
-      <Layout>
-        <div className="Parties__Container">
-          <div className="Parties__Wrapper">
-            {[0, 1, 2].map((c, i) => <PartyCard key={i} />)}
-          </div>
+const Parties = (props) => {
+  return (
+    <Layout>
+      <AppHeader>
+        <div>ပါတီများ</div>
+        <div className="Parties__buttonGroup">
+          <Button
+            type="primary"
+          >
+            <i className="material-icons">search</i>
+          </Button>
         </div>
-      </Layout>
-    );
-  }
+      </AppHeader>
+      <div className="Parties__Container">
+        <div className="Parties__Wrapper">
+          {[0, 1, 2].map((c, i) => <PartyCard key={i} />)}
+        </div>
+      </div>
+    </Layout>
+  );
 }
 
 export default Parties;
