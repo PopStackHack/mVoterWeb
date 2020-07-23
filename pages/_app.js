@@ -1,10 +1,12 @@
 import 'flexboxgrid';
 import Head from 'next/head';
+import App from 'next/app';
 import '../styles/base.scss';
 import '../styles/helpers.scss';
+import { appWithTranslation } from '../hoc/i18n';
 
 // https://fonts.googleapis.com/icon?family=Material+Icons
-export default function mVoterApp({ Component, pageProps }) {
+function mVoterApp({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -14,3 +16,10 @@ export default function mVoterApp({ Component, pageProps }) {
     </>
   );
 }
+
+mVoterApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  return { ...appProps };
+}
+
+export default appWithTranslation(mVoterApp);

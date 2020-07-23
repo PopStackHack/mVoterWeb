@@ -3,10 +3,14 @@ import { useRouter } from 'next/router';
 import Layout from '../../components/Layout/Layout';
 import Modal from '../../components/Common/Modal/Modal';
 import Button from '../../components/Common/Button/Button';
+import AppHeader from '../../components/Layout/AppHeader/AppHeader';
+import { withTranslation } from '../../hoc/i18n';
 
 import './location.scss';
+import Link from 'next/link';
 
-export default function Location(props) {
+const Location = (props) => {
+  const { t } = props;
   const [isModalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
@@ -20,6 +24,12 @@ export default function Location(props) {
 
   return (
     <Layout shouldHideBottomNav>
+      <AppHeader>
+        <div className="vert-flex-center">
+          <Link href="/candidates"><i className="material-icons">arrow_back</i></Link>
+          <span className="d-inline-block ml-3">{t('choose-location')}</span>
+        </div>
+      </AppHeader>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={toggleModal}>
@@ -28,7 +38,7 @@ export default function Location(props) {
       <section className="text-center">
         <div className="container">
         <div className="col-xs-12">
-          <p>Please select your township to know the candidate of your location</p>
+        <p>{t('location-description')}</p>
 
           <div className="my-2"></div>
           <p>Select State/Division</p>
@@ -49,3 +59,9 @@ export default function Location(props) {
     </Layout>
   );
 }
+
+Location.getInitialProps = async () => ({
+  namespacesRequired: ['location'],
+});
+
+export default withTranslation('location')(Location);
