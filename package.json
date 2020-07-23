@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8005",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p 8000"
+    "start": "NODE_ENV=proudction node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
+    "express": "^4.17.1",
     "flexboxgrid": "^6.3.1",
     "next": "9.3.4",
     "next-i18next": "^4.5.0",
