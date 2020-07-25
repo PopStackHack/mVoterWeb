@@ -49,7 +49,7 @@ const Location = (props) => {
               <span>ရွေးရန်</span> <i className="material-icons">keyboard_arrow_right</i>
             </button>
 
-            <Button className="Button__ChooseLocation" onClick={onClickDone}>Done</Button>
+            <Button className="Button__ChooseLocation" onClick={onClickDone}>ပြီးပြီ</Button>
         </div>
       </div>
     </section>
