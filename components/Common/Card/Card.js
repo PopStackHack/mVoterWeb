@@ -1,4 +1,4 @@
-import './Card.scss';
+import './Card.module.scss';
 
 const Card = (props) => (
   <div className={`Card ${props.className ? props.className : ''}`}>

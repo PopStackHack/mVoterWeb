@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Button from '../../Common/Button/Button';
 import AppHeader from '../../Layout/AppHeader/AppHeader';
-import './CandidateHeader.scss';
+import './CandidateHeader.module.scss';
 
 const CandidateHeader = () => {
   return (

@@ -5,7 +5,7 @@ import Modal from '../../components/Common/Modal/Modal';
 import Button from '../../components/Common/Button/Button';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 
-import './location.scss';
+import './location.module.scss';
 import Link from 'next/link';
 
 const Location = (props) => {

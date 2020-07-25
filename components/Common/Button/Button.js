@@ -1,4 +1,4 @@
-import './Button.scss';
+import './Button.module.scss';
 
 const Button = (props) => {
   return (

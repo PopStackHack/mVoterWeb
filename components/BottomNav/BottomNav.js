@@ -1,5 +1,5 @@
 import Link from '../Common/Link/Link';
-import './BottomNav.scss';
+import './BottomNav.module.scss';
 
 const BottomNav = () => {
   return (

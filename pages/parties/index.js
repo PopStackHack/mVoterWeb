@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import Layout from '../../components/Layout/Layout';
 import PartyCard from '../../components/Party/PartyCard';
 
-import './parties.scss';
+import './parties.module.scss';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
 

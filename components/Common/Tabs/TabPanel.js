@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import TabSlider from './TabSlider';
 
-import './TabPanel.scss';
+import './TabPanel.module.scss';
 
 const offsettingWidth = 40;
 const offsettingPosition = offsettingWidth / 2;

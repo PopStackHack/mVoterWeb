@@ -1,6 +1,6 @@
 import Card from '../Common/Card/Card';
 
-import './PartyCard.scss';
+import './PartyCard.module.scss';
 
 const PartyCard = () => {
   return (
