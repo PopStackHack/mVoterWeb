@@ -22,7 +22,7 @@ const BottomNav = () => {
         </Link>
         </li>
         <li className="col-xs">
-          <Link href="/how_to_vote">
+          <Link href="/how_to_vote" activeClassName="active">
             <div>
               <i className="material-icons">how_to_vote</i>
               <div>မဲပေးနည်း</div>

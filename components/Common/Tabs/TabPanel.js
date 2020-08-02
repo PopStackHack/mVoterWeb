@@ -32,28 +32,41 @@ class TabPanel extends PureComponent {
   render() {
     const tabs = this.props.children;
     return (
-      <div {...this.props} className="TabPanel">
-        <div className="TabPanel__Tabs" ref="tabPanel">
-          {
-            React.Children
-              .map(
-                tabs,
-                (child, index) => React
-                  .cloneElement(child, {
-                    index,
-                    ref: `tab${index}`,
-                    moveSlider: this.moveSlider,
-                    active: index === this.state.activeTabIndex,
-                    activeClass: this.props.activeClass || 'tab-active',
-                  })
-              )
-          }
+      <>
+        <div {...this.props} className="TabPanel">
+          <div className="TabPanel__Tabs" ref="tabPanel">
+            {
+              React.Children
+                .map(
+                  tabs,
+                  (child, index) => React
+                    .cloneElement(child, {
+                      index,
+                      ref: `tab${index}`,
+                      moveSlider: this.moveSlider,
+                      active: index === this.state.activeTabIndex,
+                      activeClass: this.props.activeClass || 'tab-active',
+                    })
+                )
+            }
+          </div>
+          <TabSlider
+            width={this.state.computedSliderWidth}
+            left={this.state.sliderPosition}
+          />
         </div>
-        <TabSlider
-          width={this.state.computedSliderWidth}
-          left={this.state.sliderPosition}
-        />
-      </div>
+        {/* This is rather a dirty hack */}
+        <div className="TabPanel__TabContent">
+            {
+              React.Children
+                .map(
+                tabs,
+                (child, index) => (
+                  <div style={{ display: index === this.state.activeTabIndex ? 'block' : 'none' }}>{child.props.children}</div>
+                ))
+            }
+        </div>
+      </>
     );
   }
 }

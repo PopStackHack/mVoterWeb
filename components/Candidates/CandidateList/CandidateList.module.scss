@@ -1,0 +1,30 @@
+.CandidateList {
+  &__item {
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    border: 1px solid #b6b5b5;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
+    padding: 10px;
+    background-color: #ffffff;
+    display: flex;
+    transition: box-shadow 0.1s linear;
+    &:first-child {
+      margin-top: 8px;
+    }
+    &:hover, &:focus, &:active {
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+    }
+  }
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    background-color: #b6b6b6;
+  }
+  &__info {
+    margin-left: 8px;
+  }
+}

@@ -8,7 +8,6 @@ const Tab = React.forwardRef((props, ref) => {
   }
 
   return (
-
     <div onClick={onTabClick} ref={ref} className={active ? `tab-active ${props.style}` : `${props.style}`}>
       <div className="TabTitle">{title}</div>
     </div>

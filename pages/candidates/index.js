@@ -4,6 +4,7 @@ import CandidateHeader from '../../components/Candidates/CandidateHeader/Candida
 import { TabPanel, Tab } from '../../components/Common/Tabs';
 
 import './candidates.module.scss';
+import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 
 const amyothaHluttaw = <div className="text-center">အမျိုးသား<br />လွှတ်တော်</div>;
 const pyithuHlutTaw = <div className="text-center">ပြည်သူ့<br />လွှတ်တော်</div>;
@@ -15,14 +16,24 @@ class Candidates extends PureComponent {
       <Layout>
         <CandidateHeader />
         <TabPanel>
-          <Tab title={amyothaHluttaw}>
-
+          <Tab title={amyothaHluttaw} key="amyothahluttaw">
+            <CandidateList
+              dataSource={[
+                {
+                  id: 1,
+                  name: 'Kaung Myat Lwin',
+                  party: {
+                    name_burmese: 'ချာပါတီ',
+                  }
+                }
+              ]}
+            />
           </Tab>
-          <Tab title={pyithuHlutTaw}>
-
+          <Tab title={pyithuHlutTaw} key="pyithuhluttaw">
+            <CandidateList />
           </Tab>
-          <Tab title={tineHlutTaw}>
-
+          <Tab title={tineHlutTaw} key="tinehluttaw">
+            <CandidateList />
           </Tab>
         </TabPanel>
       </Layout>
