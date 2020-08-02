@@ -1,4 +1,5 @@
 import './CandidateList.module.scss';
+import Card from '../../Common/Card/Card';
 
 const CandidateList = (props) => {
   const {
@@ -20,7 +21,7 @@ const CandidateList = (props) => {
               name_burmese: partyBurmeseName,
             },
           }) => (
-            <div className="CandidateList__item" key={id}>
+            <Card className="CandidateList__item" key={id}>
               <div className="CandidateList__avatar" style={{ backgroundImage: `url${avatar}` }}></div>
               <div className="CandidateList__info">
                 <div className="name">
@@ -34,7 +35,7 @@ const CandidateList = (props) => {
                   { partyBurmeseName }
                 </div>
               </div>
-            </div>
+            </Card>
           ))
       }
     </div>

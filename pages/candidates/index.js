@@ -21,7 +21,7 @@ class Candidates extends PureComponent {
               dataSource={[
                 {
                   id: 1,
-                  name: 'Kaung Myat Lwin',
+                  name: 'ဦးကောင်းမြတ်လွင်',
                   party: {
                     name_burmese: 'ချာပါတီ',
                   }
