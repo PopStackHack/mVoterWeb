@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "flexboxgrid": "^6.3.1",
+    "knayi-myscript": "^2.8.3",
     "next": "9.3.4",
     "node-gyp": "^7.0.0",
     "node-sass": "^4.14.1",
@@ -21,6 +22,7 @@
     "react-accessible-accordion": "^3.3.1",
     "react-dom": "16.13.1",
     "react-icons": "^3.10.0",
-    "react-modal": "^3.11.2"
+    "react-modal": "^3.11.2",
+    "react-transition-group": "^4.4.1"
   }
 }

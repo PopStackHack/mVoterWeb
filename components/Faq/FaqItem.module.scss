@@ -1,0 +1,21 @@
+@import '../../styles/partials/colors';
+
+.FaqItem {
+  &__question {
+    display: inline-block;
+    color: $primary-color;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+  &__answer {
+    display: inline-block;
+    // max-height: 100px;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+  }
+}
+
+.seeMore {
+  color: $grey-color;
+}
