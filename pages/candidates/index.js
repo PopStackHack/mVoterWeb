@@ -10,35 +10,42 @@ const amyothaHluttaw = <div className="text-center">အမျိုးသား<
 const pyithuHlutTaw = <div className="text-center">ပြည်သူ့<br />လွှတ်တော်</div>;
 const tineHlutTaw = <div className="text-center">တိုင်းဒေသကြီး<br />လွှတ်တော်</div>;
 
-class Candidates extends PureComponent {
-  render() {
-    return (
-      <Layout>
-        <CandidateHeader />
-        <TabPanel>
-          <Tab title={amyothaHluttaw} key="amyothahluttaw">
-            <CandidateList
-              dataSource={[
-                {
-                  id: 1,
-                  name: 'ဦးကောင်းမြတ်လွင်',
-                  party: {
-                    name_burmese: 'ချာပါတီ',
-                  }
+const VotingPlace = () => (
+  <div className="VotingPlace">
+    <div className="VotingPlace__container">
+      တာမွေ မဲဆန္ဒနယ်
+    </div>
+  </div>
+);
+
+const Candidates = () => {
+  return (
+    <Layout>
+      <CandidateHeader />
+      <TabPanel>
+        <Tab title={amyothaHluttaw} key="amyothahluttaw">
+          <VotingPlace />
+          <CandidateList
+            dataSource={[
+              {
+                id: 1,
+                name: 'ဦးကောင်းမြတ်လွင်',
+                party: {
+                  name_burmese: 'ချာပါတီ',
                 }
-              ]}
-            />
-          </Tab>
-          <Tab title={pyithuHlutTaw} key="pyithuhluttaw">
-            <CandidateList />
-          </Tab>
-          <Tab title={tineHlutTaw} key="tinehluttaw">
-            <CandidateList />
-          </Tab>
-        </TabPanel>
-      </Layout>
-    );
-  }
+              }
+            ]}
+          />
+        </Tab>
+        <Tab title={pyithuHlutTaw} key="pyithuhluttaw">
+          <CandidateList />
+        </Tab>
+        <Tab title={tineHlutTaw} key="tinehluttaw">
+          <CandidateList />
+        </Tab>
+      </TabPanel>
+    </Layout>
+  );
 }
 
 export default Candidates;
