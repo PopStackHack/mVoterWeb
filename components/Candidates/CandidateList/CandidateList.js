@@ -6,8 +6,6 @@ const CandidateList = (props) => {
     dataSource,
   } = props;
 
-  console.log(dataSource);
-
   return (
     <div className="CandidateList">
       {
