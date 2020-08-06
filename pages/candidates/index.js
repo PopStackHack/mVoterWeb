@@ -25,22 +25,29 @@ const Candidates = () => {
       <TabPanel>
         <Tab title={amyothaHluttaw} key="amyothahluttaw">
           <VotingPlace />
-          <CandidateList
-            dataSource={[
-              {
-                id: 1,
-                name: 'ဦးကောင်းမြတ်လွင်',
-                party: {
-                  name_burmese: 'ချာပါတီ',
+          <div className="container">
+            <CandidateList
+              dataSource={[
+                {
+                  id: 1,
+                  name: 'ဦးကောင်းမြတ်လွင်',
+                  party: {
+                    name_burmese: 'ချာပါတီ',
+                  }
                 }
-              }
-            ]}
-          />
+              ]}
+            />
+          </div>
         </Tab>
         <Tab title={pyithuHlutTaw} key="pyithuhluttaw">
-          <CandidateList />
+          <div className="container">
+            <CandidateList />
+          </div>
         </Tab>
         <Tab title={tineHlutTaw} key="tinehluttaw">
+          <div className="container">
+
+          </div>
           <CandidateList />
         </Tab>
       </TabPanel>

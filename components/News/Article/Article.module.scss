@@ -1,0 +1,16 @@
+@import '../../../styles/partials/fontsizes';
+@import '../../../styles/partials/colors';
+
+.Article {
+  h1, p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  &__heading {
+    font-weight: 700;
+    font-size: $medium;
+  }
+  &__date {
+    color: $grey-color;
+  }
+}
