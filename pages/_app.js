@@ -1,6 +1,8 @@
 import 'flexboxgrid';
 import Head from 'next/head';
 import App from 'next/app';
+import 'bootstrap/dist/css/bootstrap-reboot.css';
+import 'bootstrap/dist/css/bootstrap-grid.css';
 import '../styles/base.scss';
 import '../styles/helpers.scss';
 
