@@ -38,11 +38,11 @@ const BottomNav = () => {
           </Link>
         </li>
         <li className="col-xs">
-        <Link href="/results" activeClassName="active">
+        <Link href="/news" activeClassName="active">
           <div>
             <i className="material-icons">star_border</i>
             <div>
-              မဲရလဒ်
+             သတင်း
             </div>
           </div>
         </Link>
