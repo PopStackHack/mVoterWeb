@@ -24,7 +24,7 @@ const Location = (props) => {
   return (
     <Layout shouldHideBottomNav>
       <Head>
-        <title>နေရာရွေးရန်</title>
+        <title>မဲဆန္ဒနယ်ရွေးရန်</title>
       </Head>
       <AppHeader>
         <div className="vert-flex-center">
