@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
 import CandidateHeader from '../../components/Candidates/CandidateHeader/CandidateHeader';
 import { TabPanel, Tab } from '../../components/Common/Tabs';
@@ -21,6 +22,9 @@ const VotingPlace = () => (
 const Candidates = () => {
   return (
     <Layout>
+      <Head>
+        <title>ကိုယ်စားလှယ်လောင်းများ</title>
+      </Head>
       <CandidateHeader />
       <TabPanel>
         <Tab title={amyothaHluttaw} key="amyothahluttaw">

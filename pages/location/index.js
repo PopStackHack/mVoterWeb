@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout/Layout';
 import Modal from '../../components/Common/Modal/Modal';
@@ -22,6 +23,9 @@ const Location = (props) => {
 
   return (
     <Layout shouldHideBottomNav>
+      <Head>
+        <title>နေရာရွေးရန်</title>
+      </Head>
       <AppHeader>
         <div className="vert-flex-center">
           <Link href="/candidates"><i className="material-icons">arrow_back</i></Link>

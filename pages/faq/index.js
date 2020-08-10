@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
 import { useState, useEffect } from 'react';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
@@ -14,6 +15,9 @@ const FAQ = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>သိမှတ်ဖွယ်ရာများ</title>
+      </Head>
       <AppHeader>
         <div className="text-bold">သိမှတ်ဖွယ်ရာများ</div>
       </AppHeader>

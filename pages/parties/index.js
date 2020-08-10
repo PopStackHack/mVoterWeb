@@ -1,4 +1,5 @@
 import { PureComponent } from 'react';
+import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
 import PartyCard from '../../components/Party/PartyCard';
 
@@ -9,6 +10,9 @@ import Button from '../../components/Common/Button/Button';
 const Parties = (props) => {
   return (
     <Layout>
+      <Head>
+        <title>ပါတီများ</title>
+      </Head>
       <AppHeader>
         <div>ပါတီများ</div>
         <div className="Parties__buttonGroup">
