@@ -1,9 +1,13 @@
 import BottomNav from '../BottomNav/BottomNav';
 
+import './Layout.module.scss';
+
 const Layout = ({ children, shouldHideBottomNav = false }) => {
   return (
-    <main id="app">
-      {children}
+    <main id="app" className="Layout">
+      <div className="Layout__wrapper">
+        {children}
+      </div>
       {
         !shouldHideBottomNav &&
           <BottomNav />
