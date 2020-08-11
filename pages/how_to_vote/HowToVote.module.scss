@@ -1,0 +1,44 @@
+@import '../../styles/partials/colors';
+
+.HowToVote {
+  height: calc(100vh - 126px);
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-left: 12px;
+  margin-right: 12px;
+  &__announcement {
+    padding: 15px;
+    border-radius: 12px;
+    background-color: rgba($color: $primary-color, $alpha: 0.25);
+    .title, .date, .day {
+      display: inline-block;
+    }
+    .title {
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .date {
+      font-weight: 700;
+      color: $primary-color;
+      font-size: 1.4rem;
+    }
+    .day {
+      color: $grey-color;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+  }
+  &__votingTime {
+    display: flex;
+    justify-content: center;
+    .opening-time, .closing-time {
+      margin: 5px 10px;
+      .pre {
+        line-height: 28px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
