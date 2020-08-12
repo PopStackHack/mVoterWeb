@@ -1,4 +1,11 @@
 import Link from '../Common/Link/Link';
+import PeopleIcon from '../Common/Icons/people';
+import FlagIcon from '../Common/Icons/flag';
+import StarIcon from '../Common/Icons/star';
+import CheckboxIcon from '../Common/Icons/checkbox';
+import LightBulbIcon from '../Common/Icons/lightbulb';
+import NewsIcon from '../Common/Icons/news';
+
 import './BottomNav.module.scss';
 
 const BottomNav = () => {
@@ -8,41 +15,41 @@ const BottomNav = () => {
         <li className="col-xs">
           <Link href="/candidates" activeClassName="active">
             <div>
-              <i className="material-icons">people</i>
-              <div>ကိုယ်စားလှယ်</div>
+              <PeopleIcon />
+              <div className="text">ကိုယ်စားလှယ်</div>
             </div>
           </Link>
         </li>
         <li className="col-xs">
         <Link href="/parties" activeClassName="active">
           <div>
-            <i className="material-icons">outlined_flag</i>
-            <div>ပါတီ</div>
+            <FlagIcon />
+            <div className="text">ပါတီ</div>
           </div>
         </Link>
         </li>
         <li className="col-xs">
           <Link href="/how_to_vote" activeClassName="active">
             <div>
-              <i className="material-icons">how_to_vote</i>
-              <div>မဲပေးနည်း</div>
+              <CheckboxIcon />
+              <div className="text">မဲပေးနည်း</div>
             </div>
           </Link>
         </li>
         <li className="col-xs">
           <Link href="/faq" activeClassName="active">
             <div>
-              <i className="material-icons">question_answer</i>
-              <div>သိမှတ်ဖွယ်</div>
+              <LightBulbIcon />
+              <div className="text">သိမှတ်ဖွယ်</div>
             </div>
           </Link>
         </li>
         <li className="col-xs">
         <Link href="/news" activeClassName="active">
           <div>
-            <i className="material-icons">star_border</i>
             <div>
-             သတင်း
+              <NewsIcon />
+              <div className="text">သတင်း</div>
             </div>
           </div>
         </Link>
