@@ -1,6 +1,10 @@
+@import '../../../styles/partials/colors';
+
 .slider {
   position: absolute;
   height: 3px;
-  background: #0071dd;
+  padding-top: 4px;
+  border-radius: 10px;
+  background: $primary-color;
   transition: all 0.25s ease-in-out;
 }

@@ -4,7 +4,7 @@ import TabSlider from './TabSlider';
 
 import './TabPanel.module.scss';
 
-const offsettingWidth = 40;
+const offsettingWidth = 20;
 const offsettingPosition = offsettingWidth / 2;
 
 class TabPanel extends PureComponent {
@@ -16,16 +16,17 @@ class TabPanel extends PureComponent {
 
   componentDidMount() {
     this.setState({
-      computedSliderWidth: this.refs[`tab0`].getBoundingClientRect().width + offsettingWidth,
-      sliderPosition: this.refs[`tab0`].getBoundingClientRect().x - offsettingPosition,
+      computedSliderWidth: Math.floor(this.refs[`tab0`].getBoundingClientRect().width - offsettingWidth),
+      sliderPosition: this.refs[`tab0`].getBoundingClientRect().x + offsettingPosition,
     });
   }
 
   moveSlider = (sliderIndex) => {
+    console.log(this.refs[`tab${sliderIndex}`].getBoundingClientRect());
     this.setState({
       activeTabIndex: sliderIndex,
-      computedSliderWidth: this.refs[`tab${sliderIndex}`].getBoundingClientRect().width + offsettingWidth,
-      sliderPosition: this.refs[`tab${sliderIndex}`].getBoundingClientRect().x - offsettingPosition,
+      computedSliderWidth: Math.floor(this.refs[`tab${sliderIndex}`].getBoundingClientRect().width - offsettingWidth),
+      sliderPosition: this.refs[`tab${sliderIndex}`].getBoundingClientRect().x + offsettingPosition,
     });
   }
 
