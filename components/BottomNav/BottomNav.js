@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import Link from '../Common/Link/Link';
 import PeopleIcon from '../Common/Icons/people';
 import FlagIcon from '../Common/Icons/flag';
@@ -9,13 +11,20 @@ import NewsIcon from '../Common/Icons/news';
 import './BottomNav.module.scss';
 
 const BottomNav = () => {
+  const router = useRouter();
+  const currentPath = router.pathname;
+
+  function activeFillIcon(link) {
+    return currentPath === link ? '#0071dd' : '#000000';
+  }
+
   return (
     <nav className="BottomNav">
       <ul className="row center-xs text-center">
         <li className="col-xs">
           <Link href="/candidates" activeClassName="active">
-            <div>
-              <PeopleIcon />
+            <div className="BottomNav__NavItem">
+              <PeopleIcon fill={activeFillIcon('/candidates')} />
               <div className="text">ကိုယ်စားလှယ်</div>
             </div>
           </Link>
@@ -23,7 +32,7 @@ const BottomNav = () => {
         <li className="col-xs">
         <Link href="/parties" activeClassName="active">
           <div>
-            <FlagIcon />
+            <FlagIcon fill={activeFillIcon('/parties')}/>
             <div className="text">ပါတီ</div>
           </div>
         </Link>
@@ -31,7 +40,7 @@ const BottomNav = () => {
         <li className="col-xs">
           <Link href="/how_to_vote" activeClassName="active">
             <div>
-              <CheckboxIcon />
+              <CheckboxIcon fill={activeFillIcon('/how_to_vote')}/>
               <div className="text">မဲပေးနည်း</div>
             </div>
           </Link>
@@ -39,7 +48,7 @@ const BottomNav = () => {
         <li className="col-xs">
           <Link href="/faq" activeClassName="active">
             <div>
-              <LightBulbIcon />
+              <LightBulbIcon fill={activeFillIcon('/faq')}/>
               <div className="text">သိမှတ်ဖွယ်</div>
             </div>
           </Link>
@@ -48,7 +57,7 @@ const BottomNav = () => {
         <Link href="/news" activeClassName="active">
           <div>
             <div>
-              <NewsIcon />
+              <NewsIcon fill={activeFillIcon('/news')}/>
               <div className="text">သတင်း</div>
             </div>
           </div>

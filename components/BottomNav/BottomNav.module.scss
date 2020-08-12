@@ -19,6 +19,8 @@
     padding: 0;
   }
   li {
+    position: relative;
+    height: 48px;
     color: #999999;
     margin: 0;
     padding: 0;
@@ -28,9 +30,16 @@
     }
     .active {
       color: $primary-color;
+      svg {
+        fill: $primary-color;
+      }
     }
     .text {
-      margin-top: 3px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
     }
   }
 }
