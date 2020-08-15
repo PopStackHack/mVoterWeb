@@ -5,7 +5,7 @@ const Clock4PM = ({
 }) => (
   <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <title>clock_4pm</title>
-  <g id="UI" stroke="none" stroke-width="1" fill={fill} fill-rule="evenodd">
+  <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <g id="Voting-Guide" transform="translate(-213.000000, -221.000000)" stroke="#2071DA" stroke-width="1.5">
       <g id="Header" transform="translate(20.000000, 96.000000)">
         <g id="Group-7" transform="translate(40.000000, 11.000000)">

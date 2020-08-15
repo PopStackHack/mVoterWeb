@@ -41,4 +41,54 @@
       }
     }
   }
+  .instruction-list {
+    position: relative;
+    // &::after {
+    //   content: '';
+    //   display: inline-block;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 10px;
+    //   width: 2px;
+    //   height: 100%;
+    //   background-color: $primary-color;
+    // }
+  }
+  .title {
+    font-weight: 700;
+    margin-top: 2px;
+    margin-bottom: 3px;
+  }
+  .instruction {
+    padding-left: 30px;
+    position: relative;
+    line-height: 28px;
+    margin: 5px 0;
+    &:last-child::before {
+      content: '';
+      display: none;
+    }
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      width: 2px;
+      height: 100%;
+      background-color: $primary-color;
+    }
+    &::after {
+      content: '';
+      display: inline-block;
+
+      position: absolute;
+      border-radius: 100%;
+      top: 9px;
+      left: 5px;
+      width: 12px;
+      height: 12px;
+      background-color: $primary-color;
+    }
+  }
 }
