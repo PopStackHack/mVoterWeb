@@ -1,0 +1,32 @@
+$ballot-stack-height: 110px;
+
+#faq {
+  line-height: 25px;
+}
+
+.ballot-stack {
+  height: $ballot-stack-height;
+  margin-bottom: 10px;;
+}
+
+.ballot-stack-picture {
+  display: block;
+  margin: 0 auto;
+  height: $ballot-stack-height;
+}
+
+.prohibitions {
+  margin-bottom: 10px;
+}
+
+.prohibition {
+  img {
+    width: 100%;
+    height: auto;
+  }
+  div {
+    margin-top: 3px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+}
