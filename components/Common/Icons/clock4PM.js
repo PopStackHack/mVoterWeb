@@ -15,8 +15,8 @@ const Clock4PM = ({
                 <g id="Group-5" transform="translate(7.000000, 0.000000)">
                   <g id="clock_4pm" transform="translate(0.000000, 2.000000)">
                       <circle id="Oval" cx="7.875" cy="7.875" r="7.875"></circle>
-                      <line x1="7.875" y1="7.875" x2="7.875" y2="2.625" id="Line-2-Copy" stroke-linecap="round"></line>
-                      <line x1="11.25" y1="9.75" x2="8.25" y2="8.25" id="Line-2-Copy-2" stroke-linecap="round"></line>
+                      <line x1="7.875" y1="7.875" x2="7.875" y2="2.625" id="Line-2-Copy" strokeLinecap="round"></line>
+                      <line x1="11.25" y1="9.75" x2="8.25" y2="8.25" id="Line-2-Copy-2" strokeLinecap="round"></line>
                     </g>
                   </g>
                 </g>

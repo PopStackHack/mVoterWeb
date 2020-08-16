@@ -22,7 +22,6 @@ class TabPanel extends PureComponent {
   }
 
   moveSlider = (sliderIndex) => {
-    console.log(this.refs[`tab${sliderIndex}`].getBoundingClientRect());
     this.setState({
       activeTabIndex: sliderIndex,
       computedSliderWidth: Math.floor(this.refs[`tab${sliderIndex}`].getBoundingClientRect().width - offsettingWidth),
