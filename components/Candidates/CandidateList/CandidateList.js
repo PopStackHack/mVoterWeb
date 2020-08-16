@@ -1,10 +1,17 @@
-import './CandidateList.module.scss';
+import { useRouter } from 'next/router';
 import Card from '../../Common/Card/Card';
+import './CandidateList.module.scss';
 
 const CandidateList = (props) => {
   const {
     dataSource,
   } = props;
+
+  const router = useRouter();
+
+  function onClickCandidate(candidateId) {
+    router.push(`/candidates/[candidate]`, `/candidates/${candidateId}`);
+  }
 
   return (
     <div className="CandidateList">
@@ -19,7 +26,7 @@ const CandidateList = (props) => {
               name_burmese: partyBurmeseName,
             },
           }) => (
-            <Card className="CandidateList__item" key={id}>
+            <Card className="CandidateList__item" key={id} onClick={() => onClickCandidate(id)}>
               <div className="CandidateList__avatar" style={{ backgroundImage: `url${avatar}` }}></div>
               <div className="CandidateList__info">
                 <div className="name">

@@ -27,21 +27,30 @@ const CandidateDetails = (props) => {
             <h2 className="CandidateDetail__party">{party ? party.partyName : 'တစ်သီးပုဂ္ဂလ ကိုယ်စားလှယ်'}</h2>
             <h3 className="CandidateDetail__constituency">{constituency}</h3>
             <div>
-              <span>{constituency}</span>
+              <span>တာမွေမဲဆန္ဒနယ်</span>
             </div>
           </div>
         </div>
         <div className="row">
+          <div className="col-2">
 
+          </div>
+          <div className="col">
+            မွေးသက္ကရာဇ်
+            ဇန်နဝါရီ ၁၊ ၁၉၈၆
+          </div>
         </div>
         <div className="row">
-
+          <div className="">ပညာအရည်အချင်း</div>
+          <div className="">ဓာတုဗေဒ (မဟာဘွဲ့)</div>
         </div>
         <div className="row">
-
+          <div className="">ပညာအရည်အချင်း</div>
+          <div className="">ဓာတုဗေဒ (မဟာဘွဲ့)</div>
         </div>
         <div className="row">
-
+          <div className="">ပညာအရည်အချင်း</div>
+          <div className="">ဓာတုဗေဒ (မဟာဘွဲ့)</div>
         </div>
         <div className="row">
 
