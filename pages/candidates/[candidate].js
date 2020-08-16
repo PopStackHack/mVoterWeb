@@ -19,7 +19,7 @@ const Candidates = (props) => {
   return (
     <Layout shouldHideBottomNav>
       <AppHeader></AppHeader>
-      <div className="Candidate container">
+      <section className="Candidate container">
         <div className="row">
           <div className="col-12">
             <div className="Candidate__imageWrapper">
@@ -87,7 +87,7 @@ const Candidates = (props) => {
             ခရစ်ယာန်
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 }
