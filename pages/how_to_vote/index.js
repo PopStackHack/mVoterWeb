@@ -29,7 +29,7 @@ export default function howToVote() {
               <div className="HowToVote__votingTime">
                 <div className="opening-time">
                   <span className="pre">
-                    <Clock6AM /> &nbsp; မဲရုံဖွင့်ချိန်
+                    <Clock6AM />&nbsp; မဲရုံဖွင့်ချိန်
                   </span>
                   <br/>
                   <span>
@@ -38,7 +38,7 @@ export default function howToVote() {
                 </div>
                 <div className="closing-time">
                   <span className="pre">
-                    <Clock4PM /> &nbsp; မဲရုံပိတ်ချိန်
+                    <Clock4PM />&nbsp; မဲရုံပိတ်ချိန်
                   </span>
                   <br/>
                   <span>
