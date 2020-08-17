@@ -1,8 +1,23 @@
+@import '../../styles/partials/colors';
+
 .Parties {
   &__Container {
     min-height: 100vh;
   }
   &__Wrapper {
     padding: 5px 10px;
+  }
+  &__infoHeader {
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: rgba($color: $primary-color, $alpha: 0.25);
+    font-weight: 600;
+    font-size: 0.875rem;
+    p {
+      margin: 0;
+    }
+  }
+  &__buttonGroup {
+    color: $primary-color;
   }
 }
