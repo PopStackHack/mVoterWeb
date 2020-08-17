@@ -2,6 +2,9 @@
 
 .Candidate {
   line-height: 25px;
+  height: calc(100vh - 74px);
+  padding-bottom: 74px;
+  overflow: auto;
   &__imageWrapper {
     width: 130px;
     height: 130px;

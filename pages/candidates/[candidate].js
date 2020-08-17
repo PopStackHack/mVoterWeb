@@ -1,4 +1,5 @@
 import moment, { parseTwoDigitYear } from 'moment';
+import { useRouter } from 'next/router';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 
@@ -16,9 +17,15 @@ const Candidates = (props) => {
     party,
   } = props;
 
+  const router = useRouter();
+
   return (
-    <Layout shouldHideBottomNav>
-      <AppHeader></AppHeader>
+    <Layout>
+      <AppHeader>
+        <div>
+          <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+        </div>
+      </AppHeader>
       <section className="Candidate container">
         <div className="row">
           <div className="col-12">
