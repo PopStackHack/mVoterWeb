@@ -20,52 +20,89 @@ const BottomNav = () => {
   const router = useRouter();
   const currentPath = router.pathname;
 
-  function routeActive(link, ActiveIcon, InActiveIcon) {
-    return currentPath === link ? ActiveIcon : InActiveIcon;
+  const NavComponent = ({
+    link, activeIcon, inActiveIcon, text,
+  }) => {
+    const isSamePath = currentPath
+      .split('/')
+      .indexOf(link.replace('/', '')) > -1;
+
+    if (isSamePath) {
+      return (
+        <>
+          {activeIcon}
+          <div className="text active">{text}</div>
+        </>
+      );
+    }
+    return (
+      <>
+        {inActiveIcon}
+        <div className="text">{text}</div>
+      </>
+    );
   }
 
   return (
     <nav className="BottomNav">
       <ul className="row center-xs text-center">
         <li className="col-xs">
-          <Link href="/candidates" activeClassName="active">
+          <Link href="/candidates">
             <div className="BottomNav__NavItem">
-              {routeActive('/candidates', ActivePeopleIcon, PeopleIcon)}
-              <div className="text">ကိုယ်စားလှယ်</div>
+              <NavComponent
+                link='/candidates'
+                activeIcon={ActivePeopleIcon}
+                inActiveIcon={PeopleIcon}
+                text="ကိုယ်စားလှယ်"
+              />
             </div>
           </Link>
         </li>
         <li className="col-xs">
         <Link href="/parties" activeClassName="active">
           <div>
-            {routeActive('/parties', ActiveFlagIcon, FlagIcon)}
-            <div className="text">ပါတီ</div>
+            <NavComponent
+              link='/parties'
+              activeIcon={ActiveFlagIcon}
+              inActiveIcon={FlagIcon}
+              text="ပါတီ"
+            />
           </div>
         </Link>
         </li>
         <li className="col-xs">
           <Link href="/how_to_vote" activeClassName="active">
             <div>
-              {routeActive('/how_to_vote', ActiveStarIcon, StarIcon)}
-              <div className="text">မဲပေးနည်း</div>
+              <NavComponent
+                link='/how_to_vote'
+                activeIcon={ActiveStarIcon}
+                inActiveIcon={StarIcon}
+                text="မဲပေးနည်း"
+              />
             </div>
           </Link>
         </li>
         <li className="col-xs">
           <Link href="/faq" activeClassName="active">
             <div>
-              {routeActive('/faq', ActiveLightBulbIcon, LightBulbIcon)}
-              <div className="text">သိမှတ်ဖွယ်</div>
+              <NavComponent
+                link='/faq'
+                activeIcon={ActiveLightBulbIcon}
+                inActiveIcon={LightBulbIcon}
+                text="သိမှတ်ဖွယ်"
+              />
             </div>
           </Link>
         </li>
         <li className="col-xs">
         <Link href="/news" activeClassName="active">
           <div>
-            <div>
-              {routeActive('/news', ActiveNewsIcon, NewsIcon)}
-              <div className="text">သတင်း</div>
-            </div>
+            <NavComponent
+              link='/news'
+              activeIcon={ActiveNewsIcon}
+              inActiveIcon={NewsIcon}
+              text="သတင်း"
+            />
           </div>
         </Link>
         </li>
