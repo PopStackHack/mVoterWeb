@@ -1,14 +1,22 @@
-import { PureComponent } from 'react';
+import { PureComponent, useRef, useEffect } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
-import PartyCard from '../../components/Party/PartyCard';
+import PartyCard from '../../components/Parties/PartyItem';
+import { getParty } from '../../gateway/api';
 
 import './parties.module.scss';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
 import Link from '../../components/Common/Link/Link';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Parties = (props) => {
+  const rowRef = useRef();
+  // Inject AJAX call on first load
+  useEffect(() => {
+    getParty({ page: 1 });
+  }, []);
+
   return (
     <Layout>
       <Head>
@@ -24,18 +32,21 @@ const Parties = (props) => {
         <div className="row mb-2">
           <div className="col-12">
             <div className="Parties__infoHeader">
-              <p>(၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဥ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၅)ခု</p>
+              <p>
+                (၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဥ်ပြိုင်မည့်
+                နိုင်ငံရေးပါတီ (၉၅)ခု
+              </p>
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-12">
+          <InfiniteScroll>
             {[0, 1, 2].map((c, i) => (
-              <Link key={i} href={`/parties/${i}`}>
+              <div className="col-12" key={i}>
                 <PartyCard />
-              </Link>
+              </div>
             ))}
-          </div>
+          </InfiniteScroll>
         </div>
       </div>
     </Layout>
