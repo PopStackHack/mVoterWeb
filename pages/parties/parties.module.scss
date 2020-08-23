@@ -8,6 +8,7 @@
     padding: 5px 10px;
   }
   &__infoHeader {
+    display: flex;
     padding: 10px 15px;
     border-radius: 15px;
     background-color: rgba($color: $primary-color, $alpha: 0.25);
