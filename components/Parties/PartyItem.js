@@ -21,7 +21,7 @@ const PartyCard = (props) => {
         backgroundImage: `url("//via.placeholder.com/150}")`
       }}></div>
       <div className="PartyItem__Description">
-        <div>စမ်းသပ်ခံ ပါတီ</div>
+        <div>ဖရဲသီးဖွံ့ဖြိုးတိုးတက်ရေးပါတီ</div>
         <div className="text-muted constituency">ပြည်ထောင်စုတစ်ဝန်းလုံး</div>
       </div>
     </Card>

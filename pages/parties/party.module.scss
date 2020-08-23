@@ -1,0 +1,113 @@
+@import '../../styles/partials/colors';
+
+.Party {
+  line-height: 25px;
+  height: calc(100vh - 74px);
+  padding-bottom: 74px;
+  overflow: auto;
+  &__headInfo {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    margin-bottom: 12px;
+  }
+  &__imageWrapper {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  &__seal {
+    width: 100%;
+    height: 60px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  &__title {
+    font-size: 1.25rem;
+  }
+  &__engTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  &__abbreviation {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  &__partyPolicy {
+    background-color: $primary-color;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 30px;
+    padding: 5px 10px;
+    box-shadow: 0px 2px 4px rgba($color: $primary-color, $alpha: 0.25);
+  }
+  &__region {
+    font-size: 0.875rem;
+  }
+  &__info {
+    margin-bottom: 12px;
+  }
+  &__infoLabel {
+    font-size: 0.875rem;
+    color: rgba($color: #000000, $alpha: 0.85);
+  }
+  &__infoAnswer {
+    font-size: 1rem;
+  }
+  &__timeline {
+    background: rgba($color: $primary-color, $alpha: 0.25);
+    padding: 5px;
+    border-radius: 10px;
+    .timeline-item {
+      margin: 5px 0;
+      .date {
+        font-weight: 600;
+        font-size: 1.15rem;
+      }
+      .time {
+        padding-left: 0;
+      }
+      &:last-child { // Tricky hack
+        .description {
+          &::before {
+            display: none;
+          }
+        }
+      }
+      .description {
+        position: relative;
+        &::before {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          top: 14px;
+          left: 0px;
+          width: 2px;
+          height: 100%;
+          background-color: $primary-color;
+        }
+        &::after {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          border-radius: 100%;
+          top: 8px;
+          left: -5px;
+          width: 12px;
+          height: 12px;
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+}
