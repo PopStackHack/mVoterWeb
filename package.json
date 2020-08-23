@@ -27,6 +27,8 @@
     "react-icons": "^3.10.0",
     "react-infinite-scroll-component": "^5.0.5",
     "react-modal": "^3.11.2",
-    "react-transition-group": "^4.4.1"
+    "react-slick": "^0.27.10",
+    "react-transition-group": "^4.4.1",
+    "slick-carousel": "^1.8.1"
   }
 }
