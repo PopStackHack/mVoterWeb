@@ -41,13 +41,13 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  getFAQ({
+  getFaqs({
     page,
     itemPerPage = 25,
     name,
     category,
   }) {
-    return this.api.get('/faq', {
+    return this.api.get('/faqs', {
       params: {
         page,
         item_per_page: itemPerPage,
