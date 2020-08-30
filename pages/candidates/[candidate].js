@@ -2,10 +2,11 @@ import moment, { parseTwoDigitYear } from 'moment';
 import Head from 'next/head';
 import myanmarNumber from 'myanmar-numbers';
 import { useRouter } from 'next/router';
-import { getCandidateById } from '../../gateway/api';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { formatHouse, formatConstituency } from '../../utils/textFormatter';
+import MaePaySohAPI from '../../gateway/api';
+import { extractMPSToken } from '../../utils/authClient';
 
 import './candidate.module.scss';
 
@@ -95,7 +96,7 @@ const Candidates = (props) => {
               မွေးသက္ကရာဇ်
             </div>
             <div className="Candidate__infoAnswer">
-              ဇန်နဝါရီ ၁၊ ၁၉၈၆
+              {birthday}
             </div>
           </div>
         </div>
@@ -142,8 +143,13 @@ export async function getServerSideProps(context) {
     params,
   } = context;
 
-  const response = await getCandidateById(params.candidate);
+
+  const token = extractMPSToken(context.req.headers.cookie);
+  const api = new MaePaySohAPI(token);
+
+  const response = await api.getCandidateById(params.candidate);
   const { data } = response.data;
+
   return {
     props: {
       candidate: data.attributes,
