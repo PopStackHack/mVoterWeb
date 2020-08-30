@@ -1,0 +1,12 @@
+@import '../../styles/partials/colors';
+
+.FAQ {
+  padding-top: 30px;
+  &__question {
+    color: $primary-color;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 32px;
+  }
+}

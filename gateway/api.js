@@ -55,7 +55,7 @@ export function getFAQ({
 }
 
 export function getFAQById(id) {
-  return maePaySohAPI.get(`/faq/${id}`)
+  return maePaySohAPI.get(`/faqs/${id}`)
     .catch(console.error);
 }
 

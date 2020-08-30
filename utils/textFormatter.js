@@ -15,3 +15,20 @@ export function formatHouse(house) {
 export function formatConstituency(stateRegion, constituencyName) {
   return `${stateRegion} ${constituencyName.split(' ').slice(1).join('')}`;
 }
+
+export function formatFAQCategory(category) {
+  let str = 'Unknown';
+
+  // Thanks but I hate switch cases for no reason
+  if (category === 'voter_list') {
+    return 'မဲဆန္ဒရှင်စာရင်း';
+  } else if (category === 'candidate') {
+    return 'ကိုယ်စားလှယ်လောင်း';
+  } else if (category === 'international_observer') {
+    return 'စောင့်ကြည့်လေ့လာခြင်း';
+  } else {
+    return 'သံတမန်ရေးရာ'; // diplomatic
+  }
+
+  return str;
+}

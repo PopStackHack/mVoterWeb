@@ -83,10 +83,10 @@ const BottomNav = () => {
           </Link>
         </li>
         <li className="col-xs">
-          <Link href="/faq" activeClassName="active">
+          <Link href="/faqs" activeClassName="active">
             <div>
               <NavComponent
-                link='/faq'
+                link='/faqs'
                 activeIcon={ActiveLightBulbIcon}
                 inActiveIcon={LightBulbIcon}
                 text="သိမှတ်ဖွယ်"

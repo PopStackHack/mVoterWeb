@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import FaqItem from '../../components/Faq/FaqItem';
 
-import './faq.module.scss';
+import './faqs.module.scss';
 
 const FAQ = () => {
   const [faqs, setFaqs] = useState([
