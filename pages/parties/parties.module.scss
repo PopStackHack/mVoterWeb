@@ -1,6 +1,8 @@
 @import '../../styles/partials/colors';
+@import '../../styles/partials/extends';
 
 .Parties {
+  @extend %mobile-vert-rules;
   &__Container {
     min-height: 100vh;
   }
@@ -20,5 +22,13 @@
   }
   &__buttonGroup {
     color: $primary-color;
+  }
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    overflow: hidden;
   }
 }
