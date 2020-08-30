@@ -12,7 +12,7 @@ class MaePaySohAPI {
     });
   }
 
-  static getCandidates({
+  getCandidates({
     wardId,
     house,
     name,
@@ -31,17 +31,17 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  static getCandidateById(id) {
+  getCandidateById(id) {
     return this.api.get(`/candidates/${id}`)
       .catch(console.error);
   }
 
-  static getBallots() {
+  getBallots() {
     return this.api.get('/ballots')
       .catch(console.error);
   }
 
-  static getFAQ({
+  getFAQ({
     page,
     itemPerPage = 25,
     name,
@@ -58,17 +58,17 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  static getFAQById(id) {
+  getFAQById(id) {
     return this.api.get(`/faqs/${id}`)
       .catch(console.error);
   }
 
-  static getStateRegion() {
+  getStateRegion() {
     return this.api.get('/locality/state_regions')
       .catch(console.error);
   }
 
-  static getTownships(stateRegionPCode) {
+  getTownships(stateRegionPCode) {
     return this.api.get('/townships', {
       params: {
         state_region_pcode: stateRegionPCode,
@@ -77,7 +77,7 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  static getWards(townshipPcode) {
+  getWards(townshipPcode) {
     return this.api.get('/wards', {
       params: {
         township_pcode: townshipPcode,
@@ -86,7 +86,7 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  static getNews({
+  getNews({
       page,
       itemPerPage = 25,
   }) {
@@ -110,7 +110,7 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  static getPartyById(id) {
+  getPartyById(id) {
     return this.api.get(`parties/${id}`)
       .catch(console.error);
   }
