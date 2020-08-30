@@ -1,10 +1,8 @@
 @import '../../styles/partials/colors';
+@import '../../styles/partials/extends';
 
 .HowToVote {
-  height: calc(100vh - 126px);
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  @extend %mobile-vert-rules;
   &__announcement {
     padding: 15px;
     border-radius: 12px;
