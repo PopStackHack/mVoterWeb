@@ -1,11 +1,10 @@
 import cookie from 'cookie';
-import { MPS_COOKIE_SECRET } from '../../utils/authClient';
+import { extractMPSToken } from '../../utils/authClient';
 import MaePaySohAPI from '../../gateway/api';
 
 export default async function (req, res) {
   try {
-    const cookies = cookie.parse(req.headers.cookie ?? '');
-    const token = cookies[MPS_COOKIE_SECRET];
+    const token = extractMPSToken(req.headers.cookie);
 
     // This is very hacky approach
     if (!token) {

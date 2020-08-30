@@ -1,6 +1,11 @@
 import cookie from 'cookie';
 
-export const MPS_COOKIE_SECRET = process.env.COOKIE_SECRET;
+const MPS_COOKIE_SECRET = process.env.COOKIE_SECRET;
+
+export const extractMPSToken = (cookieToParse) => {
+  const cookies = cookie.parse(cookieToParse ?? '');
+  return cookies[MPS_COOKIE_SECRET];
+}
 
 export const serializedCookie = (userSecret) => {
   return cookie.serialize(process.env.COOKIE_SECRET, userSecret, {
