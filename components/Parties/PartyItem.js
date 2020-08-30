@@ -10,20 +10,24 @@ const PartyCard = (props) => {
     party: {
       id,
       attributes: {
+        flag_image: flagImage,
+        seal_image: sealImage,
         name_burmese: nameBurmese,
         region,
       }
     },
   } = props;
 
+  const sealImageStyle = {
+    width: 64,
+    height: 64,
+    backgroundImage: `url(${sealImage})`
+  };
+
   return (
     <li className="PartyItem">
       <Card className="PartyItem__Card cursor-pointer" onClick={() => router.push(`/parties/[party]`, `/parties/${id}`)}>
-        <div style={{
-          width: 64,
-          height: 64,
-          backgroundImage: `url("//via.placeholder.com/150}")`
-        }}></div>
+        <div className="PartyItem__image" style={sealImageStyle}></div>
         <div className="PartyItem__Description">
           <div className="name">{nameBurmese}</div>
           <div className="text-muted constituency">{region}</div>

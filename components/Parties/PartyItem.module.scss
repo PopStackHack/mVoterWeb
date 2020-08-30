@@ -11,6 +11,11 @@
   &:last-child {
     margin-bottom: 0;
   }
+  &__image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
   &__Description {
     margin-left: 8px;
     .name {
