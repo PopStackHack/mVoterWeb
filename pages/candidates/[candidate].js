@@ -45,7 +45,7 @@ const Candidates = (props) => {
   return (
     <Layout>
       <Head>
-         <title>{name} | mVoter 2020</title>
+        <title>{name} | mVoter 2020</title>
         <meta property="og:url" content={`//web.mvoterapp.com/candidates/${id}`} />
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${formatHouse(house)} ကိုယ်စားလှယ် - ${name}`} />
