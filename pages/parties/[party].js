@@ -3,12 +3,12 @@ import Head from 'next/head';
 import myanmarNumbers from 'myanmar-numbers';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
-import { getPartyById } from '../../gateway/api';
+import MaePaySohAPI from '../../gateway/api';
+import { extractMPSToken } from '../../utils/authClient';
 
 import './party.module.scss';
 
 const Party = (props) => {
-
   const {
     party: {
       id,
@@ -52,7 +52,8 @@ const Party = (props) => {
               <div className="Party__image" style={{ backgroundImage: `url(https://placehold.co/150x150)` }}></div>
             </div>
             <h1 className="Party__title">{nameBurmese}</h1>
-            <h2 className="Party__engTitle">{nameEnglish}</h2>
+            <h1 className="Party__engTitle">{nameEnglish}</h1>
+            <p>{region}</p>
             {
               abbreviation &&
                 <h3 className="Party__abbreviation">WDP</h3>
@@ -166,7 +167,10 @@ export async function getServerSideProps(context) {
     params,
   } = context;
 
-  const response = await getPartyById(params.party);
+  const token = extractMPSToken(context.req.headers.cookie);
+  const api = new MaePaySohAPI(token);
+
+  const response = await api.getPartyById(params.party);
   const { data } = response.data;
 
   // expand everything inside data attributes to primary object
