@@ -1,17 +1,48 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import myanmarNumbers from 'myanmar-numbers';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
+import { getPartyById } from '../../gateway/api';
 
 import './party.module.scss';
 
-const PartyDetail = () => {
+const Party = (props) => {
+
+  const {
+    party: {
+      id,
+      flag_image: flagImage,
+      abbreviation,
+      name_burmese: nameBurmese,
+      name_english: nameEnglish,
+      policy,
+      region,
+      leaders_and_chairmen: leadership,
+      member_count: memberCount,
+      headquarter_address: headquarterAddress,
+      contacts,
+      establishment_application_date: establishmentApplicationDate,
+      establishment_approval_date: establishmentApprovalDate,
+      registration_application_date: registrationApplicationDate,
+      registration_approved_date: registrationApprovedDate,
+    },
+  } = props;
+
   const router = useRouter();
   return (
     <Layout>
+      <Head>
+        <title>{nameBurmese} | mVoter 2020</title>
+        <meta property="og:url" content={`//web.mvoterapp.com/parties/${id}`} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={nameBurmese} />
+        <meta property="og:description" content={`ယှဥ်ပြိုင်မည့်နေရာ - ${region}`}/>
+        <meta property="og:image" content={flagImage} />
+      </Head>
       <AppHeader>
         <div>
-          <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+         <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
         </div>
       </AppHeader>
       <section className="Party container">
@@ -20,13 +51,18 @@ const PartyDetail = () => {
             <div className="Party__imageWrapper">
               <div className="Party__image" style={{ backgroundImage: `url(https://placehold.co/150x150)` }}></div>
             </div>
-            <h1 className="Party__title">ဖရဲသီး ဖွံ့ဖြိုးတိုးတက်ရေး အကျိုးဆောင်ပါတီ</h1>
-            <h2 className="Party__engTitle">Water Melon Development Party</h2>
-            <h3 className="Party__abbreviation">WDP</h3>
+            <h1 className="Party__title">{nameBurmese}</h1>
+            <h2 className="Party__engTitle">{nameEnglish}</h2>
+            {
+              abbreviation &&
+                <h3 className="Party__abbreviation">WDP</h3>
+            }
           </div>
-          <div className="Party__partyPolicy">
-            ပါတီ မူဝါဒ
-          </div>
+          <a className="d-block" href={policy} target="_blank" rel="noopener">
+            <div className="Party__partyPolicy">
+              ပါတီ မူဝါဒ
+            </div>
+          </a>
         </div>
         <div className="row Party__info">
           <div className="col-3">
@@ -37,27 +73,17 @@ const PartyDetail = () => {
               ပါတီအမှတ်စဥ်
             </div>
             <div className="Party__infoAnswer">
-              ၉၆
+              {myanmarNumbers(id, 'my')}
             </div>
           </div>
         </div>
         <div className="row Party__info">
           <div className="col-12">
             <div className="Party__infoLabel">
-              ပါတီဥက္ကဌနှင့် ဗဟိုအလုပ်အမှုဆောင်များ
+              ခေါင်းဆောင်နှင့် အမှုဆောင်များ
             </div>
             <div className="Party__infoAnswer">
-              ဦးအာလူး၊ ဒေါ်မုန်လာဥ
-            </div>
-          </div>
-        </div>
-        <div className="row Party__info">
-          <div className="col-12">
-            <div className="Party__infoLabel">
-              အမှုဆောင်များ
-            </div>
-            <div className="Party__infoAnswer">
-              ဦးအာလူး၊ ဒေါ်မုန်လာဥ
+              {leadership.join('၊ ')}
             </div>
           </div>
         </div>
@@ -67,7 +93,7 @@ const PartyDetail = () => {
               အဖွဲ့ဝင်ဦးရေ
             </div>
             <div className="Party__infoAnswer">
-              ၄၁၀၅၆
+              {myanmarNumbers(memberCount, 'my')} ယောက်
             </div>
           </div>
         </div>
@@ -77,7 +103,7 @@ const PartyDetail = () => {
               ပါတီရုံးချုပ်
             </div>
             <div className="Party__infoAnswer">
-              ၁၀၊ ငါးထပ်ကြီးဘုရားလမ်း၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး
+              {headquarterAddress}
             </div>
           </div>
         </div>
@@ -87,39 +113,71 @@ const PartyDetail = () => {
               ဆက်သွယ်ရန်
             </div>
             <div className="Party__infoAnswer">
-              ၀၉၄၂၈၂၁၉၀၈၆၊ ၀၉၄၂၈၂၁၉၀၈၇
+              {contacts.join('၊ ')}
             </div>
           </div>
         </div>
         <div className="row-fluid Party__info Party__timeline">
-          <div className="row timeline-item">
-            <div className="col-3 time text-right"><div className="date">Feb 4</div>2019</div>
-            <div className="col-9 description">
-              ပါတီ တည်ထောင်ခွင့်လျှောက်ထားသည်
-            </div>
-          </div>
-          <div className="row timeline-item">
-            <div className="col-3 time text-right"><div className="date">Mar 3</div>2019</div>
-            <div className="col-8 description">
-              ပါတီ တည်ထောင်ခွင့် ရရှိသည်
-            </div>
-          </div>
-          <div className="row timeline-item">
-            <div className="col-3 time text-right"><div className="date">Apr 2</div>2019</div>
-            <div className="col-9 description">
-              ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် လျှောက်ထားသည်
-            </div>
-          </div>
-          <div className="row timeline-item">
-            <div className="col-3 time text-right"><div className="date">May 30</div>2019</div>
-            <div className="col-9 description">
-              ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် ရရှိသည်
-            </div>
-          </div>
+          <p className="text-center">နိုင်ငံရေးပါတီအဖြစ် ပုဒ်မ(၂၅)အရ လျှောက်ထားခဲ့သည်</p>
+            {
+              establishmentApplicationDate &&
+                <div className="row timeline-item">
+                  <div className="col-4 time text-right">{establishmentApplicationDate}</div>
+                  <div className="col-8 description">
+                    ပါတီ တည်ထောင်ခွင့်လျှောက်ထားသည်
+                  </div>
+                </div>
+            }
+            {
+              establishmentApprovalDate &&
+                <div className="row timeline-item">
+                  <div className="col-4 time text-right">{establishmentApprovalDate}</div>
+                  <div className="col-8 description">
+                    ပါတီ တည်ထောင်ခွင့် ရရှိသည်
+                  </div>
+                </div>
+            }
+            {
+              registrationApplicationDate &&
+                <div className="row timeline-item">
+                  <div className="col-4 time text-right">{registrationApplicationDate}</div>
+                  <div className="col-8 description">
+                    ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် လျှောက်ထားသည်
+                  </div>
+                </div>
+            }
+            {
+              registrationApprovedDate &&
+                <div className="row timeline-item">
+                  <div className="col-4 time text-right">{registrationApprovedDate}</div>
+                  <div className="col-8 description">
+                    ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် ရရှိသည်
+                  </div>
+                </div>
+            }
         </div>
       </section>
     </Layout>
   );
 };
 
-export default PartyDetail;
+export async function getServerSideProps(context) {
+  const {
+    params,
+  } = context;
+
+  const response = await getPartyById(params.party);
+  const { data } = response.data;
+
+  // expand everything inside data attributes to primary object
+  return {
+    props: {
+      party: {
+        ...data,
+        ...data.attributes,
+      },
+    },
+  };
+}
+
+export default Party;

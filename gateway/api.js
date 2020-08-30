@@ -98,7 +98,7 @@ export function getNews({
 export function getParty({
   page,
 }) {
-  return maePaySohAPI.get('/party', {
+  return maePaySohAPI.get('/parties', {
     params: {
       page,
     },
@@ -107,6 +107,6 @@ export function getParty({
 }
 
 export function getPartyById(id) {
-  return maePaySohAPI.get(`party/${id}`)
+  return maePaySohAPI.get(`parties/${id}`)
     .catch(console.error);
 }
