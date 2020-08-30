@@ -1,7 +1,10 @@
 .PartyItem {
-  display: flex;
-  align-items: center;
-  margin: 8px 0;
+  width: 100%;
+  height: 75px;
+  &__Card {
+    display: flex;
+    align-items: center;
+  }
   &:first-child {
     margin-top: 0;
   }
@@ -10,6 +13,9 @@
   }
   &__Description {
     margin-left: 8px;
+    .name {
+      margin-bottom: 5px;
+    }
   }
 }
 
