@@ -1,19 +1,38 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
-import { useState, useEffect } from 'react';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import FaqItem from '../../components/Faq/FaqItem';
 
 import './faqs.module.scss';
 
-const FAQ = () => {
-  const [faqs, setFaqs] = useState([
-    {
-      id: 1,
-      question: 'What do you seek?',
-      answer: `I'm baby hell of banjo synth literally, photo booth street art gochujang venmo. Gochujang chartreuse scenester, biodiesel waistcoat austin fashion axe coloring book locavore drinking vinegar cloud bread DIY affogato. Gastropub messenger bag hexagon selvage pinterest narwhal locavore waistcoat schlitz green juice succulents leggings, yr readymade affogato. Put a bird on it migas schlitz roof party retro, heirloom pitchfork meh meditation. Helvetica pinterest poke lumbersexual jean shorts, pok pok kickstarter copper mug raclette cold-pressed knausgaard celiac lo-fi cliche.`,
+const FAQ = (props) => {
+  const [faqs, setFaqs] = useState([]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    fetchAndPushFaqs(true);
+  }, []);
+
+
+  async function fetchAndPushFaqs(init) {
+    try {
+      let pageQuery = page;
+      if (!init) {
+        pageQuery += 1;
+        setPage(page + 1);
+      }
+
+      const response = await fetch(`/api/faqs?page=${pageQuery}&category=voter_list`);
+      const { data, pagination } = await response.json();
+
+      setFaqs(faqs.concat(data));
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response);
+      }
     }
-  ]);
+  }
 
   return (
     <Layout>
@@ -23,7 +42,7 @@ const FAQ = () => {
       <AppHeader>
         <div className="text-bold">သိမှတ်ဖွယ်ရာများ</div>
       </AppHeader>
-      <section id="faq" className="container">
+      <section id="faq" className="container FAQ">
         <div className="ballot-stack row align-items-center">
           <div className="col-4">
             <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
@@ -48,17 +67,18 @@ const FAQ = () => {
             <div>အသံ <br />မသွင်းရ</div>
           </div>
         </div>
-        {
-          faqs.map(({ id, question, answer }) => {
-            return (
-              <FaqItem
-                key={id}
-                question={question}
-                answer={answer}
-              />
-            )
-          })
-        }
+        <ul className="FAQ__List">
+          {
+            faqs.map((faq) => {
+              return (
+                <FaqItem
+                  key={faq.id}
+                  faq={{ ...faq.attributes }}
+                />
+              )
+            })
+          }
+        </ul>
       </section>
     </Layout>
   );

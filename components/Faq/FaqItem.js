@@ -6,8 +6,10 @@ const textLength = 120;
 
 const FaqItem = (props) => {
   const {
-    question,
-    answer,
+    faq: {
+      question,
+      answer,
+    }
   } = props;
 
   const answerRef = useRef(null);
@@ -18,26 +20,27 @@ const FaqItem = (props) => {
   }
 
   return (
-    <div className="FaqItem">
-      <span className="FaqItem__question">
-        {question}
-      </span>
-      <span className="FaqItem__answer" ref={answerRef}>
+    <li>
+      <div className="FaqItem">
+        <span className="FaqItem__question">
+          {question}
+        </span>
+        <span className="FaqItem__answer" ref={answerRef}>
 
-        <span className="answer" onClick={() => setAnswerTruncate(true)}>
-          {
-            answer.length > textLength && shouldAnswerTruncate ?
-              answer.slice(0, textLength).concat(' ...')
-              :
-              answer
-          }
-        </span>&nbsp;
-        {
-          shouldAnswerTruncate &&
-            <span className="seeMore" onClick={onClickSeeMore}>See more</span>
-        }
-      </span>
-    </div>
+          <span className="answer">
+            {
+              answer.length > textLength && shouldAnswerTruncate ?
+                <div
+                  onClick={onClickSeeMore}
+                  dangerouslySetInnerHTML={{ __html: answer.slice(0, textLength).concat(` ... <span style="color: #696969">See more</span>`)}}>
+                  </div>
+                  :
+                <span onClick={onClickSeeMore} dangerouslySetInnerHTML={{ __html: answer }}></span>
+            }
+          </span>
+        </span>
+      </div>
+    </li>
   );
 };
 
