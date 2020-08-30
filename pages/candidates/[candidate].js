@@ -49,7 +49,7 @@ const Candidates = (props) => {
         <meta property="og:url" content={`//web.mvoterapp.com/candidates/${id}`} />
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${formatHouse(house)} ကိုယ်စားလှယ် - ${name}`} />
-        <meta property="og:description" content="How much does culture influence creative thinking?" />
+        <meta property="og:description" content={`${stateRegion}-${constituencyName} တွင် ဝင်ရောက်ယှဥ်ပြိုင်မည်`} />
         <meta property="og:image" content={image} />
       </Head>
       <AppHeader>
