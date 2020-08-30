@@ -30,17 +30,10 @@ const Candidates = () => {
         <Tab title={amyothaHluttaw} key="amyothahluttaw">
           <VotingPlace />
           <div className="container">
-            <CandidateList
+            {/* <CandidateList
               dataSource={[
-                {
-                  id: 1,
-                  name: 'ဦးကောင်းမြတ်လွင်',
-                  party: {
-                    name_burmese: 'ချာပါတီ',
-                  }
-                }
               ]}
-            />
+            /> */}
           </div>
         </Tab>
         <Tab title={pyithuHlutTaw} key="pyithuhluttaw">
