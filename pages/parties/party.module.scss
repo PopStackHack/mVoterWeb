@@ -18,17 +18,20 @@
     position: relative;
     margin-bottom: 20px;
   }
-  &__image {
+  &__seal {
     width: 100%;
     height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: 85%;
+    border-radius: 100%;
   }
-  &__seal {
+  &__flag {
     width: 100%;
     height: 60px;
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: contain;
   }
   &__title {
     font-size: 1.25rem;

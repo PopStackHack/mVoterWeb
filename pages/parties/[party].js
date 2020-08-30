@@ -13,6 +13,7 @@ const Party = (props) => {
     party: {
       id,
       flag_image: flagImage,
+      seal_image: sealImage,
       abbreviation,
       name_burmese: nameBurmese,
       name_english: nameEnglish,
@@ -49,7 +50,7 @@ const Party = (props) => {
         <div className="Party__headInfo row text-center">
           <div className="col-12">
             <div className="Party__imageWrapper">
-              <div className="Party__image" style={{ backgroundImage: `url(https://placehold.co/150x150)` }}></div>
+              <div className="Party__seal" style={{ backgroundImage: `url(${sealImage})` }}></div>
             </div>
             <h1 className="Party__title">{nameBurmese}</h1>
             <h1 className="Party__engTitle">{nameEnglish}</h1>
@@ -67,7 +68,7 @@ const Party = (props) => {
         </div>
         <div className="row Party__info">
           <div className="col-3">
-            <div className="Party__seal" style={{ backgroundImage: `url(https://placehold.co/150x80)` }}></div>
+            <div className="Party__flag" style={{ backgroundImage: `url(${flagImage})` }}></div>
           </div>
           <div className="col-9">
             <div className="Party__infoLabel">
