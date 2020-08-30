@@ -1,26 +1,57 @@
 import moment, { parseTwoDigitYear } from 'moment';
+import Head from 'next/head';
+import myanmarNumber from 'myanmar-numbers';
 import { useRouter } from 'next/router';
+import { getCandidateById } from '../../gateway/api';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
+import { formatHouse, formatConstituency } from '../../utils/textFormatter';
 
 import './candidate.module.scss';
 
 const Candidates = (props) => {
   const {
-    name = 'ဦးဖရဲသီး',
-    birthday = moment().toDate,
-    education = 'M.B.B.S',
-    gender,
-    ethnicity = 'ဗမာ',
-    religion = 'ဗုဒ္ဓဘာသာ',
-    constituency = 'ပြည်သူ့လွှတ်တော်',
-    party,
+    candidate: {
+      id,
+      name,
+      image,
+      education,
+      work,
+      birthday,
+      age,
+      mother,
+      father,
+      ethnicity,
+      religion,
+      constituency: {
+        attributes: {
+          state_region: stateRegion,
+          name: constituencyName,
+          house,
+        }
+      },
+      party,
+    },
   } = props;
+
+  const {
+    attributes: {
+      name_burmese: partyName,
+    } = {},
+  } = party || {};
 
   const router = useRouter();
 
   return (
     <Layout>
+      <Head>
+         <title>{name} | mVoter 2020</title>
+        <meta property="og:url" content={`//web.mvoterapp.com/candidates/${id}`} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={`${formatHouse(house)} ကိုယ်စားလှယ် - ${name}`} />
+        <meta property="og:description" content="How much does culture influence creative thinking?" />
+        <meta property="og:image" content={image} />
+      </Head>
       <AppHeader>
         <div>
           <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
@@ -38,17 +69,24 @@ const Candidates = (props) => {
           </div>
           <div className="col-12 text-center">
             <h1 className="Candidate__name">{name}</h1>
-            <div className="Candidate__party">{party ? party.partyName : 'တစ်သီးပုဂ္ဂလ ကိုယ်စားလှယ်'}</div>
-            <div className="Candidate__senate">ပြည်သူ့လွှတ်တော်</div>
+            <div className="Candidate__party">
+              {
+                partyName && <span>{partyName}</span>
+              }
+              {
+                !partyName && <span>တစ်သီးပုဂ္ဂလ</span>
+              }
+            </div>
+            <div className="Candidate__senate">{formatHouse(house)}</div>
             <div className="Candidate__constituency">
-              <span>တာမွေမဲဆန္ဒနယ်</span>
+              <span>{formatConstituency(stateRegion, constituencyName)}</span>
             </div>
           </div>
         </div>
         <div className="row align-items-center Candidate__info" style={{ marginTop: 12 }}>
           <div className="col-3">
             <span className="Candidate__age">
-              ၃၄
+              {myanmarNumber(age, 'my')}
             </span>
             &nbsp; နှစ်
           </div>
@@ -65,38 +103,52 @@ const Candidates = (props) => {
         <div className="row Candidate__info">
           <div className="col">
             <div className="Candidate__infoLabel">ပညာအရည်အချင်း</div>
-            <div className="Candidate__infoAnswer">ဓာတုဗေဒ (မဟာဘွဲ့)</div>
+            <div className="Candidate__infoAnswer">{education}</div>
           </div>
         </div>
         <div className="row Candidate__info">
           <div className="col">
             <div className="Candidate__infoLabel">အလုပ်အကိုင်</div>
-            <div className="Candidate__infoAnswer">အာလူး အရောင်းအဝယ်</div>
+            <div className="Candidate__infoAnswer">{work}</div>
           </div>
         </div>
         <div className="row Candidate__info">
           <div className="col">
             <div className="Candidate__infoLabel">လူမျိုး၊ ဘာသာ</div>
-            <div className="Candidate__infoAnswer">ဗမာ၊ ဗုဒ္ဓဘာသာ</div>
+            <div className="Candidate__infoAnswer">{ethnicity}၊ {religion}</div>
           </div>
         </div>
         <div className="row Candidate__info">
           <div className="col-2">မိခင်</div>
           <div className="col">
-            ဒေါ်ပိန်းဥ <br />
-            ဗုဒ္ဓဘာသာ
+            {mother.name} <br />
+            {mother.religion}ဘာသာ
           </div>
         </div>
         <div className="row">
           <div className="col-2">ဖခင်</div>
           <div className="col">
-            ဦးမြေပဲ <br />
-            ခရစ်ယာန်
+            {father.name} <br />
+            {father.religion}ဘာသာ
           </div>
         </div>
       </section>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const {
+    params,
+  } = context;
+
+  const response = await getCandidateById(params.candidate);
+  const { data } = response.data;
+  return {
+    props: {
+      candidate: data.attributes,
+    },
+  };
 }
 
 export default Candidates;

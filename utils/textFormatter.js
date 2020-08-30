@@ -11,3 +11,7 @@ export function formatHouse(house) {
 
   return str;
 }
+
+export function formatConstituency(stateRegion, constituencyName) {
+  return `${stateRegion} ${constituencyName.split(' ').slice(1).join('')}`;
+}

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const maePaySohAPI = axios.create({
-  baseURL: '',
+  baseURL: process.env.BASE_URL,
   timeout: 10000,
   headers: {
-    APIKey: process.env.APIKey,
+    'api-key': process.env.API_KEY,
   },
 });
 
@@ -28,7 +28,7 @@ export function getCandidates({
 }
 
 export function getCandidateById(id) {
-  return maePaySohAPI.get(`/candidate/${id}`)
+  return maePaySohAPI.get(`/candidates/${id}`)
     .catch(console.error);
 }
 
@@ -60,7 +60,7 @@ export function getFAQById(id) {
 }
 
 export function getStateRegion() {
-  return maePaySohAPI.get('/stateregions')
+  return maePaySohAPI.get('/locality/state_regions')
     .catch(console.error);
 }
 
