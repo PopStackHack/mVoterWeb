@@ -1,4 +1,6 @@
+import { formatPublishDateToMMLocale } from '../../../utils/textFormatter'
 import './Article.module.scss';
+import moment from 'moment';
 
 const Article = (props) => {
   const {
@@ -21,7 +23,7 @@ const Article = (props) => {
           <p className="Article__summary">
             {summary}
           </p>
-          <p className="Article__date">၂၀ ဇူလိုင်၊ ၂၀၂၀</p>
+          <p className="Article__date">{formatPublishDateToMMLocale(publishedDate)}</p>
         </div>
         <div className="Article__UECLogo">
           <img src="/UEC.png" alt="UEC Logo" />
