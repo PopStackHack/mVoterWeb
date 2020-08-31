@@ -6,7 +6,6 @@ export default async function (req, res) {
   try {
     const {
       page,
-      category,
     } = req.query;
     const token = extractMPSToken(req.headers.cookie);
 
@@ -16,7 +15,7 @@ export default async function (req, res) {
     }
     const api = new MaePaySohAPI(token);
 
-    const response = await api.getFaqs({ page, category });
+    const response = await api.getNews({ page });
     const { data, pagination } = response.data;
 
     return res.status(200).send({ data, pagination });

@@ -1,0 +1,5 @@
+@import '../../styles/partials/extends';
+
+.News {
+  @extend %mobile-vert-rules;
+}

@@ -1,14 +1,33 @@
 import './Article.module.scss';
 
-const Article = () => {
+const Article = (props) => {
+  const {
+    news: {
+      id,
+      attributes: {
+        title,
+        summary,
+        published_date: publishedDate,
+        url,
+      },
+    },
+  } = props;
+
   return (
-    <div className="Article">
-      <h1 className="Article__heading">၂၀၂၀ ပြည့်နှစ် အထွေထွေရွေးကောက်ပွဲအောင်မြင်စွာကျင်းပနိုင်ရေး ပြည်ထောင်စုရွေးကောက်ပွဲ ကော်မရှင်နှင့် အရပ်ဘက်လူမှုအဖွဲ့အစည်းများနှင့် တွေ့ဆုံပွဲကျင်းပ</h1>
-      <p className="Article__summary">
-        နိုင်ငံရေးပါတီများ ရေဒီယိုနှင့် ရုပ်မြင်သံကြား အစီစဥ်များမှ ဟောပြောခွင့်
-      </p>
-      <p className="Article__date">၂၀ ဇူလိုင်၊ ၂၀၂၀</p>
-    </div>
+    <a href={url} target="_blank" rel="noopener" className="article-link">
+      <div className="Article">
+        <div className="Article__newsGroup">
+          <h1 className="Article__heading">{title}</h1>
+          <p className="Article__summary">
+            {summary}
+          </p>
+          <p className="Article__date">၂၀ ဇူလိုင်၊ ၂၀၂၀</p>
+        </div>
+        <div className="Article__UECLogo">
+          <img src="/UEC.png" alt="UEC Logo" />
+        </div>
+      </div>
+    </a>
   );
 }
 

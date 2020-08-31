@@ -2,9 +2,11 @@
 @import '../../../styles/partials/colors';
 
 .Article {
-  h1, p {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    line-height: 28px;
   }
   &__heading {
     font-weight: 700;
@@ -13,4 +15,21 @@
   &__date {
     color: $grey-color;
   }
+  &__newsGroup {
+    margin-right: 10px;
+  }
+  &__summary {
+    margin-bottom: 5px;
+  }
+  &__UECLogo {
+    >img {
+      width: auto;
+      height: 65px;
+    }
+  }
+}
+
+.article-link {
+  text-decoration: none;
+  color: inherit;
 }

@@ -88,7 +88,7 @@ class MaePaySohAPI {
 
   getNews({
       page,
-      itemPerPage = 25,
+      itemPerPage = 10,
   }) {
     return this.api.get('/news', {
       params: {
