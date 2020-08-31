@@ -51,7 +51,6 @@ export async function getServerSideProps(context) {
     params,
   } = context;
  // IDEA: Could map the snake cased fields dynamically with camel case
-
   const token = extractMPSToken(context.req.headers.cookie);
   const api = new MaePaySohAPI(token);
 

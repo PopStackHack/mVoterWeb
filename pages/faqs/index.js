@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import FaqItem from '../../components/Faq/FaqItem';
@@ -9,20 +10,25 @@ import './faqs.module.scss';
 
 const FAQ = (props) => {
   const [faqs, setFaqs] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [faqCategory, setFaqCategory] = useState('voter_list');
 
   useEffect(() => {
     fetchFaqs()
-      .then((result) => setFaqs(result))
+      .then((result) => {
+        setFaqs(result.data);
+        setTotalCount(result.pagination.total);
+      })
       .catch(console.error);
   }, []);
 
-  async function fetchFaqs(category = 'voter_list') {
+  async function fetchFaqs(category = 'voter_list', pageToLoad = 1) {
     try {
-      const response = await fetch(`/api/faqs?page=${page}&category=${category}`);
+      const response = await fetch(`/api/faqs?page=${pageToLoad}&category=${category}`);
       const { data, pagination } = await response.json();
 
-      return data;
+      return { data, pagination };
     } catch (error) {
       if (error.response) {
         console.log(error.response);
@@ -31,8 +37,24 @@ const FAQ = (props) => {
   }
 
   function onChangeCategory(category) {
+    // Clear FAQs first
     fetchFaqs(category)
-      .then((result) => setFaqs(result))
+      .then((result) => {
+        // Reset to defaults
+        setPage(1);
+        setFaqs([]);
+        setFaqCategory(category);
+        return result;
+      })
+      .then((result) => setFaqs(result.data))
+      .catch(console.error);
+  }
+
+  function loadMoreFaqs() {
+    const nextPage = page + 1;
+    fetchFaqs(faqCategory, nextPage)
+      .then((result) => setFaqs(faqs.concat(result.data)))
+      .then(() => setPage(nextPage))
       .catch(console.error);
   }
 
@@ -55,7 +77,7 @@ const FAQ = (props) => {
           </div>
       </div>
       </div>
-      <section id="faq" className="container FAQ">
+      <section id="FAQ" className="container FAQ">
         <div className="ballot-stack row align-items-center">
           <div className="col-4">
             <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
@@ -80,18 +102,25 @@ const FAQ = (props) => {
             <div>အသံ <br />မသွင်းရ</div>
           </div>
         </div>
-        <ul className="FAQ__List">
-          {
-            faqs.map((faq) => {
-              return (
-                <FaqItem
-                  key={faq.id}
-                  faq={{ ...faq.attributes }}
-                />
-              )
-            })
-          }
-        </ul>
+          <InfiniteScroll
+            scrollableTarget="FAQ"
+            next={loadMoreFaqs}
+            dataLength={faqs.length}
+            hasMore={faqs.length !== totalCount}
+          >
+            <ul className="FAQ__List">
+              {
+                faqs.map((faq) => {
+                  return (
+                    <FaqItem
+                      key={faq.id}
+                      faq={{ ...faq.attributes }}
+                    />
+                  )
+                })
+              }
+            </ul>
+          </InfiniteScroll>
       </section>
     </Layout>
   );
