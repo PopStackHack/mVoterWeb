@@ -32,8 +32,17 @@ $ballot-stack-height: 110px;
   }
 }
 
+.category-select {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
 .FAQ {
   @extend %mobile-vert-rules;
+  height: calc(100vh - 165px); // Override default mobile vert height
   &__List {
     list-style: none;
     margin: 0;

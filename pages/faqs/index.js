@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import FaqItem from '../../components/Faq/FaqItem';
+import { FAQ_CATEGORY } from '../../utils/constants';
 
 import './faqs.module.scss';
 
@@ -11,27 +12,28 @@ const FAQ = (props) => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetchAndPushFaqs(true);
+    fetchFaqs()
+      .then((result) => setFaqs(result))
+      .catch(console.error);
   }, []);
 
-
-  async function fetchAndPushFaqs(init) {
+  async function fetchFaqs(category = 'voter_list') {
     try {
-      let pageQuery = page;
-      if (!init) {
-        pageQuery += 1;
-        setPage(page + 1);
-      }
-
-      const response = await fetch(`/api/faqs?page=${pageQuery}&category=voter_list`);
+      const response = await fetch(`/api/faqs?page=${page}&category=${category}`);
       const { data, pagination } = await response.json();
 
-      setFaqs(faqs.concat(data));
+      return data;
     } catch (error) {
       if (error.response) {
         console.log(error.response);
       }
     }
+  }
+
+  function onChangeCategory(category) {
+    fetchFaqs(category)
+      .then((result) => setFaqs(result))
+      .catch(console.error);
   }
 
   return (
@@ -42,6 +44,17 @@ const FAQ = (props) => {
       <AppHeader>
         <div className="text-bold">သိမှတ်ဖွယ်ရာများ</div>
       </AppHeader>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <select className="category-select" onChange={(e) => onChangeCategory(e.target.value)}>
+              {
+                Object.entries(FAQ_CATEGORY).map(([key, value]) => <option key={key} value={key}>{value}</option>)
+              }
+            </select>
+          </div>
+      </div>
+      </div>
       <section id="faq" className="container FAQ">
         <div className="ballot-stack row align-items-center">
           <div className="col-4">
