@@ -12,10 +12,27 @@
   &__infoHeader {
     display: flex;
     padding: 10px 15px;
-    border-radius: 15px;
+    border-radius: 6px;
     background-color: rgba($color: $primary-color, $alpha: 0.25);
     font-weight: 600;
     font-size: 0.875rem;
+    .icon-blk {
+      position: relative;
+      width: 30px;
+      height: 20px;
+      margin-top: 4px;
+      margin-right: 8px;
+      background-color: $primary-color;
+      border-radius: 100%;
+      .flag {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 1rem;
+        color: #ffffff;
+      }
+    }
     p {
       margin: 0;
     }

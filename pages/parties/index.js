@@ -4,7 +4,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Layout from '../../components/Layout/Layout';
 import PartyItem from '../../components/Parties/PartyItem';
-import FlagFillIcon from '../../components/Common/Icons/flagFill';
 import { getParties } from '../../gateway/api';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
@@ -56,7 +55,9 @@ const Parties = (props) => {
           <div className="row mb-2">
             <div className="col-12">
               <div className="Parties__infoHeader">
-                {/* <FlagFillIcon /> */}
+                <div className="icon-blk">
+                  <i className="flag material-icons">flag</i>
+                </div>
                 <p>
                   (၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဥ်ပြိုင်မည့်
                   နိုင်ငံရေးပါတီ (၉၅)ခု
