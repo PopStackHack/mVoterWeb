@@ -39,7 +39,7 @@ const Party = (props) => {
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={nameBurmese} />
         <meta property="og:description" content={`ယှဥ်ပြိုင်မည့်နေရာ - ${region}`}/>
-        <meta property="og:image" content={flagImage} />
+        <meta property="og:image" content={sealImage} />
       </Head>
       <AppHeader>
         <div>
