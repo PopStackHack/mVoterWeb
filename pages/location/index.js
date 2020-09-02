@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemHeading,
+    AccordionItemButton,
+    AccordionItemPanel,
+} from 'react-accessible-accordion';
+
 import Layout from '../../components/Layout/Layout';
 import Modal from '../../components/Common/Modal/Modal';
+import ActivePeopleIcon from '../../components/Common/Icons/activePeople'
 import Button from '../../components/Common/Button/Button';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
+import TownshipModal from '../../components/Location/TownshipModal';
 
 import './location.module.scss';
 import Link from 'next/link';
 
 const Location = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [townshipModalOpen, setTownshipModalOpen] = useState(false);
   const router = useRouter();
 
   function toggleModal() {
@@ -19,6 +30,10 @@ const Location = (props) => {
 
   function onClickDone() {
     router.push('/candidates');
+  }
+
+  function onClickChooseTownship() {
+    setTownshipModalOpen(true);
   }
 
   return (
@@ -32,31 +47,30 @@ const Location = (props) => {
           <span className="d-inline-block ml-3">ကိုယ်စားလှယ်လောင်းများ</span>
         </div>
       </AppHeader>
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={toggleModal}>
-          OK
-      </Modal>
-      <section className="text-center">
-        <div className="container">
-        <div className="col-xs-12">
-        <p>သင့်မဲဆန္ဒနယ်မှ ယှဥ်ပြိုင်မည့် လွှတ်တော်ကိုယ်စားလှယ်များကို သိရန် သင်နေထိုင်ရာမြို့နယ်အား ရွေးပါ။</p>
-          <div className="my-2"></div>
+      <section className="text-center Location">
+        <div className="container Location__wrapper">
+          <div className="col-xs-12">
+            <div className="people-icon">
+              {ActivePeopleIcon}
+            </div>
+            <p className="text-center">မိမိ မဲပေးရွေးချယ်ရမည့် ကိုယ်စားလှယ်လွှတ်တော်လောင်းများကို သိရှိရန် နေထိုင်ရာအရပ်ကို ရွေးပါ</p>
+            <div className="my-2"></div>
 
-            <p>သင်နေထိုင်ရာ ပြည်နယ်/တိုင်းဒေသကြီးကို ရွေးပါ။</p>
-            <button className="locationSelector" type="button" onClick={toggleModal}>
-              <span>ရွေးရန်</span> <i className="material-icons">keyboard_arrow_right</i>
-            </button>
+              <button className="locationSelector" type="button" onClick={onClickChooseTownship}>
+                <span>မြို့နယ်</span>
+              </button>
 
-            <p>သင်နေထိုင်ရာ မြို့နယ်အား ရွေးပါ။</p>
-            <button className="locationSelector" type="button" onClick={toggleModal}>
-              <span>ရွေးရန်</span> <i className="material-icons">keyboard_arrow_right</i>
-            </button>
+              <button className="locationSelector" type="button" onClick={toggleModal}>
+                <span>ရပ်ကွက်/ကျေးရွာအုပ်စု</span>
+              </button>
 
-            <Button className="Button__ChooseLocation" onClick={onClickDone}>ပြီးပြီ</Button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <TownshipModal
+        isModalOpen={townshipModalOpen}
+        setModalOpen={setTownshipModalOpen}
+      />
     </Layout>
   );
 }

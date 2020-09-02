@@ -63,24 +63,24 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  getStateRegion() {
+  getStateRegions() {
     return this.api.get('/locality/state_regions')
       .catch(console.error);
   }
 
-  getTownships(stateRegionPCode) {
-    return this.api.get('/townships', {
+  getTownships(stateRegion) {
+    return this.api.get('/locality/townships', {
       params: {
-        state_region_pcode: stateRegionPCode,
+        state_region: stateRegion,
       }
     })
       .catch(console.error);
   }
 
-  getWards(townshipPcode) {
-    return this.api.get('/wards', {
+  getWards(township) {
+    return this.api.get('/locality/wards', {
       params: {
-        township_pcode: townshipPcode,
+        township,
       }
     })
       .catch(console.error);

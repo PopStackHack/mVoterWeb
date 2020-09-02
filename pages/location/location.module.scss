@@ -5,19 +5,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 84px;
-  max-width: 120px;
   margin: 0 auto;
   padding: 10px 0px 10px 5px;
   text-align: center;
-  border-radius: 5px;
-  border: 1px solid $primary-color;
-  background: $white-color;
+  border: 0;
+  background: none;
+  &:active {
+    color: $primary-color;
+  }
   span {
     margin-right: 4px;
+    font-weight: 700;
+    font-size: 1.3rem;
   }
   svg {
     float: right;
+  }
+}
+
+.people-icon {
+  margin-bottom: 8px;
+  >svg {
+    width: 135px;
+    height: 78px;
+  }
+}
+
+.Location {
+  height: 100vh;
+  &__wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 

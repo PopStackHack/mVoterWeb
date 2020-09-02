@@ -30,10 +30,6 @@ const Candidates = () => {
         <Tab title={amyothaHluttaw} key="amyothahluttaw">
           <VotingPlace />
           <div className="container">
-            {/* <CandidateList
-              dataSource={[
-              ]}
-            /> */}
           </div>
         </Tab>
         <Tab title={pyithuHlutTaw} key="pyithuhluttaw">
