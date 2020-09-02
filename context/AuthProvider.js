@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect } from 'react';
+import { fetchToken } from '../pages/api/auth';
 
 const AuthContext = createContext();
 
@@ -8,15 +9,7 @@ const AuthProvider = (props) => {
   } = props;
 
   useEffect(() => {
-      const appToken = window.localStorage.getItem('token');
-      // TODO: Handle invalid logic
-      if (!appToken) {
-        // Call SSR
-        fetch('/api/auth')
-          .then((response) => response.json())
-          .then((result) => window.localStorage.setItem('token', result.token))
-          .catch(console.error);
-      }
+    // TODO: Handle invalid logic
   }, []);
 
   return (

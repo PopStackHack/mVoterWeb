@@ -4,7 +4,7 @@ import myanmarNumbers from 'myanmar-numbers';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import MaePaySohAPI from '../../gateway/api';
-import { extractMPSToken } from '../../utils/authClient';
+import { fetchToken } from '../api/auth';
 
 import './party.module.scss';
 
@@ -168,7 +168,7 @@ export async function getServerSideProps(context) {
     params,
   } = context;
 
-  const token = extractMPSToken(context.req.headers.cookie);
+  const token = await fetchToken(context);
   const api = new MaePaySohAPI(token);
 
   const response = await api.getPartyById(params.party);

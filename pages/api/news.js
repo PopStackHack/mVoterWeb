@@ -1,5 +1,4 @@
-import cookie from 'cookie';
-import { extractMPSToken } from '../../utils/authClient';
+import { fetchToken } from './auth';
 import MaePaySohAPI from '../../gateway/api';
 
 export default async function (req, res) {
@@ -7,7 +6,7 @@ export default async function (req, res) {
     const {
       page,
     } = req.query;
-    const token = extractMPSToken(req.headers.cookie);
+    const token = await fetchToken(req);
 
     // This is very hacky approach
     if (!token) {

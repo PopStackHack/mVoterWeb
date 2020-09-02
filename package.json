@@ -1,9 +1,9 @@
 {
-  "name": "movter-app",
+  "name": "mvoter-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev -p 3009",
     "build": "next build",
     "start": "next start -p 4000"
   },
@@ -21,6 +21,7 @@
     "next": "9.3.4",
     "node-gyp": "^7.0.0",
     "node-sass": "^4.14.1",
+    "nookies": "^2.4.0",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-accessible-accordion": "^3.3.1",

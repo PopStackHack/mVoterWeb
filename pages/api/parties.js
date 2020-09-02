@@ -1,11 +1,10 @@
 import cookie from 'cookie';
-import { extractMPSToken } from '../../utils/authClient';
+import { fetchToken } from './auth';
 import MaePaySohAPI from '../../gateway/api';
 
 export default async function (req, res) {
   try {
-    const token = extractMPSToken(req.headers.cookie);
-
+    const token = await fetchToken(req);
     // This is very hacky approach
     if (!token) {
       return res.status(500).send({ error: 'No secret token provided.' })
