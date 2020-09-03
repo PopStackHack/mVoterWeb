@@ -1,5 +1,7 @@
 // TODO: Refactor this component to be able to use as a reusable collapse in the future
 import { useEffect, useState } from 'react';
+import { AiOutlineLoading } from 'react-icons/ai';
+import Collapsible from 'react-collapsible';
 import {
     Accordion,
     AccordionItem,
@@ -17,7 +19,8 @@ const TownshipModal = (props) => {
     setModalOpen,
   } = props;
   const [stateRegions, setStateRegions] = useState([]);
-  const [townships, setTownships] = useState([]); // { region: [townships] }
+  // const [townships, setTownships] = useState({}); // { region: [townships] }
+  const [townships, setTownships] = useState([]);
   const [isTownshipsLoading, setTownshipsLoading] = useState(false);
 
   useEffect(() => {
@@ -34,19 +37,22 @@ const TownshipModal = (props) => {
   }
 
   async function fetchTownships(stateRegion) {
-    setTownshipsLoading(true);
+    // Use cached values if it is already loaded
+    const townshipsLoaded = townships.findIndex(({ stateRegion: sr }) => sr === stateRegion) > -1;
+
+    if (townshipsLoaded) return;
+
     const response = await fetch(`/api/locations?type=townships&search_str=${stateRegion}`);
     const result = await response.json();
 
-    const townshipsClone = [...townships];
-    townshipsClone.push({
-      stateRegion: stateRegion,
+    const clonedTownships = [...townships];
+
+    clonedTownships.push({
+      stateRegion,
       townships: result.data,
-      collapsed: true,
     });
 
-    setTownships(townshipsClone);
-    setTownshipsLoading(false);
+    setTownships(clonedTownships);
   }
 
   async function onChangeAccordion(accordionId) {
@@ -58,27 +64,14 @@ const TownshipModal = (props) => {
   function renderTownships(stateRegion) {
     const containedTownships = townships.find(({ stateRegion: sr }) => sr === stateRegion);
 
-    if (containedTownships && containedTownships.collapsed) {
+    if (containedTownships) {
       return (
-        <ul className="child">
-          {
-            containedTownships.townships.map((township) => <li key={township}>{township}</li>)
-          }
-        </ul>
+        containedTownships.townships.map((township) => (
+          <div key={township} className="location-collapse-township">{township}</div>
+        ))
       )
-    }
-  }
-
-  function onClickRegion(stateRegion) {
-    const foundIndex = townships.findIndex(({ stateRegion: sr }) => sr === stateRegion);
-    const clonedTownships = [...townships];
-
-    if (foundIndex > -1) {
-      clonedTownships[foundIndex].collapsed = !clonedTownships[foundIndex].collapsed; // For Toggle
-      setTownships(clonedTownships);
     } else {
-      setTownships(clonedTownships.map((item) => ({ ...item, collapsed: false })));
-      fetchTownships(stateRegion);
+      return <AiOutlineLoading className="loader" />;
     }
   }
 
@@ -88,7 +81,24 @@ const TownshipModal = (props) => {
       onRequestClose={() => setModalOpen(false)}
     >
       <div className="text-center text-bold">မြို့နယ်ရွေးပါ</div>
-      <div className="location-collapse">
+      {
+        stateRegions.map((stateRegion, srIndex) => (
+          <>
+          <Collapsible
+            key={srIndex}
+            transitionTime={200}
+            trigger={stateRegion}
+            onOpen={() => fetchTownships(stateRegion)}>
+              {
+                renderTownships(stateRegion)
+              }
+          </Collapsible>
+          </>
+        ))
+      }
+
+
+      {/* <div className="location-collapse">
         <ul>
           {
             stateRegions.map((stateRegion, srIndex) => (
@@ -101,7 +111,7 @@ const TownshipModal = (props) => {
             ))
           }
         </ul>
-      </div>
+      </div> */}
     </Modal>
   );
 };

@@ -1,13 +1,30 @@
-.location-collapse {
-  ul {
-   margin: 0;
-   padding: 0;
-   list-style: none;
-   li {
-    line-height: 26px;
-   }
+@import '../../styles/partials/colors';
+
+.loader {
+  color: $primary-color;
+  margin-top: 5px;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  .child {
-    margin-left: 15px;
+  100% {
+    transform: rotate(360deg)
   }
+}
+
+.location-collapse-township {
+  padding: 5px 15px;
+  margin: 5px 0;
+}
+
+.Collapsible {
+  margin: 12px 0;
+}
+
+.Collapsible__trigger {
+  font-weight: 500;
+  color: $primary-color;
 }
