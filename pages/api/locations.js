@@ -8,8 +8,6 @@ export default async function (req, res) {
       search_str,
     } = req.query;
 
-    console.log(req.query);
-
     const token = await fetchToken(req);
 
     // This is very hacky approach

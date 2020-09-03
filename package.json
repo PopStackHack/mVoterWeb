@@ -25,6 +25,7 @@
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-accessible-accordion": "^3.3.1",
+    "react-collapsible": "^2.8.0",
     "react-dom": "16.13.1",
     "react-icons": "^3.10.0",
     "react-infinite-scroll-component": "^5.0.5",
