@@ -13,6 +13,9 @@
   &:active {
     color: $primary-color;
   }
+  &:disabled {
+    color: rgba($color: #000000, $alpha: 0.25);
+  }
   span {
     margin-right: 4px;
     font-weight: 700;
@@ -38,12 +41,20 @@
     top: 50%;
     transform: translateY(-50%);
   }
-}
-
-.Button__ChooseLocation {
-  margin-top: 100px;
-  background-color: $primary-color;
-  color: $white-color;
-  border-radius: 5px;
-  padding: 10px 50px;
+  &__done {
+    margin-top: 30px;
+    border: 0;
+    background-color: $primary-color;
+    color: $white-color;
+    border-radius: 25px;
+    padding: 5px 50px;
+    vertical-align: middle;
+    &:disabled {
+      pointer-events: none;
+      background-color: rgba($color: #000000, $alpha: 0.25);
+    }
+    i {
+      margin-top: 3px;
+    }
+  }
 }

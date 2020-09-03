@@ -1,5 +1,10 @@
 @import '../../styles/partials/colors';
 
+%header {
+  color: $primary-color;
+  font-weight: 500;
+}
+
 .loader {
   color: $primary-color;
   margin-top: 5px;
@@ -15,7 +20,12 @@
   }
 }
 
-.location-collapse-township {
+.location-ward-village-header {
+  @extend %header;
+  margin: 12px 0;
+}
+
+.location-child {
   padding: 5px 15px;
   margin: 5px 0;
 }
@@ -25,6 +35,5 @@
 }
 
 .Collapsible__trigger {
-  font-weight: 500;
-  color: $primary-color;
+  @extend %header;
 }

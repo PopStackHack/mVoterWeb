@@ -15,6 +15,7 @@ import ActivePeopleIcon from '../../components/Common/Icons/activePeople'
 import Button from '../../components/Common/Button/Button';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import TownshipModal from '../../components/Location/TownshipModal';
+import WardVillageModal from '../../components/Location/WardVillageModal';
 
 import './location.module.scss';
 import Link from 'next/link';
@@ -22,6 +23,10 @@ import Link from 'next/link';
 const Location = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [townshipModalOpen, setTownshipModalOpen] = useState(false);
+  const [wardVillageModalOpen, setWardVillageModalOpen] = useState(false);
+  const [stateRegion, setStateRegion] = useState();
+  const [township, setTownship] = useState();
+  const [wardVillage, setWardVillage] = useState();
   const router = useRouter();
 
   function toggleModal() {
@@ -34,6 +39,23 @@ const Location = (props) => {
 
   function onClickChooseTownship() {
     setTownshipModalOpen(true);
+  }
+
+  function onClickChooseWardVillage() {
+    setWardVillageModalOpen(true);
+  }
+
+  function onClickTownship(chosenStateRegion, chosenTownship) {
+    // Set localStorage here
+    setStateRegion(chosenStateRegion);
+    setTownship(chosenTownship);
+    setWardVillage(null);
+    setTownshipModalOpen(false);
+  }
+
+  function onClickWardVillage(chosenWardVillage) {
+    setWardVillage(chosenWardVillage);
+    setWardVillageModalOpen(false);
   }
 
   return (
@@ -49,27 +71,39 @@ const Location = (props) => {
       </AppHeader>
       <section className="text-center Location">
         <div className="container Location__wrapper">
-          <div className="col-xs-12">
-            <div className="people-icon">
-              {ActivePeopleIcon}
+          <div className="row">
+            <div className="col-xs-12">
+              <div className="people-icon">
+                {ActivePeopleIcon}
+              </div>
+              <p className="text-center">မိမိ မဲပေးရွေးချယ်ရမည့် ကိုယ်စားလှယ်လွှတ်တော်လောင်းများကို သိရှိရန် နေထိုင်ရာအရပ်ကို ရွေးပါ</p>
+              <div className="my-2"></div>
+                <button className="locationSelector" type="button" onClick={onClickChooseTownship}>
+                  <span>{ township || 'မြို့နယ်' }</span>
+                </button>
+                <button disabled={!township} className="locationSelector" type="button" onClick={onClickChooseWardVillage}>
+                  <span>{ wardVillage || 'ရပ်ကွက်/ကျေးရွာအုပ်စု' }</span>
+                </button>
             </div>
-            <p className="text-center">မိမိ မဲပေးရွေးချယ်ရမည့် ကိုယ်စားလှယ်လွှတ်တော်လောင်းများကို သိရှိရန် နေထိုင်ရာအရပ်ကို ရွေးပါ</p>
-            <div className="my-2"></div>
-
-              <button className="locationSelector" type="button" onClick={onClickChooseTownship}>
-                <span>မြို့နယ်</span>
-              </button>
-
-              <button className="locationSelector" type="button" onClick={toggleModal}>
-                <span>ရပ်ကွက်/ကျေးရွာအုပ်စု</span>
-              </button>
-
+          </div>
+          <div className="row">
+            <div className="col-xs-12">
+              <button disabled={!wardVillage} className="Location__done"><i className="material-icons">done</i></button>
+            </div>
           </div>
         </div>
       </section>
       <TownshipModal
         isModalOpen={townshipModalOpen}
         setModalOpen={setTownshipModalOpen}
+        onClickTownship={onClickTownship}
+      />
+      <WardVillageModal
+        isModalOpen={wardVillageModalOpen}
+        setModalOpen={setWardVillageModalOpen}
+        stateRegion={stateRegion}
+        township={township}
+        onClickWardVillage={onClickWardVillage}
       />
     </Layout>
   );

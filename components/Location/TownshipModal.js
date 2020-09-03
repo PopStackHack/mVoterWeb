@@ -2,13 +2,6 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import Collapsible from 'react-collapsible';
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-} from 'react-accessible-accordion';
 import Modal from '../Common/Modal/Modal';
 
 import './locationCollapse.scss';
@@ -17,9 +10,9 @@ const TownshipModal = (props) => {
   const {
     isModalOpen,
     setModalOpen,
+    onClickTownship,
   } = props;
   const [stateRegions, setStateRegions] = useState([]);
-  // const [townships, setTownships] = useState({}); // { region: [townships] }
   const [townships, setTownships] = useState([]);
   const [isTownshipsLoading, setTownshipsLoading] = useState(false);
 
@@ -42,7 +35,7 @@ const TownshipModal = (props) => {
 
     if (townshipsLoaded) return;
 
-    const response = await fetch(`/api/locations?type=townships&search_str=${stateRegion}`);
+    const response = await fetch(`/api/locations?type=townships&state_region=${stateRegion}`);
     const result = await response.json();
 
     const clonedTownships = [...townships];
@@ -67,7 +60,13 @@ const TownshipModal = (props) => {
     if (containedTownships) {
       return (
         containedTownships.townships.map((township) => (
-          <div key={township} className="location-collapse-township">{township}</div>
+          <div
+            key={township}
+            className="location-child"
+            onClick={() => onClickTownship(stateRegion, township)}
+          >
+              {township}
+            </div>
         ))
       )
     } else {
@@ -83,35 +82,15 @@ const TownshipModal = (props) => {
       <div className="text-center text-bold">မြို့နယ်ရွေးပါ</div>
       {
         stateRegions.map((stateRegion, srIndex) => (
-          <>
           <Collapsible
             key={srIndex}
             transitionTime={200}
             trigger={stateRegion}
             onOpen={() => fetchTownships(stateRegion)}>
-              {
-                renderTownships(stateRegion)
-              }
+              {renderTownships(stateRegion)}
           </Collapsible>
-          </>
         ))
       }
-
-
-      {/* <div className="location-collapse">
-        <ul>
-          {
-            stateRegions.map((stateRegion, srIndex) => (
-              <li key={srIndex} onClick={() => onClickRegion(stateRegion)}>
-                {stateRegion}
-                <ul>
-                  {renderTownships(stateRegion)}
-                </ul>
-              </li>
-            ))
-          }
-        </ul>
-      </div> */}
     </Modal>
   );
 };

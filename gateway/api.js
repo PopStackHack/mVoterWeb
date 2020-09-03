@@ -77,9 +77,10 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  getWards(township) {
+  getWards(stateRegion, township) {
     return this.api.get('/locality/wards', {
       params: {
+        state_region: stateRegion,
         township,
       }
     })
