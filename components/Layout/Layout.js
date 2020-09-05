@@ -2,10 +2,16 @@ import BottomNav from '../BottomNav/BottomNav';
 
 import './Layout.module.scss';
 
-const Layout = ({ children, shouldHideBottomNav = false }) => {
+const Layout = (props) => {
+  const {
+    children,
+    shouldHideBottomNav = false,
+    ...other
+  } = props;
+
   return (
     <main id="app" className="Layout">
-      <div id="Layout" className="Layout__wrapper">
+      <div id="Layout" className="Layout__wrapper" {...other}>
         {children}
       </div>
       {

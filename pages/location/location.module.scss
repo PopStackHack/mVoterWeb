@@ -35,7 +35,7 @@
 }
 
 .Location {
-  height: 100vh;
+  height: calc(100vh - 75px);
   &__wrapper {
     position: absolute;
     top: 50%;

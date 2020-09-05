@@ -55,7 +55,7 @@ const Candidates = (props) => {
       </Head>
       <AppHeader>
         <div>
-          <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+          <i className="material-icons" onClick={() => router.replace('/candidates')}>arrow_back</i>
         </div>
       </AppHeader>
       <section className="Candidate container">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import {
@@ -19,6 +19,7 @@ import WardVillageModal from '../../components/Location/WardVillageModal';
 
 import './location.module.scss';
 import Link from 'next/link';
+import { hasFullLocation } from '../../utils/helpers';
 
 const Location = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -27,7 +28,14 @@ const Location = (props) => {
   const [stateRegion, setStateRegion] = useState();
   const [township, setTownship] = useState();
   const [wardVillage, setWardVillage] = useState();
+  const [isAppStart, setIsAppStart] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    if (hasFullLocation()) {
+      setIsAppStart(false);
+    }
+  }, []);
 
   function toggleModal() {
     setModalOpen(!isModalOpen);
@@ -62,16 +70,19 @@ const Location = (props) => {
   }
 
   return (
-    <Layout shouldHideBottomNav>
+    <Layout shouldHideBottomNav style={{ paddingBottom: 0 }}>
       <Head>
         <title>မဲဆန္ဒနယ်ရွေးရန်</title>
       </Head>
-      <AppHeader>
-        <div className="vert-flex-center">
-          <Link href="/candidates"><i className="material-icons">arrow_back</i></Link>
-          <span className="d-inline-block ml-3">ကိုယ်စားလှယ်လောင်းများ</span>
-        </div>
-      </AppHeader>
+      {
+        !isAppStart &&
+          <AppHeader>
+            <div className="vert-flex-center">
+              <Link href="/candidates"><i className="material-icons">arrow_back</i></Link>
+              <span className="d-inline-block ml-3">ကိုယ်စားလှယ်လောင်းများ</span>
+            </div>
+          </AppHeader>
+      }
       <section className="text-center Location">
         <div className="container Location__wrapper">
           <div className="row">
