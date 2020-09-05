@@ -68,7 +68,6 @@ const Parties = (props) => {
           <div className="row">
             <div className="col-12">
               <InfiniteScroll
-                scrollableTarget="Layout"
                 next={fetchAndPushParties}
                 dataLength={parties.length}
                 hasMore={true}>

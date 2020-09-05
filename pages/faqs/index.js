@@ -103,7 +103,6 @@ const FAQ = (props) => {
           </div>
         </div>
           <InfiniteScroll
-            scrollableTarget="Layout"
             next={loadMoreFaqs}
             dataLength={faqs.length}
             hasMore={faqs.length !== totalCount}
