@@ -2,7 +2,7 @@ import './AppHeader.module.scss';
 
 const AppHeader = (props) => {
   return (
-    <div className={`Header ${props.className}`}>
+    <div className={`AppHeader ${props.className}`}>
       {props.children}
     </div>
   );

@@ -49,7 +49,7 @@ const News = () => {
         <div className="row">
           <div className="col-12">
             <InfiniteScroll
-              scrollableTarget="News"
+              scrollableTarget="Layout"
               dataLength={news.length}
               next={loadMoreNews}
               hasMore={true}
