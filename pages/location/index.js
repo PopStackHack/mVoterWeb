@@ -34,6 +34,9 @@ const Location = (props) => {
   }
 
   function onClickDone() {
+    localStorage.setItem('stateRegion', stateRegion);
+    localStorage.setItem('township', township);
+    localStorage.setItem('wardVillage', wardVillage);
     router.push('/candidates');
   }
 
@@ -88,7 +91,11 @@ const Location = (props) => {
           </div>
           <div className="row">
             <div className="col-xs-12">
-              <button disabled={!wardVillage} className="Location__done"><i className="material-icons">done</i></button>
+              <button
+                disabled={!wardVillage}
+                className="Location__done"
+                onClick={onClickDone}
+                ><i className="material-icons">done</i></button>
             </div>
           </div>
         </div>
