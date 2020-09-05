@@ -7,6 +7,7 @@ export default async function (req, res) {
       type = 'state_regions',
       state_region,
       township,
+      ward,
     } = req.query;
 
     const token = await fetchToken(req);
@@ -28,6 +29,9 @@ export default async function (req, res) {
     } else if (type === 'wards') {
       const response = await api.getWards(state_region, township);
       result = response.data.data; // ¯\_(ツ)_/¯
+    } else if (type === 'details') {
+      const response = await api.getWardDetails(state_region, township, ward);
+      result = response.data.data;
     } else {
       throw new Error('Location type not provided.');
     }

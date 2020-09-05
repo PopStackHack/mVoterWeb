@@ -12,20 +12,18 @@ class MaePaySohAPI {
     });
   }
 
-  getCandidates({
-    wardId,
-    house,
-    name,
-    itemsPerPage = 25,
-    page,
-  }) {
+  getConstituencies(query) {
+    return this.api.get('/constituencies', {
+      params: {
+        query,
+      },
+    })
+  }
+
+  getCandidateList(constituencyId) {
     return this.api.get('/candidates', {
       params: {
-        ward_id: wardId,
-        house,
-        name,
-        items_per_page: itemsPerPage,
-        page,
+        constituency_id: constituencyId,
       },
     })
       .catch(console.error);
@@ -82,6 +80,17 @@ class MaePaySohAPI {
       params: {
         state_region: stateRegion,
         township,
+      }
+    })
+      .catch(console.error);
+  }
+
+  getWardDetails(stateRegion, township, ward) {
+    return this.api.get('/locality/details', {
+      params: {
+        state_region: stateRegion,
+        township,
+        ward,
       }
     })
       .catch(console.error);
