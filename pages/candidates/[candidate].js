@@ -62,10 +62,10 @@ const Candidates = (props) => {
         <div className="row">
           <div className="col-12">
             <div className="Candidate__imageWrapper">
-              <img src="https://picsum.photos/200/200" className="Candidate__image" alt={name}/>
-              <div className="Candidate__winner">
+              <img src={image} className="Candidate__image" alt={name}/>
+              {/* <div className="Candidate__winner">
                 <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" fill="white" width="12px" height="18px"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
-                အနိုင်ရ</div>
+                အနိုင်ရ</div> */}
             </div>
           </div>
           <div className="col-12 text-center">

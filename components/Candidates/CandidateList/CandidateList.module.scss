@@ -12,15 +12,26 @@
 
   }
   &__avatar {
-    width: 64px;
-    height: 64px;
+    flex: none;
+    width: 74px;
+    height: 74px;
     border-radius: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     background-color: #b6b6b6;
   }
   &__info {
     margin-left: 8px;
     .name {
       font-weight: 700;
+    }
+  }
+  &__party {
+    margin-top: 5px;
+    .flag {
+      width: 30px;
+      height: auto;
     }
   }
 }

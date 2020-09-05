@@ -4,7 +4,7 @@ import './CandidateList.module.scss';
 
 const CandidateList = (props) => {
   const {
-    dataSource,
+    candidates = [],
   } = props;
 
   const router = useRouter();
@@ -16,32 +16,57 @@ const CandidateList = (props) => {
   return (
     <div className="CandidateList">
       {
-        dataSource &&
-          dataSource.map(({
-            id,
-            name,
-            avatar,
-            party: {
-              flag_image: flagImage,
-              name_burmese: partyBurmeseName,
-            },
-          }) => (
-            <Card className="CandidateList__item" key={id} onClick={() => onClickCandidate(id)}>
-              <div className="CandidateList__avatar" style={{ backgroundImage: `url${avatar}` }}></div>
-              <div className="CandidateList__info">
-                <div className="name">
-                  { name }
+        candidates &&
+          candidates.map((candidate) => {
+            const {
+              id,
+              attributes: {
+                name,
+                image,
+                individual_logo: individualLogo,
+                party,
+              },
+            } = candidate;
+
+            const {
+              attributes: {
+                flag_image: partyFlagImage,
+                name_burmese: partyNameBurmese,
+              } = {},
+            } = party || {};
+
+            return (
+              <Card className="CandidateList__item" key={id} onClick={() => onClickCandidate(id)}>
+                <div className="CandidateList__avatar" style={{ backgroundImage: `url(${encodeURI(image)}` }}></div>
+                <div className="CandidateList__info">
+                  <div className="name">
+                    { name }
+                  </div>
+                  <div className="CandidateList__party">
+                    {
+                      // Determine if this is individual candidate
+                      party &&
+                        (
+                          <>
+                            <img src={partyFlagImage} className="flag" />&nbsp;
+                            {partyNameBurmese}
+                          </>
+                        )
+                    }
+                    {
+                      !party &&
+                        (
+                          <>
+                            <img src={individualLogo}  className="flag"/>&nbsp;
+                            {'တစ်သီးပုက္ကလ'}
+                          </>
+                        )
+                    }
+                  </div>
                 </div>
-                <div className="party">
-                  {
-                    flagImage &&
-                      <img src={flagImage} alt={partyBurmeseName} />
-                  }
-                  { partyBurmeseName }
-                </div>
-              </div>
-            </Card>
-          ))
+              </Card>
+            );
+          })
       }
     </div>
   );

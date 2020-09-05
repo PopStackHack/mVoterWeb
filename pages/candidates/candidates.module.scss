@@ -1,4 +1,9 @@
 @import '../../styles/partials/colors';
+@import '../../styles/partials/extends';
+
+.Candidates {
+  @extend %mobile-vert-rules;
+}
 
 .Tabs {
   display: flex;
@@ -38,4 +43,9 @@
     padding: 6px 10px;
     background-color: rgba($color: $primary-color, $alpha: 0.25);
   }
+}
+
+.no-data-text {
+  margin-top: 55%;
+  color: red;
 }
