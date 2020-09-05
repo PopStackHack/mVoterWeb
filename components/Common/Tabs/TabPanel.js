@@ -29,11 +29,16 @@ class TabPanel extends PureComponent {
     });
   }
 
+  onClickTab = (value, index) => {
+    this.moveSlider(index);
+    this.props.onClickTab(value, index);
+  }
+
   render() {
     const tabs = this.props.children;
     return (
       <>
-        <div {...this.props} className="TabPanel">
+        <div className="TabPanel">
           <div className="TabPanel__Tabs" ref="tabPanel">
             {
               React.Children
@@ -43,7 +48,7 @@ class TabPanel extends PureComponent {
                     .cloneElement(child, {
                       index,
                       ref: `tab${index}`,
-                      moveSlider: this.moveSlider,
+                      onClick: this.onClickTab,
                       active: index === this.state.activeTabIndex,
                       activeClass: this.props.activeClass || 'tab-active',
                     })
