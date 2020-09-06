@@ -34,6 +34,9 @@ const Location = (props) => {
   useEffect(() => {
     if (hasFullLocation()) {
       setIsAppStart(false);
+      setStateRegion(localStorage.getItem('stateRegion'));
+      setTownship(localStorage.getItem('township'));
+      setWardVillage(localStorage.getItem('wardVillage'));
     }
   }, []);
 
