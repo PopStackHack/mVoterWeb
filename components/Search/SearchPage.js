@@ -1,5 +1,6 @@
 
 import { useRouter } from 'next/router';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { debounce } from '../../utils/helpers';
@@ -15,20 +16,31 @@ const SearchPage = (props) => {
 
   const router = useRouter();
   const [list, setList] = useState([]);
+  const [page, setPage] = useState(0);
+  const [searchString, setSearchString] = useState('');
 
   const debouncedCall = useCallback(
-    debounce((searchString) => apiCall(searchString), 1000)
+    debounce((value) => apiCall(value), 600)
   , []);
 
-  async function apiCall(searchString) {
-    const response = await fetch(`/api/${endpoint}?page=1&query=${searchString}`);
+  async function apiCall(value) {
+    const pageToCall = page + 1;
+
+    const response = await fetch(`/api/${endpoint}?page=${pageToCall}&query=${value || searchString}`);
     const result = await response.json();
 
-    setList(result.data);
+    setPage(pageToCall);
+    return setList(list.concat(result.data));
+  }
+
+  function loadMoreData() {
+    apiCall();
   }
 
   function onChangeSearch(e) {
-    debouncedCall(e.target.value);
+    const { target: { value } } = e;
+    setSearchString(value);
+    debouncedCall(value);
   }
 
   return (
@@ -37,13 +49,23 @@ const SearchPage = (props) => {
         <div onClick={() => router.back()}><i className="material-icons">arrow_back</i></div>
         <input
           type="text"
-          className="search-input" placeholder={inputPlaceholder} onChange={onChangeSearch} />
+          className="search-input" placeholder={inputPlaceholder} onChange={onChangeSearch} value={searchString} />
       </AppHeader>
       <section className="container">
-        {
-          React.Children
-            .map(children, child => React.cloneElement(child, { [type]: list }))
-        }
+        <div className="row">
+          <div className="col-xs-12">
+            <InfiniteScroll
+              next={loadMoreData}
+              dataLength={list.length}
+              hasMore={true}
+            >
+              {
+                React.Children
+                  .map(children, child => React.cloneElement(child, { [type]: list }))
+              }
+            </InfiniteScroll>
+          </div>
+        </div>
       </section>
     </Layout>
   );

@@ -72,7 +72,7 @@ const Parties = (props) => {
             </div>
           </div>
           <div className="row">
-            <div className="col-12">
+            <div className="col-xs-12">
               <InfiniteScroll
                 next={fetchAndPushParties}
                 dataLength={parties.length}
