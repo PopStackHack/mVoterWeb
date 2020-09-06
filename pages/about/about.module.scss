@@ -1,0 +1,39 @@
+@import '../../styles/partials/colors';
+
+.About {
+  max-width: 85%;
+  h1, p {
+    margin: 0;
+  }
+  p {
+    line-height: 1.5rem;
+  }
+  .mVoterLogo {
+    width: auto;
+    height: 150px;
+  }
+  .PopStack {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .suggestive-links {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    i {
+      display: inline-block;
+      margin-left: 8px;
+      margin-right: 8px;
+      padding: 8px;
+      font-size: 1.35rem;
+      color: white;
+      background-color: $primary-color;
+      border-radius: 100%;
+    }
+  }
+}
