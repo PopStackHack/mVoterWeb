@@ -76,6 +76,13 @@ const FAQ = (props) => {
               </Button>
             </a>
           </Link>
+          <Link href="/about">
+            <a>
+              <Button className="color-primary">
+                <i className="material-icons">info</i>
+              </Button>
+            </a>
+          </Link>
         </div>
       </AppHeader>
       <div className="container">
