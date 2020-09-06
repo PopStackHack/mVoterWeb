@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getFAQById } from '../../gateway/api';
+import { getFaqById } from '../../gateway/api';
 import Layout from '../../components/Layout/Layout';
 import { formatFAQCategory } from '../../utils/textFormatter';
 import MaePaySohAPI from '../../gateway/api';
@@ -54,7 +54,7 @@ export async function getServerSideProps(context) {
   const token = extractMPSToken(context.req.headers.cookie);
   const api = new MaePaySohAPI(token);
 
-  const response = await api.getFAQById(params.faq);
+  const response = await api.getFaqById(params.faq);
 
   const { data } = response.data;
 

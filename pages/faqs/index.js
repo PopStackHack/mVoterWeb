@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
-import FaqItem from '../../components/Faq/FaqItem';
+import FaqList from '../../components/Faq/FaqList/FaqList';
+import Button from '../../components/Common/Button/Button';
+
 import { FAQ_CATEGORY } from '../../utils/constants';
 
 import './faqs.module.scss';
@@ -65,6 +68,15 @@ const FAQ = (props) => {
       </Head>
       <AppHeader>
         <div className="text-bold">သိမှတ်ဖွယ်ရာများ</div>
+        <div>
+          <Link href="/faqs/search">
+            <a>
+              <Button className="color-primary">
+                <i className="material-icons">search</i>
+              </Button>
+            </a>
+          </Link>
+        </div>
       </AppHeader>
       <div className="container">
         <div className="row">
@@ -107,18 +119,7 @@ const FAQ = (props) => {
             dataLength={faqs.length}
             hasMore={faqs.length !== totalCount}
           >
-            <ul className="FAQ__List">
-              {
-                faqs.map((faq) => {
-                  return (
-                    <FaqItem
-                      key={faq.id}
-                      faq={{ ...faq.attributes }}
-                    />
-                  )
-                })
-              }
-            </ul>
+            <FaqList faqs={faqs} />
           </InfiniteScroll>
       </section>
     </Layout>

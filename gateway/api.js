@@ -64,12 +64,12 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  getFAQById(id) {
+  getFaqById(id) {
     return this.api.get(`/faqs/${id}`)
       .catch(console.error);
   }
 
-  searchFAQs({ query, page = 1 }) {
+  searchFaqs({ query, page = 1 }) {
     return this.api.get('/faqs', {
       params: {
         query,
@@ -126,10 +126,11 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  searchNews({ query, page: 1 }) {
+  searchNews({ query, page = 1 }) {
     return this.api.get('/news', {
       params: {
-
+        query,
+        page,
       },
     });
   }

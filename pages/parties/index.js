@@ -1,13 +1,13 @@
 import { useRef, useEffect, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Layout from '../../components/Layout/Layout';
-import PartyItem from '../../components/Parties/PartyItem';
 import { getParties } from '../../gateway/api';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
-import Link from '../../components/Common/Link/Link';
+import PartyList from '../../components/Parties/PartyList/PartyList';
 
 import './parties.module.scss';
 
@@ -48,7 +48,13 @@ const Parties = (props) => {
       <AppHeader>
         <div className="text-bold">ပါတီများ</div>
         <div className="Parties__buttonGroup">
-          <i className="material-icons">search</i>
+          <Link href="/parties/search">
+            <a>
+              <Button className="color-primary">
+                <i className="material-icons">search</i>
+              </Button>
+            </a>
+          </Link>
         </div>
       </AppHeader>
         <div id="Parties" className="Parties container">
@@ -60,7 +66,7 @@ const Parties = (props) => {
                 </div>
                 <p>
                   (၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဥ်ပြိုင်မည့်
-                  နိုင်ငံရေးပါတီ (၉၅)ခု
+                  နိုင်ငံရေးပါတီ (၉၂)ခု
                 </p>
               </div>
             </div>
@@ -71,15 +77,7 @@ const Parties = (props) => {
                 next={fetchAndPushParties}
                 dataLength={parties.length}
                 hasMore={true}>
-                <ul className="Parties__list">
-                {
-                  parties.map((party) => {
-                    return (
-                      <PartyItem key={party.id} party={party} />
-                    );
-                  })
-                }
-                </ul>
+                  <PartyList parties={parties} />
               </InfiniteScroll>
             </div>
           </div>

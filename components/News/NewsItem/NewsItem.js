@@ -1,5 +1,5 @@
 import { formatPublishDateToMMLocale } from '../../../utils/textFormatter'
-import './Article.module.scss';
+import './NewsItem.scss';
 
 const Article = (props) => {
   const {

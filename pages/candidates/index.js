@@ -1,6 +1,7 @@
 // Component code is so messy. Need to refactor afterwards. <- A common lie I tell to myself.
 import React, { PureComponent, useState, useEffect } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
@@ -8,7 +9,6 @@ import { TabPanel, Tab } from '../../components/Common/Tabs';
 
 import './candidates.module.scss';
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
-import Link from 'next/link';
 
 const VotingPlace = () => (
   <div className="VotingPlace">

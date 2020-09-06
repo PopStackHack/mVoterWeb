@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Head from 'next/head';
+import Link from 'next/link';
+
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
-import Announcement from '../../components/News/Announcement/Announcement';
-import Article from '../../components/News/Article/Article';
+import NewsList from '../../components/News/NewsList/NewsList';
 
 import './news.module.scss';
 import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
@@ -44,6 +45,15 @@ const News = () => {
         <div className="text-bold">
           သတင်းများ
         </div>
+        <div>
+          <Link href="/news/search">
+            <a>
+              <Button className="color-primary">
+                <i className="material-icons">search</i>
+              </Button>
+            </a>
+          </Link>
+        </div>
       </AppHeader>
       <div id="News" className="News container">
         <div className="row">
@@ -53,12 +63,7 @@ const News = () => {
               next={loadMoreNews}
               hasMore={true}
             >
-              {
-                // Note: We can't use "new" because it's a reserved word.
-                news.map((singleNews) => (
-                    <Article key={singleNews.id} news={singleNews} />
-                  ))
-              }
+              <NewsList news={news} />
             </InfiniteScroll>
             </div>
           </div>

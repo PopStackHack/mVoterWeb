@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import Card from '../Common/Card/Card';
+import Card from '../../Common/Card/Card';
 
 import './PartyItem.module.scss';
 import { route } from 'next/dist/next-server/server/router';

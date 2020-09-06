@@ -7,8 +7,10 @@ const textLength = 120;
 const FaqItem = (props) => {
   const {
     faq: {
-      question,
-      answer,
+      attributes: {
+        question,
+        answer,
+      }
     }
   } = props;
 

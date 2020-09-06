@@ -1,4 +1,4 @@
-@import '../../styles/partials/colors';
+@import '../../../styles/partials/colors';
 
 .FaqItem {
   &__question {
@@ -10,10 +10,6 @@
   }
   &__answer {
     display: inline-block;
-    // max-height: 100px;
-    // white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
   }
 }
 

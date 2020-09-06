@@ -42,9 +42,4 @@ $ballot-stack-height: 110px;
 
 .FAQ {
   @extend %mobile-vert-rules;
-  &__List {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
 }
