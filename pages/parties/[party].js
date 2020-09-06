@@ -42,9 +42,7 @@ const Party = (props) => {
         <meta property="og:image" content={sealImage} />
       </Head>
       <AppHeader>
-        <div>
-         <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
-        </div>
+        <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
       </AppHeader>
       <section className="Party container">
         <div className="Party__headInfo row text-center">

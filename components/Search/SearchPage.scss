@@ -1,0 +1,21 @@
+.search-input-group {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  > i {
+    color: rgba($color: #000000, $alpha: 0.5);
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+.search-input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  float: right;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.25);
+  outline: 0;
+  width: 100%;
+  padding-bottom: 5px;
+}

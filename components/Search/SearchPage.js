@@ -6,6 +6,8 @@ import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { debounce } from '../../utils/helpers';
 import React, { useCallback, useState, Children } from 'react';
 
+import './SearchPage.scss';
+
 const SearchPage = (props) => {
   const {
     type = 'candidates',
@@ -46,10 +48,13 @@ const SearchPage = (props) => {
   return (
     <Layout>
       <AppHeader>
-        <div onClick={() => router.back()}><i className="material-icons">arrow_back</i></div>
-        <input
-          type="text"
-          className="search-input" placeholder={inputPlaceholder} onChange={onChangeSearch} value={searchString} />
+        <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+        <div className="search-input-group">
+          <i className="material-icons">search</i>
+          <input
+            type="text"
+            className="search-input" placeholder={inputPlaceholder} onChange={onChangeSearch} value={searchString} />
+        </div>
       </AppHeader>
       <section className="container">
         <div className="row">

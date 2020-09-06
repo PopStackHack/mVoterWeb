@@ -54,9 +54,7 @@ const Candidates = (props) => {
         <meta property="og:image" content={image} />
       </Head>
       <AppHeader>
-        <div>
-          <i className="material-icons" onClick={() => router.replace('/candidates')}>arrow_back</i>
-        </div>
+        <i className="material-icons" onClick={() => router.replace('/candidates')}>arrow_back</i>
       </AppHeader>
       <section className="Candidate container">
         <div className="row">
