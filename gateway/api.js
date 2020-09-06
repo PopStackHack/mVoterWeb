@@ -29,6 +29,16 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
+  searchCandidates({ query, page = 1 }) {
+    return this.api.get('/candidates', {
+      params: {
+        query,
+        page,
+      },
+    })
+      .catch(console.error);
+  }
+
   getCandidateById(id) {
     return this.api.get(`/candidates/${id}`)
       .catch(console.error);
@@ -41,14 +51,12 @@ class MaePaySohAPI {
 
   getFaqs({
     page,
-    itemPerPage = 25,
     name,
     category,
   }) {
     return this.api.get('/faqs', {
       params: {
         page,
-        item_per_page: itemPerPage,
         name,
         category,
       }
@@ -59,6 +67,15 @@ class MaePaySohAPI {
   getFAQById(id) {
     return this.api.get(`/faqs/${id}`)
       .catch(console.error);
+  }
+
+  searchFAQs({ query, page = 1 }) {
+    return this.api.get('/faqs', {
+      params: {
+        query,
+        page,
+      },
+    });
   }
 
   getStateRegions() {
@@ -109,6 +126,14 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
+  searchNews({ query, page: 1 }) {
+    return this.api.get('/news', {
+      params: {
+
+      },
+    });
+  }
+
   getParties({
     page,
   }) {
@@ -123,6 +148,15 @@ class MaePaySohAPI {
   getPartyById(id) {
     return this.api.get(`parties/${id}`)
       .catch(console.error);
+  }
+
+  searchParties({ query, page = 1 }) {
+    return this.api.get('/parties', {
+      params: {
+        query,
+        page,
+      },
+    });
   }
 }
 
