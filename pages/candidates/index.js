@@ -2,11 +2,13 @@
 import React, { PureComponent, useState, useEffect } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
-import CandidateHeader from '../../components/Candidates/CandidateHeader/CandidateHeader';
+import AppHeader from '../../components/Layout/AppHeader/AppHeader';
+import Button from '../../components/Common/Button/Button';
 import { TabPanel, Tab } from '../../components/Common/Tabs';
 
 import './candidates.module.scss';
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
+import Link from 'next/link';
 
 const VotingPlace = () => (
   <div className="VotingPlace">
@@ -125,7 +127,18 @@ const Candidates = () => {
       <Head>
         <title>ကိုယ်စားလှယ်လောင်းများ</title>
       </Head>
-      <CandidateHeader />
+      <AppHeader className="CandidateHeader">
+        <div className="text-bold">ကိုယ်စားလှယ်လောင်းများ</div>
+        <div className="color-primary">
+          <Link href="/location">
+            <a><Button className="CandidateHeader__button"><i className="material-icons">location_on</i></Button></a>
+          </Link>
+          <Link href="/candidates/search">
+            <a><Button className="CandidateHeader__button"><i className="material-icons">search</i></Button>
+</a>
+          </Link>
+        </div>
+      </AppHeader>
       <div id="Candidates" className="Candidates">
         <TabPanel onClickTab={onClickTab}>
           <Tab
