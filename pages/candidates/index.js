@@ -146,6 +146,11 @@ const Candidates = () => {
             title={<div className="text-center">ပြည်သူ့<br />လွှတ်တော်</div>}
             value="pyithu">
             <div className="container">
+              <div className="VotingPlace">
+                <div className="VotingPlace__container">
+                  {constituencies.length > 0 && constituencies[0].name}
+                </div>
+              </div>
               {renderCandidateList(pyiThuCandidates)}
             </div>
           </Tab>
@@ -154,6 +159,11 @@ const Candidates = () => {
             title={<div className="text-center">အမျိုးသား<br />လွှတ်တော်</div>}
             value="amyotha">
             <div className="container">
+              <div className="VotingPlace">
+                <div className="VotingPlace__container">
+                  {constituencies.length > 0 && constituencies[1].name}
+                </div>
+              </div>
               {renderCandidateList(amyoThaCandidates)}
             </div>
           </Tab>
@@ -162,6 +172,11 @@ const Candidates = () => {
             title={<div className="text-center">{stateOrRegion}<br />လွှတ်တော်</div>}
             value="state">
             <div className="container">
+              <div className="VotingPlace">
+                <div className="VotingPlace__container">
+                  {constituencies.length > 0 && constituencies[2].name}
+                </div>
+              </div>
               {renderCandidateList(stateCandidates)}
             </div>
           </Tab>
