@@ -1,23 +1,23 @@
 .PartyItem {
   width: 100%;
-  height: 75px;
   &__Card {
     display: flex;
     align-items: center;
   }
-  &:first-child {
-    margin-top: 0;
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
+  // &:first-child {
+  //   margin-top: 0;
+  // }
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
   &__image {
+    // min-width: 64px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
   }
   &__Description {
-    margin-left: 8px;
+    margin-left: 10px;
     .name {
       margin-bottom: 5px;
     }
@@ -27,4 +27,25 @@
 .constituency {
   font-size: 0.9rem;
   color: rgba($color: #000000, $alpha: 0.5);
+}
+
+@media (min-width: 1200px) {
+  .PartyItem {
+    &__Card {
+      padding: 0 15px;
+      border: 1px solid rgba($color: #000000, $alpha: 0.1);
+      &:nth-of-type(2n) {
+        margin-left: 8px;
+      }
+      &:nth-of-type(1n) {
+        margin-right: 8px;
+      }
+    }
+    &__Description {
+      .name {
+        line-height: 25px;
+        margin-bottom: 0;
+      }
+    }
+  }
 }

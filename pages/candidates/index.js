@@ -145,7 +145,7 @@ const Candidates = () => {
             key="pyithuhluttaw"
             title={<div className="text-center">ပြည်သူ့<br />လွှတ်တော်</div>}
             value="pyithu">
-            <div className="container">
+            <div>
               {
                 constituencies.length > 0 &&
                   <div className="VotingPlace">
@@ -161,7 +161,7 @@ const Candidates = () => {
             key="amyothahluttaw"
             title={<div className="text-center">အမျိုးသား<br />လွှတ်တော်</div>}
             value="amyotha">
-            <div className="container">
+            <div>
               {
                 constituencies.length > 0 &&
                   <div className="VotingPlace">
@@ -177,7 +177,7 @@ const Candidates = () => {
             key="tinehluttaw"
             title={<div className="text-center">{stateOrRegion}<br />လွှတ်တော်</div>}
             value="state">
-            <div className="container">
+            <div>
               {
                 constituencies.length > 0 &&
                   <div className="VotingPlace">

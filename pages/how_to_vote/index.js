@@ -16,7 +16,7 @@ export default function howToVote() {
       <AppHeader>
         <span className="text-bold">မဲပေးနည်း</span>
       </AppHeader>
-      <section className="HowToVote container">
+      <section className="HowToVote">
         <div className="row my-1">
           <div className="col-12">
             <div className="HowToVote__announcement text-center">

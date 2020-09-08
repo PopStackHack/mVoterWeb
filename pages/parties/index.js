@@ -29,6 +29,19 @@ const Parties = (props) => {
         setPage(page + 1);
       }
 
+      // Cheat like a pro, send two requests on first try
+      if (init) {
+        const results = await Promise.all([0, 0].map(async (_, index) => {
+          const response = await fetch(`/api/parties?page=${index + 1}`);
+          const result = await response.json();
+          return result.data;
+        }));
+
+        setPage(2);
+        return setParties([...results[0], ...results[1]]);
+      }
+
+
       const response = await fetch(`/api/parties?page=${pageQuery}`);
       const { data, pagination } = await response.json();
 
@@ -57,8 +70,8 @@ const Parties = (props) => {
           </Link>
         </div>
       </AppHeader>
-        <div id="Parties" className="Parties container">
-          <div className="row mb-2">
+        <div id="Parties" className="Parties">
+          <div className="row no-gutters mb-2">
             <div className="col-12">
               <div className="Parties__infoHeader">
                 <div className="icon-blk">
@@ -71,16 +84,12 @@ const Parties = (props) => {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-xs-12">
-              <InfiniteScroll
-                next={fetchAndPushParties}
-                dataLength={parties.length}
-                hasMore={true}>
-                  <PartyList parties={parties} />
-              </InfiniteScroll>
-            </div>
-          </div>
+          <InfiniteScroll
+            next={fetchAndPushParties}
+            dataLength={parties.length}
+            hasMore={true}>
+              <PartyList parties={parties} />
+          </InfiniteScroll>
         </div>
     </Layout>
   );

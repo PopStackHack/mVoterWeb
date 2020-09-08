@@ -4,3 +4,11 @@
   padding: 0;
   overflow: hidden;
 }
+
+@media (min-width: 1200px) {
+  .PartyList {
+    &__itemWrapper {
+      padding: 5px;
+    }
+  }
+}

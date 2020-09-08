@@ -9,13 +9,12 @@ const Tab = React.forwardRef((props, ref) => {
     active,
     onClick,
   } = props;
-
   return (
     <div
       ref={ref}
       onClick={() => onClick(value, index)}
-      className={active ? `tab-active ${props.style}` : `${props.style}`}>
-      <div className="TabTitle">{title}</div>
+      className={` ${active ? 'tab-active' : ''}`}>
+      <div className="cursor-pointer">{title}</div>
     </div>
   );
 });

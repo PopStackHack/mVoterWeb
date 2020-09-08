@@ -6,10 +6,6 @@
     background-color: #ffffff;
     display: flex;
     align-items: center;
-    &:first-child {
-      margin-top: 3px;
-    }
-
   }
   &__avatar {
     flex: none;
@@ -32,6 +28,30 @@
     .flag {
       width: 30px;
       height: auto;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .CandidateList {
+    margin-top: 18px;
+    &__itemWrapper {
+      padding: 5px;
+    }
+    &__item {
+      margin-bottom: 0px;
+      &:nth-of-type(2n) {
+        margin-left: 8px;
+      }
+      &:nth-of-type(1n) {
+        margin-right: 8px;
+      }
+      padding: 10px;
+      border: 1px solid rgba($color: #000000, $alpha: 0.1);
+      cursor: pointer;
+    }
+    &__info {
+      margin-left: 16px;
     }
   }
 }

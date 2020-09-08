@@ -4,3 +4,22 @@
     padding-bottom: 78px;
   }
 }
+
+@media (min-width: 1200px) {
+  .Layout {
+    &__desktopLogo {
+      img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 64px;
+      }
+    }
+    &__wrapper {
+      padding-bottom: 0;
+    }
+    &__sideNav {
+      position: relative;
+    }
+  }
+}

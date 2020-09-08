@@ -1,4 +1,4 @@
-import BottomNav from '../BottomNav/BottomNav';
+import Navigation from '../Navigation/Navigation';
 
 import './Layout.module.scss';
 
@@ -11,12 +11,26 @@ const Layout = (props) => {
 
   return (
     <main id="app" className="Layout">
-      <div id="Layout" className="Layout__wrapper" {...other}>
-        {children}
+      <div className="d-none d-lg-block Layout__desktopLogo">
+        <img src="/about/mvoter2020_new_logo.png" alt="mVoterLogo" />
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-3 d-none-xs Layout__sideNav">
+            <Navigation />
+          </div>
+          <div className="col-xs-12 col-lg-9">
+            <div id="Layout" className="Layout__wrapper" {...other}>
+              {children}
+            </div>
+          </div>
+        </div>
       </div>
       {
         !shouldHideBottomNav &&
-          <BottomNav />
+          <div className="d-lg-none">
+            <Navigation />
+          </div>
       }
       <style jsx global>{`\
       * {
@@ -32,6 +46,10 @@ const Layout = (props) => {
         width: 100%;
         height: 100%;
         min-height: 100%;
+      }
+
+      @media (min-width: 1200px) {
+        overflow: auto;
       }
     `}</style>
     </main>

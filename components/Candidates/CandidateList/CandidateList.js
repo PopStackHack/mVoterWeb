@@ -14,10 +14,10 @@ const CandidateList = (props) => {
   }
 
   return (
-    <div className="CandidateList">
+    <div className="CandidateList row no-gutters">
       {
         candidates &&
-          candidates.map((candidate) => {
+          candidates.map((candidate, index) => {
             const {
               id,
               attributes: {
@@ -36,35 +36,37 @@ const CandidateList = (props) => {
             } = party || {};
 
             return (
-              <Card className="CandidateList__item" key={id} onClick={() => onClickCandidate(id)}>
-                <div className="CandidateList__avatar" style={{ backgroundImage: `url(${encodeURI(image)}` }}></div>
-                <div className="CandidateList__info">
-                  <div className="name">
-                    { name }
+              <div className="col-lg-6 col-xs-12 CandidateList__itemWrapper" key={id}>
+                <Card className="CandidateList__item" onClick={() => onClickCandidate(id)}>
+                  <div className="CandidateList__avatar" style={{ backgroundImage: `url(${encodeURI(image)}` }}></div>
+                  <div className="CandidateList__info">
+                    <div className="name">
+                      { name }
+                    </div>
+                    <div className="CandidateList__party">
+                      {
+                        // Determine if this is individual candidate
+                        party &&
+                          (
+                            <>
+                              <img src={partyFlagImage} className="flag" />&nbsp;
+                              {partyNameBurmese}
+                            </>
+                          )
+                      }
+                      {
+                        !party &&
+                          (
+                            <>
+                              <img src={individualLogo}  className="flag"/>&nbsp;
+                              {'တစ်သီးပုက္ကလ'}
+                            </>
+                          )
+                      }
+                    </div>
                   </div>
-                  <div className="CandidateList__party">
-                    {
-                      // Determine if this is individual candidate
-                      party &&
-                        (
-                          <>
-                            <img src={partyFlagImage} className="flag" />&nbsp;
-                            {partyNameBurmese}
-                          </>
-                        )
-                    }
-                    {
-                      !party &&
-                        (
-                          <>
-                            <img src={individualLogo}  className="flag"/>&nbsp;
-                            {'တစ်သီးပုက္ကလ'}
-                          </>
-                        )
-                    }
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             );
           })
       }

@@ -14,9 +14,9 @@ import ActiveStarIcon from '../Common/Icons/activeStar';
 import ActiveCheckboxIcon from '../Common/Icons/activeCheckbox';
 import ActiveNewsIcon from '../Common/Icons/activeNews';
 
-import './BottomNav.module.scss';
+import './Navigation.module.scss';
 
-const BottomNav = () => {
+const Navigation = () => {
   const router = useRouter();
   const currentPath = router.pathname;
 
@@ -31,24 +31,24 @@ const BottomNav = () => {
       return (
         <>
           {activeIcon}
-          <div className="text active">{text}</div>
+          <span className="text active">{text}</span>
         </>
       );
     }
     return (
       <>
         {inActiveIcon}
-        <div className="text">{text}</div>
+        <span className="text">{text}</span>
       </>
     );
   }
 
   return (
-    <nav className="BottomNav">
-      <ul className="row center-xs text-center">
-        <li className="col-xs">
+    <nav className="Navigation">
+      <ul>
+        <li>
           <Link href="/candidates">
-            <div className="BottomNav__NavItem">
+            <div>
               <NavComponent
                 link='/candidates'
                 activeIcon={ActivePeopleIcon}
@@ -58,19 +58,19 @@ const BottomNav = () => {
             </div>
           </Link>
         </li>
-        <li className="col-xs">
-        <Link href="/parties" activeClassName="active">
-          <div>
-            <NavComponent
-              link='/parties'
-              activeIcon={ActiveFlagIcon}
-              inActiveIcon={FlagIcon}
-              text="ပါတီ"
-            />
-          </div>
-        </Link>
+        <li>
+          <Link href="/parties" activeClassName="active">
+            <div>
+              <NavComponent
+                link='/parties'
+                activeIcon={ActiveFlagIcon}
+                inActiveIcon={FlagIcon}
+                text="ပါတီ"
+              />
+            </div>
+          </Link>
         </li>
-        <li className="col-xs">
+        <li>
           <Link href="/how_to_vote" activeClassName="active">
             <div>
               <NavComponent
@@ -82,7 +82,7 @@ const BottomNav = () => {
             </div>
           </Link>
         </li>
-        <li className="col-xs">
+        <li>
           <Link href="/faqs" activeClassName="active">
             <div>
               <NavComponent
@@ -94,7 +94,7 @@ const BottomNav = () => {
             </div>
           </Link>
         </li>
-        <li className="col-xs">
+        <li>
         <Link href="/news" activeClassName="active">
           <div>
             <NavComponent
@@ -111,4 +111,4 @@ const BottomNav = () => {
   );
 };
 
-export default BottomNav;
+export default Navigation;

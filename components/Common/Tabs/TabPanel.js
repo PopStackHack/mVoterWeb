@@ -15,18 +15,22 @@ class TabPanel extends PureComponent {
   }
 
   componentDidMount() {
-    this.setState({
-      computedSliderWidth: Math.floor(this.refs[`tab0`].getBoundingClientRect().width - offsettingWidth),
-      sliderPosition: this.refs[`tab0`].getBoundingClientRect().x + offsettingPosition,
-    });
+    this.setSliderPosition();
   }
 
-  moveSlider = (sliderIndex) => {
+ setSliderPosition = (sliderIndex = 0) => {
+    const tabX = this.refs[`tab${sliderIndex}`].getBoundingClientRect().x;
+    const tabPanelX = this.refs.TabPanel.getBoundingClientRect().x;
+
     this.setState({
       activeTabIndex: sliderIndex,
-      computedSliderWidth: Math.floor(this.refs[`tab${sliderIndex}`].getBoundingClientRect().width - offsettingWidth),
-      sliderPosition: this.refs[`tab${sliderIndex}`].getBoundingClientRect().x + offsettingPosition,
+      computedSliderWidth: Math.floor(this.refs[`tab${sliderIndex}`].getBoundingClientRect().width),
+      sliderPosition: tabX - tabPanelX,
     });
+ }
+
+  moveSlider = (sliderIndex) => {
+    this.setSliderPosition(sliderIndex);
   }
 
   onClickTab = (value, index) => {
@@ -38,7 +42,7 @@ class TabPanel extends PureComponent {
     const tabs = this.props.children;
     return (
       <>
-        <div className="TabPanel">
+        <div className="TabPanel" ref="TabPanel">
           <div className="TabPanel__Tabs" ref="tabPanel">
             {
               React.Children
@@ -50,7 +54,6 @@ class TabPanel extends PureComponent {
                       ref: `tab${index}`,
                       onClick: this.onClickTab,
                       active: index === this.state.activeTabIndex,
-                      activeClass: this.props.activeClass || 'tab-active',
                     })
                 )
             }

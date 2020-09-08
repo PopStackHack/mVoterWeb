@@ -44,3 +44,14 @@
     overflow: hidden;
   }
 }
+
+@media (min-width: 1200px) {
+  .Parties {
+    &__infoHeader {
+      .icon-blk {
+        height: 30px;
+        margin-top: 0;
+      }
+    }
+  }
+}
