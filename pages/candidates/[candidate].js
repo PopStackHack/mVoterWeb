@@ -3,12 +3,14 @@ import Head from 'next/head';
 import myanmarNumber from 'myanmar-numbers';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout/Layout';
+import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { formatHouse, formatConstituency } from '../../utils/textFormatter';
 import MaePaySohAPI from '../../gateway/api';
 import { fetchToken } from '../api/auth';
 
 import './candidate.module.scss';
+import { useEffect, useState } from 'react';
 
 const Candidates = (props) => {
   const {
@@ -25,6 +27,7 @@ const Candidates = (props) => {
       ethnicity,
       religion,
       constituency: {
+        id: constituencyId,
         attributes: {
           state_region: stateRegion,
           name: constituencyName,
@@ -41,7 +44,20 @@ const Candidates = (props) => {
     } = {},
   } = party || {};
 
+  const [competitors, setCompetitors] = useState([]);
   const router = useRouter();
+
+  async function fetchCompetitors() {
+    const response = await fetch(`/api/candidates?constituency_id=${constituencyId}`);
+    const { data: candidates } = await response.json();
+
+    setCompetitors(candidates.filter((candidate) => candidate.id !== id))
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Quick hack to fake page reload
+    fetchCompetitors();
+  }, [constituencyId, id]);
 
   return (
     <Layout>
@@ -49,8 +65,8 @@ const Candidates = (props) => {
         <title>{name} | mVoter 2020</title>
         <meta property="og:url" content={`//web.mvoterapp.com/candidates/${id}`} />
         <meta property="og:type" content="profile" />
-        <meta property="og:title" content={`${formatHouse(house)} ကိုယ်စားလှယ် - ${name}`} />
-        <meta property="og:description" content={`${stateRegion}-${constituencyName} တွင် ဝင်ရောက်ယှဥ်ပြိုင်မည်`} />
+        <meta property="og:title" content={`${name} - ${partyName}`} />
+        <meta property="og:description" content={`${stateRegion}၊ ${constituencyName} တွင် ဝင်ရောက်ယှဥ်ပြိုင်မည်`} />
         <meta property="og:image" content={image} />
       </Head>
       <AppHeader>
@@ -131,6 +147,9 @@ const Candidates = (props) => {
             {father.religion}ဘာသာ
           </div>
         </div>
+
+        <CandidateList candidates={competitors} />
+
       </section>
     </Layout>
   );
@@ -149,7 +168,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      candidate: data.attributes,
+      candidate: { ...data, ...data.attributes },
     },
   };
 }
