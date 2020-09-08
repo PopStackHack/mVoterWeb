@@ -3,6 +3,7 @@ import Head from 'next/head';
 import myanmarNumber from 'myanmar-numbers';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout/Layout';
+import PeopleFillIcon from '../../components/Common/Icons/activePeople';
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { formatHouse, formatConstituency } from '../../utils/textFormatter';
@@ -148,6 +149,12 @@ const Candidates = (props) => {
           </div>
         </div>
 
+        <div className="row competitors-wrapper">
+          <div className="col-xs-12 text-center">
+            {PeopleFillIcon}
+            <p className="text-bold competitors-text">ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ</p>
+          </div>
+        </div>
         <CandidateList candidates={competitors} />
 
       </section>
