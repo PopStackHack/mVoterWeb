@@ -12,7 +12,6 @@
   bottom: 0;
   border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
   background: #ffffff;
-  z-index: 999;
   ul {
     display: flex;
     justify-content: space-around;
@@ -54,7 +53,6 @@
     height: 100%;
     border-top: none;
     margin-top: 4px;
-    z-index: 0;
     ul {
       display: inline-block;
       position: fixed;
