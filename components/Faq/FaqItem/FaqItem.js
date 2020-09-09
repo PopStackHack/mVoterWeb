@@ -28,8 +28,7 @@ const FaqItem = (props) => {
           {question}
         </span>
         <span className="FaqItem__answer" ref={answerRef}>
-
-          <span className="answer">
+          <span className="answer cursor-pointer">
             {
               answer.length > textLength && shouldAnswerTruncate ?
                 <div

@@ -75,23 +75,26 @@ const TownshipModal = (props) => {
   }
 
   return (
-    <Modal
-      isOpen={isModalOpen}
-      onRequestClose={() => setModalOpen(false)}
-    >
-      <div className="text-center text-bold">မြို့နယ်ရွေးပါ</div>
-      {
-        stateRegions.map((stateRegion, srIndex) => (
-          <Collapsible
-            key={srIndex}
-            transitionTime={200}
-            trigger={stateRegion}
-            onOpen={() => fetchTownships(stateRegion)}>
-              {renderTownships(stateRegion)}
-          </Collapsible>
-        ))
-      }
-    </Modal>
+    <div style={{ width: 100 }}>
+      <Modal
+        isOpen={isModalOpen}
+        className="location-modal"
+        onRequestClose={() => setModalOpen(false)}
+      >
+        <div className="text-center text-bold">မြို့နယ်ရွေးပါ</div>
+        {
+          stateRegions.map((stateRegion, srIndex) => (
+            <Collapsible
+              key={srIndex}
+              transitionTime={200}
+              trigger={stateRegion}
+              onOpen={() => fetchTownships(stateRegion)}>
+                {renderTownships(stateRegion)}
+            </Collapsible>
+          ))
+        }
+      </Modal>
+    </div>
   );
 };
 

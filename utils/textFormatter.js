@@ -25,3 +25,8 @@ export function formatPublishDateToMMLocale(dateStr) {
   const months = 'ဇန်နဝါရီ_ဖေဖော်ဝါရီ_မတ်_ဧပြီ_မေ_ဇွန်_ဇူလိုင်_သြဂုတ်_စက်တင်ဘာ_အောက်တိုဘာ_နိုဝင်ဘာ_ဒီဇင်ဘာ'.split('_');
   return `${myanmarNumbers(date, 'my')} ${months[month - 1]} ${myanmarNumbers(year, 'my')}`
 }
+
+export function formatBirthDay(birthday) {
+  const strArr = birthday.split('-');
+  return `${myanmarNumbers(strArr[2], 'my')}-${myanmarNumbers(strArr[1], 'my')}-${myanmarNumbers(strArr[0], 'my')}`
+}

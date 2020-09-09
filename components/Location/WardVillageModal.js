@@ -28,6 +28,7 @@ const WardVillageModal = (props) => {
   return (
     <Modal
       isOpen={isModalOpen}
+      className="location-modal"
       onRequestClose={() => setModalOpen(false)}
     >
       <div className="text-center text-bold">ရပ်ကွက်/ကျေးရွာအုပ်စု ရွေးပါ</div>
@@ -35,7 +36,7 @@ const WardVillageModal = (props) => {
         {township}
       </div>
       {wardVillages.map((ward) => (
-        <div key={ward} className="location-child" onClick={() => onClickWardVillage(ward)}>{ward}</div>
+        <div key={ward} className="location-child cursor-pointer" onClick={() => onClickWardVillage(ward)}>{ward}</div>
       ))}
     </Modal>
   );

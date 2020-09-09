@@ -6,7 +6,7 @@ import Layout from '../../components/Layout/Layout';
 import PeopleFillIcon from '../../components/Common/Icons/activePeople';
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
-import { formatHouse, formatConstituency } from '../../utils/textFormatter';
+import { formatHouse, formatConstituency, formatBirthDay } from '../../utils/textFormatter';
 import MaePaySohAPI from '../../gateway/api';
 import { fetchToken } from '../api/auth';
 
@@ -41,6 +41,7 @@ const Candidates = (props) => {
 
   const {
     attributes: {
+      flag_image: partyFlag,
       name_burmese: partyName,
     } = {},
   } = party || {};
@@ -71,19 +72,23 @@ const Candidates = (props) => {
         <meta property="og:image" content={image} />
       </Head>
       <AppHeader>
-        <i className="material-icons" onClick={() => router.replace('/candidates')}>arrow_back</i>
+        <a>
+          <i className="material-icons" onClick={() => router.replace('/candidates')}>arrow_back</i>
+        </a>
       </AppHeader>
-      <section className="Candidate container">
+      <section className="Candidate">
         <div className="row">
-          <div className="col-12">
+          <div className="col-xs-12 col-lg-3">
             <div className="Candidate__imageWrapper">
-              <img src={image} className="Candidate__image" alt={name}/>
+              {/* <img src={image} className="Candidate__image" alt={name}/> */}
+              <div className="Candidate__image" style={{ backgroundImage: `url("${image}")` }}></div>
               {/* <div className="Candidate__winner">
                 <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" fill="white" width="12px" height="18px"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
                 အနိုင်ရ</div> */}
             </div>
           </div>
-          <div className="col-12 text-center">
+          <div className="col-xs-12 col-lg-9 Candidate__infoHeaderWrapper">
+            <img src={partyFlag} alt={partyName} className="Candidate__partyFlag" />
             <h1 className="Candidate__name">{name}</h1>
             <div className="Candidate__party">
               {
@@ -100,50 +105,46 @@ const Candidates = (props) => {
           </div>
         </div>
         <div className="row align-items-center Candidate__info" style={{ marginTop: 12 }}>
-          <div className="col-3">
+          <div className="col-xs-3 offset-lg-3 col-lg-2">
             <span className="Candidate__age">
               {myanmarNumber(age, 'my')}
             </span>
             &nbsp; နှစ်
           </div>
-          <div className="col">
+          <div className="col-xs-9 col-lg-2">
             <div className="Candidate__infoLabel">
               မွေးသက္ကရာဇ်
             </div>
             <div className="Candidate__infoAnswer">
-              {birthday}
+              {formatBirthDay(birthday)}
             </div>
           </div>
         </div>
 
         <div className="row Candidate__info">
-          <div className="col">
+          <div className="col-xs-12 offset-lg-3 col-lg-2">
             <div className="Candidate__infoLabel">ပညာအရည်အချင်း</div>
             <div className="Candidate__infoAnswer">{education}</div>
           </div>
-        </div>
-        <div className="row Candidate__info">
-          <div className="col">
+          <div className="col-xs-12 col-lg-2">
             <div className="Candidate__infoLabel">အလုပ်အကိုင်</div>
             <div className="Candidate__infoAnswer">{work}</div>
           </div>
-        </div>
-        <div className="row Candidate__info">
-          <div className="col">
+          <div className="col-xs-12 col-lg-2">
             <div className="Candidate__infoLabel">လူမျိုး၊ ဘာသာ</div>
             <div className="Candidate__infoAnswer">{ethnicity}၊ {religion}</div>
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-2">မိခင်</div>
-          <div className="col">
+          <div className="col-xs-12 offset-lg-3 col-lg-2 parent-name">မိခင်</div>
+          <div className="col-xs-12 col-lg-3">
             {mother.name} <br />
             {mother.religion}ဘာသာ
           </div>
         </div>
-        <div className="row">
-          <div className="col-2">ဖခင်</div>
-          <div className="col">
+        <div className="row Candidate__info">
+          <div className="col-xs-12 offset-lg-3 col-lg-2 parent-name">ဖခင်</div>
+          <div className="col-xs-12 col-lg-3">
             {father.name} <br />
             {father.religion}ဘာသာ
           </div>
@@ -155,8 +156,8 @@ const Candidates = (props) => {
             <p className="text-bold competitors-text">ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ</p>
           </div>
         </div>
-        <CandidateList candidates={competitors} />
 
+        <CandidateList candidates={competitors} />
       </section>
     </Layout>
   );
