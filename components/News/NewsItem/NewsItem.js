@@ -20,7 +20,7 @@ const Article = (props) => {
         <div className="Article__newsGroup">
           <h1 className="Article__heading">{title}</h1>
           <p className="Article__summary">
-            {summary}
+            {summary} ...
           </p>
           <p className="Article__date">{formatPublishDateToMMLocale(publishedDate)}</p>
         </div>

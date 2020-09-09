@@ -55,7 +55,7 @@ const News = () => {
           </Link>
         </div>
       </AppHeader>
-      <div id="News" className="News container">
+      <div id="News" className="News">
         <div className="row">
           <div className="col-12">
             <InfiniteScroll
