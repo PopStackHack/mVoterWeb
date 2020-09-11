@@ -1,4 +1,6 @@
 @import '../../styles/partials/extends';
+@import '../../styles/partials/colors';
+
 $ballot-stack-height: 110px;
 
 #FAQ {
@@ -6,8 +8,11 @@ $ballot-stack-height: 110px;
 }
 
 .ballot-stack {
-  height: $ballot-stack-height;
-  margin-bottom: 10px;;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba($color: #000000, $alpha: 0.1);
+  cursor: pointer;
 }
 
 .ballot-stack-picture {
@@ -17,7 +22,7 @@ $ballot-stack-height: 110px;
 }
 
 .prohibitions {
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 .prohibition {
@@ -34,12 +39,19 @@ $ballot-stack-height: 110px;
 
 .category-select {
   width: 100%;
-  height: 50px;
-  border: 0;
-  outline: 0;
   background: transparent;
+  cursor: pointer;
+  // position: relative;
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
 }
 
 .FAQ {
   @extend %mobile-vert-rules;
+}
+
+@media (min-width: 1200px) {
+  .ballot-stack {
+    margin-bottom: 0;
+  }
 }

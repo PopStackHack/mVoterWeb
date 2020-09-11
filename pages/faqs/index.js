@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Select from 'react-select';
 import Head from 'next/head';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -16,6 +17,18 @@ const FAQ = (props) => {
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
   const [faqCategory, setFaqCategory] = useState('voter_list');
+
+  const customSelectStyle = {
+    option: (styles, state) => ({
+      ...styles,
+      cursor: 'pointer',
+    }),
+    control: (styles) => ({
+      ...styles,
+      cursor: 'pointer',
+    }),
+  }
+
 
   useEffect(() => {
     fetchFaqs()
@@ -85,40 +98,56 @@ const FAQ = (props) => {
           </Link>
         </div>
       </AppHeader>
-      <div className="container">
-        <div className="row">
+      <div>
+        <div className="row no-gutters mb-2">
           <div className="col-12">
-            <select className="category-select" onChange={(e) => onChangeCategory(e.target.value)}>
-              {
-                Object.entries(FAQ_CATEGORY).map(([key, value]) => <option key={key} value={key}>{value}</option>)
+            <Select
+              className="category-select"
+              styles={customSelectStyle}
+              isSearchable={false}
+              defaultValue={{
+                value: 'voter_list',
+                label: FAQ_CATEGORY.voter_list,
+              }}
+              options={
+                Object.entries(FAQ_CATEGORY).map(([key, text]) => ({ value: key, label: text }))
               }
-            </select>
+              onChange={({ value }) => onChangeCategory(value)}
+            />
           </div>
       </div>
       </div>
-      <section id="FAQ" className="container FAQ">
-        <div className="ballot-stack row align-items-center">
-          <div className="col-4">
-            <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
-          </div>
-          <div className="col-8">ပယ်မဲ၊ ခိုင်လုံမဲ နမူနာများ</div>
-        </div>
-        <div className="prohibitions row">
-          <div className="col-3 prohibition">
-            <img src="/prohibition_signs/no_selfie.png" alt="No Selfie"/>
-            <div>Selfie <br />မရိုက်ရ</div>
-          </div>
-          <div className="col-3 prohibition">
-            <img src="/prohibition_signs/no_photo.png" alt="No Photo"/>
-            <div>ဓာတ်ပုံ <br />မရိုက်ရ</div>
-          </div>
-          <div className="col-3 prohibition">
-            <img src="/prohibition_signs/no_video.png" alt="No Video"/>
-            <div>ဗီဒီယို <br />မရိုက်ရ</div>
-          </div>
-          <div className="col-3 prohibition">
-            <img src="/prohibition_signs/no_recording.png" alt="No Recording"/>
-            <div>အသံ <br />မသွင်းရ</div>
+      <section id="FAQ" className="FAQ">
+        <div className="">
+          <div className="row align-items-center mb-lg-3">
+            <div className="col-xs-12 col-lg-6">
+              <div className="ballot-stack row no-gutters align-items-center mb-xs-2 box-hover">
+                <div className="col-4">
+                  <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
+                </div>
+                <div className="col-8">ပယ်မဲ၊ ခိုင်လုံမဲ နမူနာများ</div>
+              </div>
+            </div>
+            <div className="col-xs-12 col-lg-6">
+              <div className="prohibitions row">
+                <div className="col-3 prohibition">
+                  <img src="/prohibition_signs/no_selfie.png" alt="No Selfie"/>
+                  <div>Selfie <br />မရိုက်ရ</div>
+                </div>
+                <div className="col-3 prohibition">
+                  <img src="/prohibition_signs/no_photo.png" alt="No Photo"/>
+                  <div>ဓာတ်ပုံ <br />မရိုက်ရ</div>
+                </div>
+                <div className="col-3 prohibition">
+                  <img src="/prohibition_signs/no_video.png" alt="No Video"/>
+                  <div>ဗီဒီယို <br />မရိုက်ရ</div>
+                </div>
+                <div className="col-3 prohibition">
+                  <img src="/prohibition_signs/no_recording.png" alt="No Recording"/>
+                  <div>အသံ <br />မသွင်းရ</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
           <InfiniteScroll
