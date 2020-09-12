@@ -84,7 +84,7 @@ const FAQ = (props) => {
           </Link>
           <Link href="/about">
             <a>
-              <Button className="color-primary">
+              <Button className="color-primary no-padding">
                 <i className="material-icons">info</i>
               </Button>
             </a>
