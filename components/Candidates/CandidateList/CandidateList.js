@@ -37,7 +37,7 @@ const CandidateList = (props) => {
 
             return (
               <div className="col-lg-6 col-xs-12 CandidateList__itemWrapper" key={id}>
-                <Card className="CandidateList__item" onClick={() => onClickCandidate(id)}>
+                <Card className="CandidateList__item box-hover" onClick={() => onClickCandidate(id)}>
                   <div className="CandidateList__avatar" style={{ backgroundImage: `url(${encodeURI(image)}` }}></div>
                   <div className="CandidateList__info">
                     <div className="name">

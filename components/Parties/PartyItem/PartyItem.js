@@ -25,7 +25,7 @@ const PartyCard = (props) => {
 
   return (
     <div className="PartyItem">
-      <Card className="PartyItem__Card cursor-pointer" onClick={() => router.push(`/parties/[party]`, `/parties/${id}`)}>
+      <Card className="PartyItem__Card box-hover cursor-pointer" onClick={() => router.push(`/parties/[party]`, `/parties/${id}`)}>
         <div className="PartyItem__image" style={sealImageStyle}></div>
         <div className="PartyItem__Description">
           <div className="name">{nameBurmese}</div>
