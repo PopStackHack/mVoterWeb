@@ -5,21 +5,6 @@
   font-weight: 500;
 }
 
-.loader {
-  color: $primary-color;
-  margin-top: 5px;
-  animation: spin 0.5s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg)
-  }
-}
-
 .location-ward-village-header {
   @extend %header;
   margin: 12px 0;
