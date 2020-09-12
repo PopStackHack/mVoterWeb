@@ -3,6 +3,7 @@
 
 .HowToVote {
   @extend %mobile-vert-rules;
+  padding-bottom: 20px;
   &__announcement {
     padding: 15px;
     border-radius: 12px;
