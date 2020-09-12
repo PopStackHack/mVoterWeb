@@ -117,20 +117,20 @@ const Ballots = () => {
         {
           !loading &&
             <>
-            <Slider {...settings} ref={sliderRef}>
-              {
-                ballots.map(({ attributes: ballot }) => (
-                  <div key={ballot.id} className="Ballots__ballot-item">
-                    <img src={ballot.image_path} alt="Ballot Sample"/>
-                    <div className={`my-2 ${ballot.is_valid ? 'valid-color' : 'invalid-color'}`}>
-                      { ballot.is_valid ? 'ခိုင်လုံမဲ' : 'ပယ်မဲ' }
+              <Slider {...settings} ref={sliderRef}>
+                {
+                  ballots.map(({ attributes: ballot }) => (
+                    <div key={ballot.id} className="Ballots__ballot-item">
+                      <img src={ballot.image_path} alt="Ballot Sample"/>
+                      <div className={`my-2 ${ballot.is_valid ? 'valid-color' : 'invalid-color'}`}>
+                        { ballot.is_valid ? 'ခိုင်လုံမဲ' : 'ပယ်မဲ' }
+                      </div>
+                      <div className="mt-1">{ballot.reason}</div>
                     </div>
-                    <div className="mt-1">{ballot.reason}</div>
-                  </div>
-                ))
-              }
-            </Slider>
-            <div className="text-center text-bold">{myanmarNumbers(currentSlide, 'my')} /{myanmarNumbers(ballots.length, 'my')}</div>
+                  ))
+                }
+              </Slider>
+              <div className="text-center text-bold">{myanmarNumbers(currentSlide, 'my')} /{myanmarNumbers(ballots.length, 'my')}</div>
             </>
         }
       </section>

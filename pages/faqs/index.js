@@ -14,7 +14,7 @@ import { FAQ_CATEGORY } from '../../utils/constants';
 
 import './faqs.module.scss';
 
-const FAQ = (props) => {
+const FAQs = (props) => {
   const [faqs, setFaqs] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
@@ -110,7 +110,7 @@ const FAQ = (props) => {
           </div>
       </div>
       </div>
-      <section id="FAQ" className="FAQ">
+      <section id="FAQS" className="FAQS">
         <div className="">
           <div className="row align-items-center mb-lg-3">
             <div className="col-xs-12 col-lg-6">
@@ -155,4 +155,4 @@ const FAQ = (props) => {
   );
 }
 
-export default FAQ;
+export default FAQs;
