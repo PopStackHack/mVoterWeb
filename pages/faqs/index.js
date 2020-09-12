@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Select from 'react-select';
 import Head from 'next/head';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { customSelectStyle } from '../../utils/constants';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import FaqList from '../../components/Faq/FaqList/FaqList';
@@ -18,16 +20,7 @@ const FAQ = (props) => {
   const [page, setPage] = useState(1);
   const [faqCategory, setFaqCategory] = useState('voter_list');
 
-  const customSelectStyle = {
-    option: (styles, state) => ({
-      ...styles,
-      cursor: 'pointer',
-    }),
-    control: (styles) => ({
-      ...styles,
-      cursor: 'pointer',
-    }),
-  }
+  const router = useRouter();
 
 
   useEffect(() => {
@@ -121,7 +114,7 @@ const FAQ = (props) => {
         <div className="">
           <div className="row align-items-center mb-lg-3">
             <div className="col-xs-12 col-lg-6">
-              <div className="ballot-stack row no-gutters align-items-center mb-xs-2 box-hover">
+              <div className="ballot-stack row no-gutters align-items-center mb-xs-2 box-hover" onClick={() => router.push('/faqs/ballots')}>
                 <div className="col-4">
                   <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
                 </div>

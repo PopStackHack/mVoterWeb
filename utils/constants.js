@@ -10,3 +10,19 @@ export const HOUSES = Object.freeze({
   pyithu: 'ပြည်ထောင်စုလွှတ်တော်',
   state: 'တိုင်း/ပြည်နယ်လွှတ်တော်',
 });
+
+export const BALLOT_CATEGORIES = Object.freeze([
+  { label: 'မဲနမူနာများ', value: 'normal' },
+  { label: 'ကြိုတင်မဲနမူနာများ', value: 'advanced' },
+]);
+
+export const customSelectStyle = Object.freeze({
+  option: (styles, state) => ({
+    ...styles,
+    cursor: 'pointer',
+  }),
+  control: (styles) => ({
+    ...styles,
+    cursor: 'pointer',
+  }),
+});

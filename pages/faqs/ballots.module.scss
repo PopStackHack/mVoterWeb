@@ -1,0 +1,63 @@
+@import '../../styles/partials/colors';
+
+.Ballots {
+  position: relative;
+  height: 100%;
+  &__ballot-item {
+    outline: 0;
+    text-align: center;
+    img {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      height: 380px;
+    }
+  }
+  &__SelectCategory {
+    margin-bottom: 10px;
+  }
+}
+
+.valid-color {
+  color: #349739;
+}
+
+.invalid-color {
+  color: #cc1e1e;
+}
+
+.ballot-arrow {
+  background: $primary-color;
+  padding: 1px;
+  border-radius: 50%;
+  border: 0;
+  color: #ffffff;
+  &:disabled {
+    cursor: not-allowed;
+    background: rgba($color: #000000, $alpha: 0.2);
+  }
+  i {
+    font-size: 1.5rem;
+    margin-top: 0px;
+    display: block;
+  }
+}
+
+.ballot-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 3rem;
+}
+
+@media (min-width: 1200px) {
+  .Ballots {
+    &__ballot-item {
+      margin-top: 15px;
+      img {
+        height: 550px;
+      }
+    }
+  }
+}

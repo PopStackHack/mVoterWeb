@@ -42,8 +42,23 @@ a, select {
 }
 
 .box-hover {
-  transition: all 0.2s linear;
+  transition: all 0.2s linear !important;
   &:hover, &:active {
-    box-shadow: 0px 2px 6px rgba($color: #000000, $alpha: 0.2);
+    border-color: rgba($color: $primary-color, $alpha: 0.5);
+    // box-shadow: 0px 2px 6px rgba($color: #000000, $alpha: 0.2);
+  }
+}
+
+.loader {
+  color: $primary-color;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg)
   }
 }

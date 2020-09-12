@@ -27,7 +27,7 @@ const FaqItem = (props) => {
         <span className="FaqItem__question">
           {question}
         </span>
-        <span className="FaqItem__answer" ref={answerRef}>
+        <div className="FaqItem__answer" ref={answerRef}>
           <span className="answer cursor-pointer">
             {
               answer.length > textLength && shouldAnswerTruncate ?
@@ -39,7 +39,7 @@ const FaqItem = (props) => {
                 <span onClick={onClickSeeMore} dangerouslySetInnerHTML={{ __html: answer }}></span>
             }
           </span>
-        </span>
+        </div>
       </div>
     </li>
   );

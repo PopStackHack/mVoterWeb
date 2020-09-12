@@ -147,7 +147,7 @@ class MaePaySohAPI {
   }
 
   getPartyById(id) {
-    return this.api.get(`parties/${id}`)
+    return this.api.get(`/parties/${id}`)
       .catch(console.error);
   }
 
@@ -158,6 +158,15 @@ class MaePaySohAPI {
         page,
       },
     });
+  }
+
+  getBallots(category = 'normal') {
+    return this.api.get(`ballots`, {
+      params: {
+        category,
+      },
+    })
+      .catch(console.error);
   }
 }
 
