@@ -78,9 +78,9 @@ const Ballots = () => {
     const result = await response.json();
     setBallots(result.data);
 
-    const validIndex = result.data.filter(({ attributes: { is_valid } }) => is_valid).length - 1;
-    setValidBallotIndex(validIndex);
-    setInvalidBallotIndex(validIndex + 1);
+    // const validIndex = result.data.filter(({ attributes: { is_valid } }) => is_valid).length - 1;
+    // setValidBallotIndex(validIndex);
+    // setInvalidBallotIndex(validIndex + 1);
     setLoading(false);
   }
 
@@ -109,8 +109,8 @@ const Ballots = () => {
           options={BALLOT_CATEGORIES}
           onChange={({ value }) => onChangeCategory(value)}
         />
-        <button onClick={() => sliderRef.current.slickGoTo(0)}>ခိုင်လုံမဲ</button>
-        <button onClick={() => sliderRef.current.slickGoTo(invalidBallotIndex)}>ပယ်မဲ</button>
+        {/* <button onClick={() => sliderRef.current.slickGoTo(0)}>ခိုင်လုံမဲ</button>
+        <button onClick={() => sliderRef.current.slickGoTo(invalidBallotIndex)}>ပယ်မဲ</button> */}
         {
           loading && <AiOutlineLoading className="loader ballot-loader" />
         }
