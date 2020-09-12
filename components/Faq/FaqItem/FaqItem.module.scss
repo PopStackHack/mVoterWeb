@@ -2,14 +2,13 @@
 
 .FaqItem {
   &__question {
-    display: inline-block;
     color: $primary-color;
     font-size: 1.15rem;
     line-height: 28px;
     margin-bottom: 6px;
   }
   &__answer {
-    display: inline-block;
+    display: block;
   }
 }
 

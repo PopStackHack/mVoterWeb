@@ -24,9 +24,9 @@ const FaqItem = (props) => {
   return (
     <li>
       <div className="FaqItem">
-        <span className="FaqItem__question">
+        <div className="FaqItem__question">
           {question}
-        </span>
+        </div>
         <div className="FaqItem__answer" ref={answerRef}>
           <span className="answer cursor-pointer">
             {
