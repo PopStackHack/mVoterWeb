@@ -87,6 +87,7 @@ const Ballots = () => {
   function onChangeCategory(value) {
     sliderRef.current.slickGoTo(0, true); // don't animate
     fetchBallots(value);
+    setCurrentSlide(1);
   }
 
   return (
