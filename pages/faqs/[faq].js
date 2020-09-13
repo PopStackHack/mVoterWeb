@@ -24,12 +24,21 @@ const FAQ = (props) => {
     <Layout shouldHideBottomNav>
       <Head>
         <title>{formatFAQCategory(category)} သိမှတ်ဖွယ်ရာ | mVoter 2020</title>
-        <meta property="og:url" content={`//web.mvoterapp.com/faqs/${id}`} />
-        {/* <meta property="og:type" content="profile" /> */}
-        <meta property="og:title" content={`${question} - ${formatFAQCategory(category)}`} />
-        <meta property="og:description" content={answer}/>
-        {/* TODO: Add mVoter Logo as fallback */}
-        {/* <meta property="og:image" content={} /> */}
+
+        <meta name="title" content={question} />
+        <meta name="description" content={answer} />
+
+        <meta property="og:url" content={`https://web.mvoterapp.com/faqs/${id}`} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={question}/>
+        <meta property="og:description" content={answer} />
+        <meta property="og:image" content="/about/mvoter2020_new_logo.png" />
+
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content={`https://web.mvoterapp.com/faqs/${id}`} />
+        <meta property="twitter:title" content={question} />
+        <meta property="twitter:description" content={answer} />
+        <meta property="twitter:image" content="/about/mvoter2020_new_logo.png" />
       </Head>
       <section className="FAQ">
         <div className="container">
