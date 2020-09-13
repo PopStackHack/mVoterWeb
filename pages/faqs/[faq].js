@@ -32,6 +32,8 @@ const FAQ = (props) => {
         <meta property="og:title" content={question}/>
         <meta property="og:description" content={answer} />
         <meta property="og:image" content="/about/mvoter2020_new_logo.png" />
+        <meta property="og:image:width" content="200" />
+        <meta property="og:image:height" content="200" />
 
         <meta property="twitter:card" content="summary" />
         <meta property="twitter:url" content={`https://web.mvoterapp.com/faqs/${id}`} />
