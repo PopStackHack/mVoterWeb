@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { getFaqById } from '../../gateway/api';
+import MaePaySohAPI from '../../gateway/api';
 import Layout from '../../components/Layout/Layout';
 import { formatFAQCategory } from '../../utils/textFormatter';
-import MaePaySohAPI from '../../gateway/api';
-import { extractMPSToken } from '../../utils/authClient';
+import { fetchToken } from '../api/auth';
 
 import './faq.module.scss';
 
@@ -60,11 +59,10 @@ export async function getServerSideProps(context) {
     params,
   } = context;
  // IDEA: Could map the snake cased fields dynamically with camel case
-  const token = extractMPSToken(context.req.headers.cookie);
+  const token = await fetchToken(context);
   const api = new MaePaySohAPI(token);
 
   const response = await api.getFaqById(params.faq);
-
   const { data } = response.data;
 
   return {
