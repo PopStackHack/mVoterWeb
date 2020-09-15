@@ -6,9 +6,10 @@ import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
 import { TabPanel, Tab } from '../../components/Common/Tabs';
+import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
+import { hasFullLocation } from '../../utils/helpers';
 
 import './candidates.module.scss';
-import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 
 const VotingPlace = () => (
   <div className="VotingPlace">
@@ -24,10 +25,18 @@ const Candidates = () => {
   const [amyoThaCandidates, setAmyoThaCandidates] = useState(null);
   const [stateCandidates, setStateCandidates] = useState(null);
   const [stateOrRegion, setStateOrRegion] = useState('');
+  const [shouldShowLocationLink, setShowLocationLink] = useState(true);
 
   // Pre-fetch constituencies
   useEffect(() => {
     // Because we can't access localStorage before React is initiated.
+    if (hasFullLocation()) {
+      setShowLocationLink(false);
+    } else {
+      return;
+    }
+
+    // This stage will fail if location isn't chosen first
     const stateOrRegion = /တိုင်း/.test(localStorage.getItem('stateRegion')) ? 'တိုင်းဒေသကြီး' : 'ပြည်နယ်';
     setStateOrRegion(stateOrRegion);
 
@@ -134,63 +143,81 @@ const Candidates = () => {
             <a><Button className="CandidateHeader__button"><i className="material-icons">location_on</i></Button></a>
           </Link>
           <Link href="/candidates/search">
-            <a><Button className="CandidateHeader__button"><i className="material-icons">search</i></Button>
-</a>
+            <a><Button className="CandidateHeader__button"><i className="material-icons">search</i></Button></a>
           </Link>
         </div>
       </AppHeader>
-      <div id="Candidates" className="Candidates">
-        <TabPanel onClickTab={onClickTab}>
-          <Tab
-            key="pyithuhluttaw"
-            title={<div className="text-center">ပြည်သူ့<br />လွှတ်တော်</div>}
-            value="pyithu">
-            <div>
-              {
-                constituencies.length > 0 &&
-                  <div className="VotingPlace">
-                    <div className="VotingPlace__container">
-                      {constituencies[0].name}
-                    </div>
-                  </div>
-              }
-              {renderCandidateList(pyiThuCandidates)}
+      {
+         shouldShowLocationLink &&
+          <div className="text-center">
+            <div className="show-location-chooser">
+              မိမိ မဲဆန္ဒနယ်မှ ကိုယ်စားလှယ်လောင်းများကို ကြည့်ရှုရန် တည်နေရာအား ရွေးချယ်ပေးပါ။
             </div>
-          </Tab>
-          <Tab
-            key="amyothahluttaw"
-            title={<div className="text-center">အမျိုးသား<br />လွှတ်တော်</div>}
-            value="amyotha">
-            <div>
-              {
-                constituencies.length > 0 &&
-                  <div className="VotingPlace">
-                    <div className="VotingPlace__container">
-                      {constituencies[1].name}
-                    </div>
-                  </div>
-              }
-              {renderCandidateList(amyoThaCandidates)}
-            </div>
-          </Tab>
-          <Tab
-            key="tinehluttaw"
-            title={<div className="text-center">{stateOrRegion}<br />လွှတ်တော်</div>}
-            value="state">
-            <div>
-              {
-                constituencies.length > 0 &&
-                  <div className="VotingPlace">
-                    <div className="VotingPlace__container">
-                      {constituencies[2].name}
-                    </div>
-                  </div>
-              }
-              {renderCandidateList(stateCandidates)}
-            </div>
-          </Tab>
-        </TabPanel>
-      </div>
+            <Link href="/location">
+              <Button className="show-location-chooser-button">
+                <i className="material-icons">location_on</i>
+                <span>
+                  တည်နေရာရွေးချယ်ရန်
+                </span>
+              </Button>
+            </Link>
+          </div>
+      }
+      {
+         !shouldShowLocationLink &&
+          <div id="Candidates" className="Candidates">
+            <TabPanel onClickTab={onClickTab}>
+              <Tab
+                key="pyithuhluttaw"
+                title={<div className="text-center">ပြည်သူ့<br />လွှတ်တော်</div>}
+                value="pyithu">
+                <div>
+                  {
+                    constituencies.length > 0 &&
+                      <div className="VotingPlace">
+                        <div className="VotingPlace__container">
+                          {constituencies[0].name}
+                        </div>
+                      </div>
+                  }
+                  {renderCandidateList(pyiThuCandidates)}
+                </div>
+              </Tab>
+              <Tab
+                key="amyothahluttaw"
+                title={<div className="text-center">အမျိုးသား<br />လွှတ်တော်</div>}
+                value="amyotha">
+                <div>
+                  {
+                    constituencies.length > 0 &&
+                      <div className="VotingPlace">
+                        <div className="VotingPlace__container">
+                          {constituencies[1].name}
+                        </div>
+                      </div>
+                  }
+                  {renderCandidateList(amyoThaCandidates)}
+                </div>
+              </Tab>
+              <Tab
+                key="tinehluttaw"
+                title={<div className="text-center">{stateOrRegion}<br />လွှတ်တော်</div>}
+                value="state">
+                <div>
+                  {
+                    constituencies.length > 0 &&
+                      <div className="VotingPlace">
+                        <div className="VotingPlace__container">
+                          {constituencies[2].name}
+                        </div>
+                      </div>
+                  }
+                  {renderCandidateList(stateCandidates)}
+                </div>
+              </Tab>
+            </TabPanel>
+          </div>
+      }
     </Layout>
   );
 }

@@ -1,6 +1,31 @@
 @import '../../styles/partials/colors';
 @import '../../styles/partials/extends';
 
+.show-location-chooser {
+  margin-top: 20px;
+}
+
+.show-location-chooser-button {
+  margin-top: 20px;
+  background-color: $primary-color;
+  color: #FFFFFF;
+  border: 0;
+  outline: 0;
+  border-radius: 25px;
+  padding: 5px 20px 3px 15px;
+  transition: all 0.2s linear;
+  font-size: 0.8rem;
+  i {
+    font-size: 1.2rem;
+  }
+  span {
+    vertical-align: super;
+  }
+  &:hover, &:active {
+    @extend %button-hover;
+  }
+}
+
 .Candidates {
   @extend %mobile-vert-rules;
 }
