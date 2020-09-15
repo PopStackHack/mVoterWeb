@@ -28,6 +28,7 @@ const Candidates = (props) => {
       father,
       ethnicity,
       religion,
+      individual_logo: individualLogo,
       constituency: {
         id: constituencyId,
         attributes: {
@@ -104,7 +105,7 @@ const Candidates = (props) => {
             </div>
           </div>
           <div className="col-xs-12 col-lg-9 Candidate__infoHeaderWrapper">
-            <img src={partyFlag} alt={partyName} className="Candidate__partyFlag" />
+            <img src={partyFlag ?? individualLogo} alt={partyName} className="Candidate__partyFlag" />
             <h1 className="Candidate__name">{name}</h1>
             <div className="Candidate__party">
               {
