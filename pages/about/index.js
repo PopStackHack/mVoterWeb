@@ -4,6 +4,7 @@ import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 
 import './about.module.scss'
+import Button from '../../components/Common/Button/Button';
 const About = () => {
   const router = useRouter();
 
@@ -13,7 +14,9 @@ const About = () => {
         <title>About | mVoter 2020</title>
       </Head>
       <AppHeader>
-        <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+        <Button>
+          <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+        </Button>
       </AppHeader>
       <section className="About container">
         <div className="row text-center my-3">
