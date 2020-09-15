@@ -18,7 +18,11 @@ export default async function (req, res) {
     const response = await api.getCandidateList(constituencyId);
     const { data } = response.data;
 
-    return res.status(200).send({ data });
+    return res.status(200).send({
+      // pre-sort the data here before Frontend
+      data: data
+        .sort((a, b) => a.attributes.ballot_order - b.attributes.ballot_order),
+    });
   } catch (error) {
     console.error(error);
   }
