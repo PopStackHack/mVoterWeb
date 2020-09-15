@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Card from '../../Common/Card/Card';
 import './CandidateList.module.scss';
@@ -37,35 +38,37 @@ const CandidateList = (props) => {
 
             return (
               <div className="col-lg-6 col-xs-12 CandidateList__itemWrapper" key={id}>
-                <Card className="CandidateList__item box-hover" onClick={() => onClickCandidate(id)}>
-                  <div className="CandidateList__avatar" style={{ backgroundImage: `url(${encodeURI(image)}` }}></div>
-                  <div className="CandidateList__info">
-                    <div className="name">
-                      { name }
+                <Link href={`/candidates/${id}`}>
+                  <Card className="CandidateList__item box-hover">
+                    <div className="CandidateList__avatar" style={{ backgroundImage: `url(${encodeURI(image)}` }}></div>
+                    <div className="CandidateList__info">
+                      <div className="name">
+                        { name }
+                      </div>
+                      <div className="CandidateList__party">
+                        {
+                          // Determine if this is individual candidate
+                          party &&
+                            (
+                              <>
+                                <img src={partyFlagImage} className="flag" />&nbsp;
+                                {partyNameBurmese}
+                              </>
+                            )
+                        }
+                        {
+                          !party &&
+                            (
+                              <>
+                                <img src={individualLogo}  className="flag"/>&nbsp;
+                                {'တစ်သီးပုက္ကလ'}
+                              </>
+                            )
+                        }
+                      </div>
                     </div>
-                    <div className="CandidateList__party">
-                      {
-                        // Determine if this is individual candidate
-                        party &&
-                          (
-                            <>
-                              <img src={partyFlagImage} className="flag" />&nbsp;
-                              {partyNameBurmese}
-                            </>
-                          )
-                      }
-                      {
-                        !party &&
-                          (
-                            <>
-                              <img src={individualLogo}  className="flag"/>&nbsp;
-                              {'တစ်သီးပုက္ကလ'}
-                            </>
-                          )
-                      }
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               </div>
             );
           })

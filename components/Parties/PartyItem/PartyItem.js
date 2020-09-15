@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Card from '../../Common/Card/Card';
 
@@ -25,13 +26,15 @@ const PartyCard = (props) => {
 
   return (
     <div className="PartyItem">
-      <Card className="PartyItem__Card box-hover cursor-pointer" onClick={() => router.push(`/parties/[party]`, `/parties/${id}`)}>
-        <div className="PartyItem__image" style={sealImageStyle}></div>
-        <div className="PartyItem__Description">
-          <div className="name">{nameBurmese}</div>
-          <div className="text-muted constituency">{region}</div>
-        </div>
-      </Card>
+      <Link href={`/parties/${id}`}>
+        <Card className="PartyItem__Card box-hover cursor-pointer">
+          <div className="PartyItem__image" style={sealImageStyle}></div>
+          <div className="PartyItem__Description">
+            <div className="name">{nameBurmese}</div>
+            <div className="text-muted constituency">{region}</div>
+          </div>
+        </Card>
+      </Link>
     </div>
   );
 };
