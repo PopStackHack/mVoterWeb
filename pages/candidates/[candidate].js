@@ -77,13 +77,13 @@ const Candidates = (props) => {
 
         <meta property="og:url" content={`https://web.mvoterapp.com/candidates/${id}`} />
         <meta property="og:type" content="profile" />
-        <meta property="og:title" content={`${name} - ${partyName}`} />
+        <meta property="og:title" content={`${name} - ${partyName ?? 'တစ်သီးပုဂ္ဂလ'}`} />
         <meta property="og:description" content={`${stateRegion}၊ ${constituencyName} တွင် ဝင်ရောက်ယှဥ်ပြိုင်မည်`} />
         <meta property="og:image" content={image} />
 
         <meta property="twitter:card" content="summary" />
         <meta property="twitter:url" content={`https://web.mvoterapp.com/candidates/${id}`} />
-        <meta property="twitter:title" content={`${name} - ${partyName}`} />
+        <meta property="twitter:title" content={`${name} - ${partyName ?? 'တစ်သီးပုဂ္ဂလ'}`} />
         <meta property="twitter:description" content={`${stateRegion}၊ ${constituencyName} တွင် ဝင်ရောက်ယှဥ်ပြိုင်မည်`} />
         <meta property="twitter:image" content={image} />
       </Head>
