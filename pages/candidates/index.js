@@ -87,7 +87,7 @@ const Candidates = () => {
 
   async function fetchCandidates(constituency) {
     const {
-      id,
+      id: constituencyId, // Note: this is INT
       house,
     } = constituency;
 
@@ -95,7 +95,7 @@ const Candidates = () => {
     if (house === 'amyotha' && amyoThaCandidates) return;
     if (house === 'state' && stateCandidates) return;
 
-    const response = await fetch(`/api/candidates?constituency_id=${id}`);
+    const response = await fetch(`/api/candidates?constituency_id=${constituencyId}`);
     const result = await response.json();
 
     // Set Candidates based on house type
@@ -105,7 +105,16 @@ const Candidates = () => {
     } else if (house === 'amyotha') {
       setAmyoThaCandidates(result.data);
     } else if (house === 'state') {
-      setStateCandidates(result.data);
+      // State candidates has multiple constituency ids
+      // Only filter out the ones with given constituency id
+      const filteredStateCandidates = result.data.filter(({
+        attributes: {
+          constituency: {
+            id: candidateConstituencyId,
+          },
+        },
+      }) => candidateConstituencyId === constituencyId.toString());
+      setStateCandidates(filteredStateCandidates);
     } else {
       throw new Error('House type not defined.');
     }
