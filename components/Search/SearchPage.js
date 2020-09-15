@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../../components/Layout/Layout';
+import Button from '../../components/Common/Button/Button';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { debounce } from '../../utils/helpers';
 import React, { useCallback, useState, Children } from 'react';
@@ -48,7 +49,9 @@ const SearchPage = (props) => {
   return (
     <Layout>
       <AppHeader>
-        <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+        <Button>
+          <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+        </Button>
         <div className="search-input-group">
           <i className="material-icons">search</i>
           <input
