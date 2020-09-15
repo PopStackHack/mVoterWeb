@@ -60,6 +60,10 @@
     li {
       width: 100%;
       text-align: left;
+      transition: color 0.2s linear;
+      &:hover {
+        color: $primary-color;
+      }
       > div {
         height: auto;
         display: flex;
