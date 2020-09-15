@@ -1,3 +1,9 @@
+@import './colors';
+
 %mobile-vert-rules {
   overflow-x: hidden;
+}
+
+%button-hover {
+  background-color: rgba($primary-color, 0.85);
 }
