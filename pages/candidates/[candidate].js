@@ -53,7 +53,11 @@ const Candidates = (props) => {
     const response = await fetch(`/api/candidates?constituency_id=${constituencyId}`);
     const { data: candidates } = await response.json();
 
-    setCompetitors(candidates.filter((candidate) => candidate.id !== id))
+    // Filter based on constituency id
+    const filteredCandidates = candidates.filter((candidate) => {
+      return candidate.attributes.constituency.id === constituencyId;
+    });
+    setCompetitors(filteredCandidates);
   }
 
   useEffect(() => {
