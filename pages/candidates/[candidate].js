@@ -54,9 +54,9 @@ const Candidates = (props) => {
     const { data: candidates } = await response.json();
 
     // Filter based on constituency id
-    const filteredCandidates = candidates.filter((candidate) => {
-      return candidate.attributes.constituency.id === constituencyId;
-    });
+    const filteredCandidates = candidates
+      .filter((candidate) => candidate.attributes.constituency.id === constituencyId)
+      .filter((candidate) => candidate.id !== id);
     setCompetitors(filteredCandidates);
   }
 
