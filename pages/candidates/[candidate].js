@@ -1,6 +1,7 @@
 import moment, { parseTwoDigitYear } from 'moment';
 import Head from 'next/head';
 import myanmarNumber from 'myanmar-numbers';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout/Layout';
 import PeopleFillIcon from '../../components/Common/Icons/activePeople';
@@ -40,6 +41,7 @@ const Candidates = (props) => {
   } = props;
 
   const {
+    id: partyId,
     attributes: {
       flag_image: partyFlag,
       name_burmese: partyName,
@@ -106,26 +108,30 @@ const Candidates = (props) => {
             <h1 className="Candidate__name">{name}</h1>
             <div className="Candidate__party">
               {
-                partyName && <span>{partyName}</span>
+                partyName && 
+                  <>
+                    <Link href={`/parties/${partyId}`}>
+                      <span className="Candidate__partyName">{partyName} <i className="material-icons">chevron_right</i></span>
+                    </Link>
+                  </>
               }
               {
                 !partyName && <span>တစ်သီးပုဂ္ဂလ</span>
               }
             </div>
-            <div className="Candidate__senate">{formatHouse(house)}</div>
             <div className="Candidate__constituency">
               <span>{formatConstituency(stateRegion, constituencyName)}</span>
             </div>
           </div>
         </div>
         <div className="row align-items-center Candidate__info" style={{ marginTop: 12 }}>
-          <div className="col-xs-3 offset-lg-3 col-lg-2">
+          <div className="col-xs-3 offset-lg-3 col-lg-3">
             <span className="Candidate__age">
               {myanmarNumber(age, 'my')}
             </span>
             &nbsp; နှစ်
           </div>
-          <div className="col-xs-9 col-lg-2">
+          <div className="col-xs-9 col-lg-3">
             <div className="Candidate__infoLabel">
               မွေးသက္ကရာဇ်
             </div>
@@ -136,28 +142,28 @@ const Candidates = (props) => {
         </div>
 
         <div className="row Candidate__info">
-          <div className="col-xs-12 offset-lg-3 col-lg-2">
+          <div className="col-xs-12 offset-lg-3 col-lg-3">
             <div className="Candidate__infoLabel">ပညာအရည်အချင်း</div>
             <div className="Candidate__infoAnswer">{education}</div>
           </div>
-          <div className="col-xs-12 col-lg-2">
+          <div className="col-xs-12 col-lg-3">
             <div className="Candidate__infoLabel">အလုပ်အကိုင်</div>
             <div className="Candidate__infoAnswer">{work}</div>
           </div>
-          <div className="col-xs-12 col-lg-2">
+          <div className="col-xs-12 col-lg-3">
             <div className="Candidate__infoLabel">လူမျိုး၊ ဘာသာ</div>
             <div className="Candidate__infoAnswer">{ethnicity}၊ {religion}</div>
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-12 offset-lg-3 col-lg-2 parent-name">မိခင်</div>
+          <div className="col-xs-12 offset-lg-3 col-lg-3 parent-name">မိခင်</div>
           <div className="col-xs-12 col-lg-3">
             {mother.name} <br />
             {mother.religion}ဘာသာ
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-12 offset-lg-3 col-lg-2 parent-name">ဖခင်</div>
+          <div className="col-xs-12 offset-lg-3 col-lg-3 parent-name">ဖခင်</div>
           <div className="col-xs-12 col-lg-3">
             {father.name} <br />
             {father.religion}ဘာသာ
