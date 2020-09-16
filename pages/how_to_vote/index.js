@@ -102,6 +102,25 @@ export default function howToVote() {
         <div className="row my-1">
           <div className="col-12">
             <div className="title">
+              တိုင်းဒေသကြီး/ပြည်နယ် လွှတ်တော် ကိုယ်စားလှယ် ရွေးချယ်ရန်
+            </div>
+            <div className="instruction">
+              တိုင်းဒေသကြီး/ပြည်နယ် လွှတ်တော် ကိုယ်စားလှယ် ဆန္ဒမဲ အတွက် မဲစာရင်းစစ်သူထံ သွားရောက်၍ မှတ်ပုံတင်ပြသပါ။
+            </div>
+            <div className="instruction">
+              မဲစာရင်းတွင် မိမိအမည်ပါလျှင် မဲလက်မှတ် ထုတ်ပေးသူထံမှ မဲလက်မှတ် ရယူပါ။
+            </div>
+            <div className="instruction">
+              လျှို့ဝှက်ဆန္ဒမဲပေးခန်းသို့ သွား၍ မိမိနှစ်သက်ရာ ကိုယ်စားလှယ်လောင်း၏ အကွက်တွင် တံဆိပ်တုံးနှိပ်ပါ။
+            </div>
+            <div className="instruction">
+              တိုင်းဒေသကြီး/ပြည်နယ် လွှတ်တော် ဆန္ဒမဲပုံး ရှိရာသို့သွား၍ မဲပုံးထဲသို့ မဲလက်မှတ်ကိုထည့်ပါ။
+            </div>
+          </div>
+        </div>
+        <div className="row my-1">
+          <div className="col-12">
+            <div className="title">
               တိုင်းရင်းသားလူမျိုး ကိုယ်စားလှယ် ရွေးချယ်ရန်ရှိပါက
             </div>
             <div className="instruction">
@@ -125,7 +144,7 @@ export default function howToVote() {
             </div>
             <div className="instruction">
               မဲပေးပြီးကြောင်း မင်တို့မည့် မဲရုံအဖွဲ့ဝင်ထံ သွားရောက်၍
-              မိမိ၏ လက်ဝဲဘက် လက်သန်းတွင် မင်တို့ပါ
+              မိမိ၏ လက်ဝဲဘက် လက်သန်းတွင် မင်တို့ပါ။
             </div>
             <div className="instruction">
               မဲရုံအတွင်းမှ ထွက်နိုင်ပါပြီ။ သင် နိုင်ငံသားတစ်ယောက်၏ တာဝန်
