@@ -23,7 +23,7 @@ export function formatPublishDateToMMLocale(dateStr) {
   const year = publishedTime.year();
   // Text data taken from https://gist.github.com/eimg/3f115b39fbc6c48976e6cc7af1b8ddf9
   const months = 'ဇန်နဝါရီ_ဖေဖော်ဝါရီ_မတ်_ဧပြီ_မေ_ဇွန်_ဇူလိုင်_သြဂုတ်_စက်တင်ဘာ_အောက်တိုဘာ_နိုဝင်ဘာ_ဒီဇင်ဘာ'.split('_');
-  return `${myanmarNumbers(date, 'my')} ${months[month - 1]} ${myanmarNumbers(year, 'my')}`
+  return `${myanmarNumbers(date, 'my')} ${months[month]} ${myanmarNumbers(year, 'my')}`
 }
 
 export function formatBirthDay(birthday) {
