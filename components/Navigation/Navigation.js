@@ -46,6 +46,9 @@ const Navigation = () => {
   return (
     <nav className="Navigation">
       <ul>
+        <div className="Navigation__mVoterLogo">
+          <img src="/mvoter2020-transparent-vertical.png" alt="mVoterLogo" />
+        </div>
         <li>
           <Link href="/candidates">
             <div>

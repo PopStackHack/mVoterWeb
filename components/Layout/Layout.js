@@ -11,9 +11,9 @@ const Layout = (props) => {
 
   return (
     <main id="app" className="Layout">
-      <div className="d-none d-lg-block Layout__desktopLogo">
+      {/* <div className="d-none d-lg-block Layout__desktopLogo">
         <img src="/mvoter2020-transparent-vertical.png" alt="mVoterLogo" />
-      </div>
+      </div> */}
       <div className="container">
         <div className="row">
           <div className="col-lg-3 d-none-xs Layout__sideNav">

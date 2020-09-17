@@ -12,6 +12,9 @@
   bottom: 0;
   border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
   background: #ffffff;
+  &__mVoterLogo {
+    display: none;
+  }
   ul {
     display: flex;
     justify-content: space-around;
@@ -55,15 +58,27 @@
     }
   }
   .Navigation {
-    position: sticky;
+    width: 255px;
     display: flex;
     align-content: center;
+    margin: 0 auto;
     height: 100%;
     border-top: none;
-    margin-top: 4px;
+    padding-top: 2px;
+    left: unset;
+    &__mVoterLogo {
+      display: block;
+      img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 64px;
+      }
+    }
     ul {
       display: inline-block;
-      position: fixed;
+      // position: fixed;
+      margin: 0 auto;
     }
     li {
       width: 180px;
