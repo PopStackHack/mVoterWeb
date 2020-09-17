@@ -26,7 +26,7 @@ const PartyCard = (props) => {
 
   return (
     <div className="PartyItem">
-      <Link href={`/parties/${id}`}>
+      <Link href={`/parties/${id}`} prefetch={false}>
         <Card className="PartyItem__Card box-hover cursor-pointer">
           <div className="PartyItem__image" style={sealImageStyle}></div>
           <div className="PartyItem__Description">
