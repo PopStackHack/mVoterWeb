@@ -46,6 +46,14 @@
 }
 
 @media (min-width: 1200px) {
+  %linkDivRules {
+    width: 100%;
+    display: flex;
+    height: auto;
+    svg {
+      width: 30px;
+    }
+  }
   .Navigation {
     position: sticky;
     display: flex;
@@ -67,6 +75,10 @@
         color: $primary-color;
       }
       div.active {
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        height: auto;
         background-color: $primary-color;
         border-radius: 5px;
         svg {
@@ -79,13 +91,12 @@
         color: #ffffff;
       }
       > div {
+        @extend %linkDivRules;
+      }
+      div.inactive {
         width: 100%;
         display: flex;
         padding: 10px;
-        height: auto;
-        svg {
-          width: 30px;
-        }
       }
       .text {
         position: relative;

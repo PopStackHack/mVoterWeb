@@ -29,17 +29,17 @@ const Navigation = () => {
 
     if (isSamePath) {
       return (
-        <>
+        <div className="active">
           {activeIcon}
           <span className="text active">{text}</span>
-        </>
+        </div>
       );
     }
     return (
-      <>
+      <div className="inactive">
         {inActiveIcon}
         <span className="text">{text}</span>
-      </>
+      </div>
     );
   }
 
@@ -47,7 +47,7 @@ const Navigation = () => {
     <nav className="Navigation">
       <ul>
         <li>
-          <Link href="/candidates" activeClassName="active">
+          <Link href="/candidates">
             <div>
               <NavComponent
                 link='/candidates'
@@ -59,7 +59,7 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          <Link href="/parties" activeClassName="active">
+          <Link href="/parties">
             <div>
               <NavComponent
                 link='/parties'
@@ -71,7 +71,7 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          <Link href="/how_to_vote" activeClassName="active">
+          <Link href="/how_to_vote">
             <div>
               <NavComponent
                 link='/how_to_vote'
@@ -83,7 +83,7 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          <Link href="/faqs" activeClassName="active">
+          <Link href="/faqs">
             <div>
               <NavComponent
                 link='/faqs'
@@ -95,7 +95,7 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-        <Link href="/news" activeClassName="active">
+        <Link href="/news">
           <div>
             <NavComponent
               link='/news'
