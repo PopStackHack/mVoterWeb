@@ -160,14 +160,14 @@ const Candidates = (props) => {
           <div className="col-xs-12 offset-lg-3 col-lg-3 parent-name">မိခင်</div>
           <div className="col-xs-12 col-lg-3">
             {mother.name} <br />
-            {mother.religion}ဘာသာ
+            {mother.religion}
           </div>
         </div>
         <div className="row Candidate__info">
           <div className="col-xs-12 offset-lg-3 col-lg-3 parent-name">ဖခင်</div>
           <div className="col-xs-12 col-lg-3">
             {father.name} <br />
-            {father.religion}ဘာသာ
+            {father.religion}
           </div>
         </div>
 
