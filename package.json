@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3009",
-    "build": "next build",
-    "start": "next start -p 4000"
+    "build": "rm -rf ./build && NODE_ENV=production next build",
+    "start": "next start -p 8080",
+    "deploy": "npm run build && gcloud app deploy"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
