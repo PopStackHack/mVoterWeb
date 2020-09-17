@@ -158,7 +158,7 @@ const Candidates = (props) => {
         </div>
         <div className="row Candidate__info">
           <div className="col-xs-2 offset-lg-3 col-lg-3 parent-name">မိခင်</div>
-          <div className="col-xs-10 offset-lg-3 col-lg-4 parent-info">
+          <div className="col-xs-10 offset-lg-3 col-lg-6 parent-info">
             <div>
               <div className="Candidate__infoLabel">
                 အမည်
@@ -181,7 +181,7 @@ const Candidates = (props) => {
         </div>
         <div className="row Candidate__info">
           <div className="col-xs-2 offset-lg-3 col-lg-3 parent-name">ဖခင်</div>
-          <div className="col-xs-10 offset-lg-3 col-lg-4 parent-info">
+          <div className="col-xs-10 offset-lg-3 col-lg-6 parent-info">
             <div>
               <div className="Candidate__infoLabel">
                 အမည်
