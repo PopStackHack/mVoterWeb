@@ -71,9 +71,6 @@
       display: flex;
       align-items: center;
       transition: color 0.2s linear;
-      &:hover {
-        color: $primary-color;
-      }
       div.active {
         width: 100%;
         display: flex;
@@ -97,6 +94,12 @@
         width: 100%;
         display: flex;
         padding: 10px;
+        &:hover {
+          color: rgba($color: $primary-color, $alpha: 0.85);
+          g {
+            fill: rgba($color: $primary-color, $alpha: 0.85);
+          }
+        }
       }
       .text {
         position: relative;
