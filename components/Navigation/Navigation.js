@@ -95,16 +95,16 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-        <Link href="/news">
-          <div>
-            <NavComponent
-              link='/news'
-              activeIcon={ActiveNewsIcon}
-              inActiveIcon={NewsIcon}
-              text="သတင်း"
-            />
-          </div>
-        </Link>
+          <Link href="/news">
+            <div>
+              <NavComponent
+                link='/news'
+                activeIcon={ActiveNewsIcon}
+                inActiveIcon={NewsIcon}
+                text="သတင်း"
+              />
+            </div>
+          </Link>
         </li>
       </ul>
     </nav>

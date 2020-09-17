@@ -21,7 +21,7 @@ const PartyCard = (props) => {
   const sealImageStyle = {
     width: 64,
     height: 64,
-    backgroundImage: `url(${sealImage})`
+    backgroundImage: `url("${sealImage}")`
   };
 
   return (
