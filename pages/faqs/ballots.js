@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import Link from 'next/link';
+import router, { useRouter } from 'next/router';
 import Head from 'next/head';
 import Slider from 'react-slick';
 import Select from 'react-select';
@@ -55,6 +56,7 @@ const Ballots = () => {
   const [loading, setLoading] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(1);
   const sliderRef = useRef();
+  const router = useRouter();
 
   const settings = {
     dots: false,
@@ -96,8 +98,11 @@ const Ballots = () => {
         <title>မဲနမူနာများ | mVoter 2020</title>
       </Head>
       <AppHeader>
-        <div className="vert-flex-center">
-          <Link href="/candidates"><i className="cursor-pointer material-icons">arrow_back</i></Link>
+        <div className="d-flex">
+          <Button
+            className="no-padding"
+            onClick={() => router.back()}
+          ><i className="cursor-pointer material-icons">arrow_back</i></Button>
           <span className="d-inline-block ml-3">သိမှတ်ဖွယ်ရာများ</span>
         </div>
       </AppHeader>

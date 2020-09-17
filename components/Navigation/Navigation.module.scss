@@ -58,16 +58,31 @@
       position: fixed;
     }
     li {
-      width: 100%;
+      width: 180px;
       text-align: left;
+      display: flex;
+      align-items: center;
       transition: color 0.2s linear;
       &:hover {
         color: $primary-color;
       }
+      div.active {
+        background-color: $primary-color;
+        border-radius: 5px;
+        svg {
+          g {
+            fill: #ffffff;
+          }
+        }
+      }
+      span.active {
+        color: #ffffff;
+      }
       > div {
-        height: auto;
+        width: 100%;
         display: flex;
-        align-items: center;
+        padding: 10px;
+        height: auto;
         svg {
           width: 30px;
         }

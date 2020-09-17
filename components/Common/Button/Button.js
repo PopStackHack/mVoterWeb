@@ -4,7 +4,7 @@ const Button = (props) => {
   return (
     <button
       {...props}
-      className={`Button ${props.className}`}>
+      className={`Button ${props.className ?? ''}`}>
       {props.children}
     </button>
   );

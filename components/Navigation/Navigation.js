@@ -47,7 +47,7 @@ const Navigation = () => {
     <nav className="Navigation">
       <ul>
         <li>
-          <Link href="/candidates">
+          <Link href="/candidates" activeClassName="active">
             <div>
               <NavComponent
                 link='/candidates'
