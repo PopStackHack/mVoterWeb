@@ -121,7 +121,7 @@ const Candidates = (props) => {
               }
             </div>
             <div className="Candidate__constituency">
-              <span>{formatConstituency(stateRegion, constituencyName)}</span>
+              <span>{constituencyName}</span>
             </div>
           </div>
         </div>
