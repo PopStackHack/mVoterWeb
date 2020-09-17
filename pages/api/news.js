@@ -10,7 +10,7 @@ export default async function (req, res) {
 
     // This is very hacky approach
     if (!token) {
-      return res.status(500).send({ error: 'No secret token provided.' })
+      return res.status(500).send({ error: 'No secret token provided.' });
     }
     const api = new MaePaySohAPI(token);
 

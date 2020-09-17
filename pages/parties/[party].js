@@ -92,12 +92,17 @@ const Party = (props) => {
               </div>
             </div>
             <div className="Party__info">
-              <div className="Party__infoLabel">
-                ပါတီဥက္ကဌနှင့် ဗဟိုအလုပ်အမှုဆောင်များ
-              </div>
-              <div className="Party__infoAnswer">
-                {leadership.join('၊ ')}
-              </div>
+              {
+                leadership.length > 0 &&
+                <>
+                  <div className="Party__infoLabel">
+                    ပါတီဥက္ကဋ္ဌနှင့် ဗဟိုအလုပ်အမှုဆောင်များ
+                  </div>
+                  <div className="Party__infoAnswer">
+                    {leadership.join('၊ ')}
+                  </div>
+                </>
+              }
             </div>
             <div className="Party__info">
               <div className="Party__infoLabel">
