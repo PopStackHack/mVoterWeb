@@ -121,4 +121,19 @@
     margin-top: 16px;
     margin-bottom: -6px;
   }
+  .parent-info {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    .Candidate__infoLabel {
+      color: rgba($color: #000000, $alpha: 0.65);
+    }
+    div {
+      &:first-child {
+        margin-left: 0;
+      }
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
 }

@@ -157,17 +157,49 @@ const Candidates = (props) => {
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-12 offset-lg-3 col-lg-3 parent-name">မိခင်</div>
-          <div className="col-xs-12 col-lg-3">
-            {mother.name} <br />
-            {mother.religion}
+          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-name">မိခင်</div>
+          <div className="col-xs-10 offset-lg-3 col-lg-4 parent-info">
+            <div>
+              <div className="Candidate__infoLabel">
+                အမည်
+              </div>
+              {mother.name}
+            </div>
+            <div>
+              <div className="Candidate__infoLabel">
+                လူမျိုး
+              </div>
+              {mother.ethnicity}
+            </div>
+            <div>
+              <div className="Candidate__infoLabel">
+                ဘာသာ
+              </div>
+              {mother.religion}
+            </div>
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-12 offset-lg-3 col-lg-3 parent-name">ဖခင်</div>
-          <div className="col-xs-12 col-lg-3">
-            {father.name} <br />
-            {father.religion}
+          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-name">ဖခင်</div>
+          <div className="col-xs-10 offset-lg-3 col-lg-4 parent-info">
+            <div>
+              <div className="Candidate__infoLabel">
+                အမည်
+              </div>
+              {father.name}
+            </div>
+            <div>
+              <div className="Candidate__infoLabel">
+                လူမျိုး
+              </div>
+              {father.ethnicity}
+            </div>
+            <div>
+              <div className="Candidate__infoLabel">
+                ဘာသာ
+              </div>
+              {father.religion}
+            </div>
           </div>
         </div>
 
