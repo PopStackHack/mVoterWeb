@@ -44,6 +44,7 @@ const Candidates = (props) => {
   const {
     id: partyId,
     attributes: {
+      seal_image: partySealImage,
       flag_image: partyFlag,
       name_burmese: partyName,
     } = {},
@@ -105,20 +106,22 @@ const Candidates = (props) => {
             </div>
           </div>
           <div className="col-xs-12 col-lg-9 Candidate__infoHeaderWrapper">
-            <img src={partyFlag ?? individualLogo} alt={partyName} className="Candidate__partyFlag" />
             <h1 className="Candidate__name">{name}</h1>
-            <div className="Candidate__party">
-              {
-                partyName && 
-                  <>
-                    <Link href={`/parties/${partyId}`}>
-                      <span className="Candidate__partyName">{partyName} <i className="material-icons">chevron_right</i></span>
-                    </Link>
-                  </>
-              }
-              {
-                !partyName && <span>တစ်သီးပုဂ္ဂလ</span>
-              }
+            <div className="">
+              <img src={partySealImage ?? individualLogo} alt={partyName} className="Candidate__partyFlag" />
+              <div className="Candidate__party">
+                {
+                  partyName &&
+                    <>
+                      <Link href={`/parties/${partyId}`}>
+                        <span className="Candidate__partyName">{partyName} <i className="material-icons">chevron_right</i></span>
+                      </Link>
+                    </>
+                }
+                {
+                  !partyName && <span>တစ်သီးပုဂ္ဂလ</span>
+                }
+              </div>
             </div>
             <div className="Candidate__constituency">
               <span>{constituencyName}</span>

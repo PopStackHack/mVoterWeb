@@ -31,14 +31,11 @@ const CandidateList = (props) => {
 
             const {
               attributes: {
+                seal_image: partySealImage,
                 flag_image: partyFlagImage,
                 name_burmese: partyNameBurmese,
               } = {},
             } = party || {};
-
-            if (id == 14352) {
-              console.log(id, image);
-            }
 
             return (
               <div className="col-lg-6 col-xs-12 CandidateList__itemWrapper" key={id}>
@@ -57,7 +54,7 @@ const CandidateList = (props) => {
                             party &&
                               (
                                 <>
-                                  <img src={partyFlagImage} className="flag" />&nbsp;
+                                  <img src={partySealImage} className="flag" />&nbsp;
                                   {partyNameBurmese}
                                 </>
                               )

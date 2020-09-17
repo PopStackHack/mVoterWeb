@@ -47,7 +47,8 @@
     font-size: 1.25rem;
   }
   &__party {
-    margin-bottom: 3px;
+    display: inline-block;
+    margin-left: 3px;
   }
   &__partyName {
     color: rgba($color: #000000, $alpha: 0.75);
