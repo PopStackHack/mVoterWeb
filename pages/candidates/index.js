@@ -7,6 +7,7 @@ import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
 import { TabPanel, Tab } from '../../components/Common/Tabs';
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
+import StateRegionCandidateList from '../../components/Candidates/StateRegionCandidateList/StateRegionCandidateList';
 import { hasFullLocation } from '../../utils/helpers';
 
 import './candidates.module.scss';
@@ -107,14 +108,14 @@ const Candidates = () => {
     } else if (house === 'state') {
       // State candidates has multiple constituency ids
       // Only filter out the ones with given constituency id
-      const filteredStateCandidates = result.data.filter(({
-        attributes: {
-          constituency: {
-            id: candidateConstituencyId,
-          },
-        },
-      }) => candidateConstituencyId === constituencyId.toString());
-      setStateCandidates(filteredStateCandidates);
+      // const filteredStateCandidates = result.data.filter(({
+      //   attributes: {
+      //     constituency: {
+      //       id: candidateConstituencyId,
+      //     },
+      //   },
+      // }) => candidateConstituencyId === constituencyId.toString());
+      setStateCandidates(result.data);
     } else {
       throw new Error('House type not defined.');
     }
@@ -131,6 +132,18 @@ const Candidates = () => {
   function renderCandidateList(candidates) {
     if (candidates) {
       return <CandidateList candidates={candidates} />;
+    }
+
+    if (candidates && candidates.length > 0) {
+      return <div className="text-center no-data-text">ဒေတာမရှိပါ</div>;
+    }
+
+    return '';
+  }
+
+  function renderStateRegionCandidateList(candidates) {
+    if (candidates) {
+      return <StateRegionCandidateList candidates={candidates} />;
     }
 
     if (candidates && candidates.length > 0) {
@@ -158,7 +171,7 @@ const Candidates = () => {
       </AppHeader>
       {
          shouldShowLocationLink &&
-          <div className="text-center">
+          <div className="text-cenrenderStateRegionCandidateListter">
             <div className="show-location-chooser">
               မိမိ မဲဆန္ဒနယ်မှ ကိုယ်စားလှယ်လောင်းများကို ကြည့်ရှုရန် တည်နေရာအား ရွေးချယ်ပေးပါ။
             </div>
@@ -221,7 +234,7 @@ const Candidates = () => {
                         </div>
                       </div>
                   }
-                  {renderCandidateList(stateCandidates)}
+                  {renderStateRegionCandidateList(stateCandidates)}
                 </div>
               </Tab>
             </TabPanel>

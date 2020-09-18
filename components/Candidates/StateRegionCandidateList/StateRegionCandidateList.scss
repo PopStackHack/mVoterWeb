@@ -1,0 +1,19 @@
+@import '../../../styles/partials/colors';
+
+.constituency-name {
+  &:first-child {
+    display: none;
+  }
+  width: 100%;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  background-color: rgba($color: $primary-color, $alpha: 0.3);
+}
+
+@media (min-width: 1200px) {
+  .constituency-name {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
