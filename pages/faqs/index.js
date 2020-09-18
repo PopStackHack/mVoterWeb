@@ -9,6 +9,7 @@ import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import FaqList from '../../components/Faq/FaqList/FaqList';
 import Button from '../../components/Common/Button/Button';
+import GavelIcon from '../../components/Common/Icons/gavel';
 
 import { FAQ_CATEGORY } from '../../utils/constants';
 
@@ -111,8 +112,8 @@ const FAQs = (props) => {
       </div>
       </div>
       <section id="FAQS" className="FAQS">
-        <div className="">
-          <div className="row align-items-center mb-lg-3">
+        <div>
+          <div className="row align-items-center mb-3">
             <div className="col-xs-12 col-lg-6">
               <div className="ballot-stack row no-gutters align-items-center mb-xs-2 box-hover" onClick={() => router.push('/faqs/ballots')}>
                 <div className="col-4">
@@ -140,6 +141,24 @@ const FAQs = (props) => {
                   <div>အသံ <br />မသွင်းရ</div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12 d-flex justify-content-center">
+              <a
+                style={{ textDecoration: 'none' }}
+                href="//mvoterapp.com/election-law"
+                rel="noopener"
+                target="_blank">
+                <div className="unfair-law box-hover">
+                  <div>
+                    <GavelIcon />
+                  </div>
+                  <div className="unfair-law-text">
+                    ရွေးကောက်ပွဲဆိုင်ရာ ပြစ်မှု၊ ပြစ်ဒဏ်များနှင့် တရားမဲ့ပြုကျင့်မှုများ
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
         </div>

@@ -7,12 +7,20 @@ $ballot-stack-height: 110px;
   line-height: 25px;
 }
 
-.ballot-stack {
+.ballot-stack, .unfair-law {
   padding: 8px 10px;
   margin-bottom: 10px;
   border-radius: 10px;
   border: 1px solid rgba($color: #000000, $alpha: 0.1);
   cursor: pointer;
+}
+
+.unfair-law {
+  display: flex;
+  align-items: center;
+  &-text {
+    margin-left: 10px;
+  }
 }
 
 .ballot-stack-picture {
@@ -52,5 +60,10 @@ $ballot-stack-height: 110px;
 @media (min-width: 1200px) {
   .ballot-stack {
     margin-bottom: 0;
+  }
+  .unfair-law {
+    &-text {
+      margin-left: 5px;
+    }
   }
 }
