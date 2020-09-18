@@ -171,7 +171,7 @@ const Candidates = () => {
       </AppHeader>
       {
          shouldShowLocationLink &&
-          <div className="text-cenrenderStateRegionCandidateListter">
+          <div className="text-center">
             <div className="show-location-chooser">
               မိမိ မဲဆန္ဒနယ်မှ ကိုယ်စားလှယ်လောင်းများကို ကြည့်ရှုရန် တည်နေရာအား ရွေးချယ်ပေးပါ။
             </div>
