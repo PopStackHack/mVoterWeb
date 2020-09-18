@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 
 import Layout from '../../components/Layout/Layout';
 import Clock6AM from '../../components/Common/Icons/clock6AM';
@@ -6,6 +7,11 @@ import Clock4PM from '../../components/Common/Icons/clock4PM';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 
 import './HowToVote.module.scss';
+
+const ElectionCountdown = dynamic(
+  () => import('../../components/Countdown/ElectionCountdown'),
+  { ssr: false },
+);
 
 export default function howToVote() {
   return (
@@ -19,17 +25,7 @@ export default function howToVote() {
       <section className="HowToVote">
         <div className="row my-1">
           <div className="col-12">
-            <div className="text-center mb-3" style={{ lineHeight: '2rem' }}>
-              <div>
-                ရွေးကောက်ပွဲ ကျင်းပရန်
-              </div>
-              <div>
-                <span className="color-primary text-bold">၅၁</span> ရက်
-              </div>
-              <div>
-                သာ လိုတော့သည်
-              </div>
-            </div>
+            <ElectionCountdown />
             <div className="HowToVote__announcement text-center">
               <span className="title">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲနေ့</span>
               <br />
