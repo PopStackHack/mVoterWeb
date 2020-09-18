@@ -19,6 +19,17 @@ export default function howToVote() {
       <section className="HowToVote">
         <div className="row my-1">
           <div className="col-12">
+            <div className="text-center mb-3" style={{ lineHeight: '2rem' }}>
+              <div>
+                ရွေးကောက်ပွဲ ကျင်းပရန်
+              </div>
+              <div>
+                <span className="color-primary text-bold">၅၁</span> ရက်
+              </div>
+              <div>
+                သာ လိုတော့သည်
+              </div>
+            </div>
             <div className="HowToVote__announcement text-center">
               <span className="title">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲနေ့</span>
               <br />
