@@ -29,11 +29,12 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  searchCandidates({ query, page = 1 }) {
+  searchCandidates({ query, page = 1, item_per_page }) {
     return this.api.get('/candidates', {
       params: {
         query,
         page,
+        item_per_page,
       },
     })
       .catch(console.error);
@@ -69,7 +70,7 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  searchFaqs({ query, page = 1 }) {
+  searchFaqs({ query, page = 1, item_per_page }) {
     return this.api.get('/faqs', {
       params: {
         query,
@@ -126,7 +127,7 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  searchNews({ query, page = 1 }) {
+  searchNews({ query, page = 1, item_per_page }) {
     return this.api.get('/news', {
       params: {
         query,
@@ -137,10 +138,12 @@ class MaePaySohAPI {
 
   getParties({
     page,
+    item_per_page,
   }) {
     return this.api.get('/parties', {
       params: {
         page,
+        item_per_page,
       },
     })
       .catch(console.error);
@@ -151,11 +154,12 @@ class MaePaySohAPI {
       .catch(console.error);
   }
 
-  searchParties({ query, page = 1 }) {
+  searchParties({ query, page = 1, item_per_page }) {
     return this.api.get('/parties', {
       params: {
         query,
         page,
+        item_per_page,
       },
     });
   }

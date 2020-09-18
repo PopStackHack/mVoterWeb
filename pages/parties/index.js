@@ -24,25 +24,28 @@ const Parties = (props) => {
   async function fetchAndPushParties(init = false) {
     try {
       let pageQuery = page;
+      let itemPerPage = 25;
+
       if (!init) {
         pageQuery += 1;
         setPage(page + 1);
+        itemPerPage = 10;
       }
 
       // Cheat like a pro, send two requests on first try
-      if (init) {
-        const results = await Promise.all([0, 0].map(async (_, index) => {
-          const response = await fetch(`/api/parties?page=${index + 1}`);
-          const result = await response.json();
-          return result.data;
-        }));
+      // if (init) {
+      //   const results = await Promise.all([0, 0].map(async (_, index) => {
+      //     const response = await fetch(`/api/parties?page=${index + 1}`);
+      //     const result = await response.json();
+      //     return result.data;
+      //   }));
 
-        setPage(2);
-        return setParties([...results[0], ...results[1]]);
-      }
+      //   setPage(2);
+      //   return setParties([...results[0], ...results[1]]);
+      // }
 
 
-      const response = await fetch(`/api/parties?page=${pageQuery}`);
+      const response = await fetch(`/api/parties?page=${pageQuery}&item_per_page=${itemPerPage}`);
       const { data, pagination } = await response.json();
 
       setParties(parties.concat(data));

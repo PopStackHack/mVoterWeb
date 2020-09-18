@@ -19,7 +19,7 @@ const SearchPage = (props) => {
 
   const router = useRouter();
   const [list, setList] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [searchString, setSearchString] = useState('');
 
   const debouncedCall = useCallback(
@@ -27,12 +27,18 @@ const SearchPage = (props) => {
   , []);
 
   async function apiCall(value) {
-    const pageToCall = page + 1;
+    let itemPerPage = 25;
 
-    const response = await fetch(`/api/${endpoint}?page=${pageToCall}&query=${value || searchString}`);
+    if (page > 1) {
+      itemPerPage = 10;
+    }
+
+    const response = await fetch(
+      `/api/${endpoint}?page=${page}&query=${value || searchString}&item_per_page=${itemPerPage}`
+    );
     const result = await response.json();
 
-    setPage(pageToCall);
+    setPage(page + 1);
     return setList(list.concat(result.data));
   }
 

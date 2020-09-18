@@ -4,6 +4,10 @@ import MaePaySohAPI from '../../gateway/api';
 
 export default async function (req, res) {
   try {
+    const {
+      page,
+      item_per_page = 25,
+    } = req.query;
     const token = await fetchToken(req);
     // This is very hacky approach
     if (!token) {
@@ -11,7 +15,7 @@ export default async function (req, res) {
     }
     const api = new MaePaySohAPI(token);
 
-    const response = await api.getParties({ page: req.query.page });
+    const response = await api.getParties({ page: req.query.page, item_per_page });
     const { data, pagination } = response.data;
 
     return res.status(200).send({ data, pagination });

@@ -6,6 +6,7 @@ export default async function (req, res) {
     const {
       query,
       page,
+      item_per_page = 25,
     } = req.query;
 
     const token = await fetchToken(req);
@@ -16,7 +17,7 @@ export default async function (req, res) {
 
     const api = new MaePaySohAPI(token);
 
-    const response = await api.searchParties({ query, page });
+    const response = await api.searchParties({ query, page, item_per_page });
     const { data } = response.data;
 
     return res.status(200).send({ data });
