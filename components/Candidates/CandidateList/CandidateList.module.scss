@@ -35,16 +35,14 @@
 @media (min-width: 1200px) {
   .CandidateList {
     &__itemWrapper {
-      padding: 5px;
+      padding-top: 5px;
+      &:nth-of-type(2n+1) {
+        padding-right: 5px;
+      }
     }
     &__item {
+      min-height: 102px;
       margin-bottom: 0px;
-      &:nth-of-type(2n) {
-        margin-left: 8px;
-      }
-      &:nth-of-type(1n) {
-        margin-right: 8px;
-      }
       padding: 10px;
       border: 1px solid rgba($color: #000000, $alpha: 0.1);
       cursor: pointer;

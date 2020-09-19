@@ -61,7 +61,7 @@ const Parties = (props) => {
         </div>
       </AppHeader>
         <div id="Parties" className="Parties">
-          <div className="row no-gutters mb-2">
+          <div className="row no-gutters mb-xs-2">
             <div className="col-12">
               <div className="Parties__infoHeader">
                 <div className="icon-blk">

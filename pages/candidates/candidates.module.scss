@@ -1,6 +1,13 @@
 @import '../../styles/partials/colors';
 @import '../../styles/partials/extends';
 
+.show-location-image {
+  width: auto;
+  height: 96px;
+  display: block;
+  margin: 0 auto;
+}
+
 .show-location-chooser {
   margin-top: 20px;
 }

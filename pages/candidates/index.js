@@ -183,6 +183,7 @@ const Candidates = () => {
       {
          shouldShowLocationLink &&
           <div className="text-center">
+            <img src="/mvoter2020-transparent-vertical.png" alt="mVoter logo" className="show-location-image d-lg-none" />
             <div className="show-location-chooser">
               မိမိ မဲဆန္ဒနယ်မှ ကိုယ်စားလှယ်လောင်းများကို ကြည့်ရှုရန် တည်နေရာအား ရွေးချယ်ပေးပါ။
             </div>
