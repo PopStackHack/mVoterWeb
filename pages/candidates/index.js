@@ -6,19 +6,12 @@ import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
 import { TabPanel, Tab } from '../../components/Common/Tabs';
+import ConstituencyPlace from '../../components/Candidates/ConstituencyPlace/ConstituencyPlace';
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 import StateRegionCandidateList from '../../components/Candidates/StateRegionCandidateList/StateRegionCandidateList';
 import { hasFullLocation } from '../../utils/helpers';
 
 import './candidates.module.scss';
-
-const VotingPlace = () => (
-  <div className="VotingPlace">
-    <div className="VotingPlace__container">
-      တာမွေ မဲဆန္ဒနယ်
-    </div>
-  </div>
-);
 
 const Candidates = () => {
   const [constituencies, setConstituencies] = useState([]);
@@ -27,6 +20,7 @@ const Candidates = () => {
   const [stateCandidates, setStateCandidates] = useState(null);
   const [stateOrRegion, setStateOrRegion] = useState('');
   const [shouldShowLocationLink, setShowLocationLink] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Pre-fetch constituencies
   useEffect(() => {
@@ -37,9 +31,17 @@ const Candidates = () => {
       return;
     }
 
+    const stateRegion = localStorage.getItem('stateRegion')
+    const isNPT = stateRegion.includes('နေပြည်တော်');
+
+    if (isNPT) {
+      setStateOrRegion('တိုင်းဒေသကြီး'); // NPT defaults to တိုင်းဒေသ
+    } else {
+      const stateOrRegion = /တိုင်း/.test() ? 'တိုင်းဒေသကြီး' : 'ပြည်နယ်';
+      setStateOrRegion(stateOrRegion);
+    }
+
     // This stage will fail if location isn't chosen first
-    const stateOrRegion = /တိုင်း/.test(localStorage.getItem('stateRegion')) ? 'တိုင်းဒေသကြီး' : 'ပြည်နယ်';
-    setStateOrRegion(stateOrRegion);
 
     fetchWardDetails();
   }, []);
@@ -87,6 +89,7 @@ const Candidates = () => {
   }
 
   async function fetchCandidates(constituency) {
+    setLoading(true);
     const {
       id: constituencyId, // Note: this is INT
       house,
@@ -95,6 +98,12 @@ const Candidates = () => {
     if (house === 'pyithu' && pyiThuCandidates) return;
     if (house === 'amyotha' && amyoThaCandidates) return;
     if (house === 'state' && stateCandidates) return;
+
+    // NPT has no constituencyId edge-case
+
+    if (!constituencyId) {
+      return;
+    }
 
     const response = await fetch(`/api/candidates?constituency_id=${constituencyId}`);
     const result = await response.json();
@@ -106,19 +115,12 @@ const Candidates = () => {
     } else if (house === 'amyotha') {
       setAmyoThaCandidates(result.data);
     } else if (house === 'state') {
-      // State candidates has multiple constituency ids
-      // Only filter out the ones with given constituency id
-      // const filteredStateCandidates = result.data.filter(({
-      //   attributes: {
-      //     constituency: {
-      //       id: candidateConstituencyId,
-      //     },
-      //   },
-      // }) => candidateConstituencyId === constituencyId.toString());
       setStateCandidates(result.data);
     } else {
       throw new Error('House type not defined.');
     }
+
+    setLoading(false);
   }
 
   function onClickTab(value) {
@@ -142,15 +144,24 @@ const Candidates = () => {
   }
 
   function renderStateRegionCandidateList(candidates) {
+    // This is NPT Edge case
+    const stateRegion = localStorage.getItem('stateRegion');
+    const isNPT = stateRegion.includes('နေပြည်တော်');
+
+    if (!candidates && isNPT) {
+      return (
+        <div className="text-center mt-5">နေပြည်တော် ပြည်ထောင်စုနယ်မြေတွင် တိုင်းဒေသကြီး လွှတ်တော်ကိုယ်စားလှယ် ရွေးချယ်ရန် မလိုအပ်ပါ။</div>
+      );
+    }
+
     if (candidates) {
       return <StateRegionCandidateList candidates={candidates} />;
     }
 
-    if (candidates && candidates.length > 0) {
+
+    if (candidates && candidates.length === 0) {
       return <div className="text-center no-data-text">ဒေတာမရှိပါ</div>;
     }
-
-    return '';
   }
 
   return (
@@ -196,11 +207,8 @@ const Candidates = () => {
                 <div>
                   {
                     constituencies.length > 0 &&
-                      <div className="VotingPlace">
-                        <div className="VotingPlace__container">
-                          {constituencies[0].name}
-                        </div>
-                      </div>
+                      constituencies[0].id &&
+                        <ConstituencyPlace place={constituencies[0].name} />
                   }
                   {renderCandidateList(pyiThuCandidates)}
                 </div>
@@ -212,11 +220,8 @@ const Candidates = () => {
                 <div>
                   {
                     constituencies.length > 0 &&
-                      <div className="VotingPlace">
-                        <div className="VotingPlace__container">
-                          {constituencies[1].name}
-                        </div>
-                      </div>
+                      constituencies[1].id &&
+                        <ConstituencyPlace place={constituencies[1].name} />
                   }
                   {renderCandidateList(amyoThaCandidates)}
                 </div>
@@ -228,11 +233,8 @@ const Candidates = () => {
                 <div>
                   {
                     constituencies.length > 0 &&
-                      <div className="VotingPlace">
-                        <div className="VotingPlace__container">
-                          {constituencies[2].name}
-                        </div>
-                      </div>
+                      constituencies[2].id &&
+                        <ConstituencyPlace place={constituencies[2].name} />
                   }
                   {renderStateRegionCandidateList(stateCandidates)}
                 </div>

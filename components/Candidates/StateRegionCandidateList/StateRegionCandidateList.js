@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../CandidateList/CandidateList';
 import CandidateList from "../CandidateList/CandidateList";
+import ConstituencyPlace from "../ConstituencyPlace/ConstituencyPlace";
 
 import './StateRegionCandidateList.scss';
 
@@ -77,10 +78,10 @@ const StateRegionCandidateList = (props) => {
           candidates: stateRegionCandidates,
         }) => {
           return (
-            <>
-              <div className="text-center constituency-name">{constituencyName}</div>
+            <React.Fragment key={constituencyId}>
+              <ConstituencyPlace className="state-constituency-name" place={constituencyName} />
               <CandidateList candidates={stateRegionCandidates} />
-            </>
+            </React.Fragment>
           )
         })
       }
