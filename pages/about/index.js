@@ -55,6 +55,18 @@ const About = () => {
         </div>
 
         <div className="row text-center my-3">
+          <div className="col-xs-12">
+            <a href="//mvoterapp.com/terms" rel="noopener" target="_blank">အသုံးပြုမှုဆိုင်ရာ စည်းကမ်းချက်များ</a>
+          </div>
+        </div>
+
+        <div className="row text-center my-3">
+          <div className="col-xs-12">
+            <a href="//mvoterapp.com/privacy" rel="noopener" target="_blank">ကိုယ်ရေးအချက်အလက် မူဝါဒ</a>
+          </div>
+        </div>
+
+        <div className="row text-center my-3">
           <div className="col-xs-12">မေးမြန်းအကြံပြုလိုပါက ဆက်သွယ်ရန်</div>
           <div className="col-xs-12 suggestive-links">
             <a href="//m.me/mvoterapp" target="_blank" rel="noopener">
