@@ -1,6 +1,6 @@
 const GavelIcon = ({ fill = '#0071dd' }) => (<svg width="55px" height="49px" viewBox="0 0 55 49">
     <title>gavel</title>
-    <g id="UI" stroke="none" stroke-width="1" fill={fill} fillRule="evenodd">
+    <g id="UI" stroke="none" strokeWidth="1" fill={fill} fillRule="evenodd">
         <g id="Knowledge" transform="translate(-20.000000, -140.000000)" fill={fill}>
             <g id="gavel" transform="translate(20.000000, 140.000000)">
                 <g id="Group-3" transform="translate(0.000000, 42.680000)">

@@ -38,7 +38,6 @@ const ElectionCountdown = () => {
     }, 1000);
   }, []);
 
-
   const remainingDays = towards.diff(now, 'days');
 
   if (remainingDays > 0) {
