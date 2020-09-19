@@ -3,6 +3,8 @@ export const FAQ_CATEGORY = Object.freeze({
   candidate: 'ကိုယ်စားလှယ်လောင်း',
   international_observer: 'စောင့်ကြည့်လေ့လာခြင်း',
   diplomatic: 'သံတမန်ရေးရာ',
+  conflict_resolution: 'အငြင်းပွားမှုများ',
+  mediation_committees: 'စေ့စပ်ညှိနိုင်းရေးကော်မတီများ',
 });
 
 export const HOUSES = Object.freeze({
