@@ -150,7 +150,7 @@ const Candidates = () => {
 
     if (!candidates && isNPT) {
       return (
-        <div className="text-center mt-5">နေပြည်တော် ပြည်ထောင်စုနယ်မြေတွင် တိုင်းဒေသကြီး လွှတ်တော်ကိုယ်စားလှယ် ရွေးချယ်ရန် မလိုအပ်ပါ။</div>
+        <div className="text-center mt-5">နေပြည်တော် ပြည်ထောင်စုနယ်မြေတွင် <br />တိုင်းဒေသကြီး လွှတ်တော်ကိုယ်စားလှယ် ရွေးချယ်ရန် မလိုအပ်ပါ။</div>
       );
     }
 
@@ -173,10 +173,10 @@ const Candidates = () => {
         <div className="text-bold">ကိုယ်စားလှယ်လောင်းများ</div>
         <div className="color-primary">
           <Link href="/location">
-            <a><Button className="CandidateHeader__button"><i className="material-icons">location_on</i></Button></a>
+            <a><Button className="CandidateHeader__button"><i className="material-icons vert-align-middle">location_on</i></Button></a>
           </Link>
           <Link href="/candidates/search">
-            <a><Button className="CandidateHeader__button"><i className="material-icons">search</i></Button></a>
+            <a className="no-padding"><Button className="CandidateHeader__button"><i className="material-icons vert-align-middle">search</i></Button></a>
           </Link>
         </div>
       </AppHeader>

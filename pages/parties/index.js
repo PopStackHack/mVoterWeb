@@ -32,19 +32,6 @@ const Parties = (props) => {
         itemPerPage = 10;
       }
 
-      // Cheat like a pro, send two requests on first try
-      // if (init) {
-      //   const results = await Promise.all([0, 0].map(async (_, index) => {
-      //     const response = await fetch(`/api/parties?page=${index + 1}`);
-      //     const result = await response.json();
-      //     return result.data;
-      //   }));
-
-      //   setPage(2);
-      //   return setParties([...results[0], ...results[1]]);
-      // }
-
-
       const response = await fetch(`/api/parties?page=${pageQuery}&item_per_page=${itemPerPage}`);
       const { data, pagination } = await response.json();
 
@@ -66,8 +53,8 @@ const Parties = (props) => {
         <div className="Parties__buttonGroup">
           <Link href="/parties/search">
             <a>
-              <Button className="color-primary">
-                <i className="material-icons">search</i>
+              <Button className="color-primary no-padding">
+                <i className="material-icons vert-align-middle">search</i>
               </Button>
             </a>
           </Link>
