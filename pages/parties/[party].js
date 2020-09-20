@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import nookies from 'nookies';
 import Head from 'next/head';
 import myanmarNumbers from 'myanmar-numbers';
 import Layout from '../../components/Layout/Layout';
@@ -177,11 +178,11 @@ export async function getServerSideProps(context) {
   const {
     params,
   } = context;
+  const cookies = nookies.get(context);
 
-  const token = await fetchToken(context);
-  const api = new MaePaySohAPI(token);
-
+  const api = new MaePaySohAPI(cookies.token);
   const response = await api.getPartyById(params.party);
+
   const { data } = response.data;
 
   // expand everything inside data attributes to primary object

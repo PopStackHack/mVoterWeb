@@ -16,6 +16,7 @@
     "cookie": "^0.4.1",
     "express": "^4.17.1",
     "flexboxgrid": "^6.3.1",
+    "jsonwebtoken": "^8.5.1",
     "knayi-myscript": "^2.8.3",
     "moment": "^2.27.0",
     "myanmar-numbers": "^2.1.3",

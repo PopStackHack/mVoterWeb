@@ -1,4 +1,4 @@
-import { fetchToken } from './auth';
+import { response } from 'express';
 import MaePaySohAPI from '../../gateway/api';
 
 export default async function (req, res) {
@@ -10,13 +10,7 @@ export default async function (req, res) {
       ward,
     } = req.query;
 
-    const token = await fetchToken(req);
-
-    // This is very hacky approach
-    if (!token) {
-      return res.status(500).send({ error: 'No secret token provided.' })
-    }
-    const api = new MaePaySohAPI(token);
+    const api = new MaePaySohAPI(req.cookies.token);
 
     let result;
 
@@ -39,5 +33,6 @@ export default async function (req, res) {
     return res.status(200).send({ data: result });
   } catch (error) {
     console.error(error);
+    return res.status(500).send('Internal server error');
   }
 }

@@ -21,7 +21,10 @@ const News = () => {
 
   async function fetchNews(pageToLoad = 1) {
     try {
-      const response = await fetch(`/api/news?page=${pageToLoad}`)
+      const response = await fetch(`/api/news?page=${pageToLoad}`, {
+        credentials: 'same-origin',
+      });
+
       const result = await response.json();
 
       return setNews(news.concat(result.data));

@@ -1,15 +1,61 @@
+import {
+  signToken,
+  decodeToken,
+} from '../utils/authClient';
+
 import axios from 'axios';
+// Not a graceful implementation. Please someone enlighten me on this one.
+import { fetchToken } from '../pages/api/auth';
 
 class MaePaySohAPI {
   constructor(token) {
-    this.token = token;
-    this.api = axios.create({
+    const axiosInstance = axios.create({
       baseURL: process.env.BASE_URL,
       timeout: 10000,
-      headers: {
-        'api-token': token,
-      },
     });
+
+    axiosInstance.interceptors.request.use(
+      async (config) => {
+        const decodedToken = await decodeToken(token);
+        config.headers['api-token'] = decodedToken;
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      },
+    );
+
+    axiosInstance.interceptors.response.use(
+      (response) => {
+        return response;
+      }, async function (error) {
+        if (error.response.status !== 401) {
+          return Promise.reject(error);
+        }
+
+        const config = error.config;
+
+        if (error.response.status === 401 && !config.retry) { // Token key not authorized for use
+
+          const apiToken = await fetchToken(); // This is signed
+          config.headers['api-token'] = apiToken;
+          config.retry = true;
+          config.data = { token: apiToken };
+
+          return axios.request(config)
+            .then((response) => {
+              response.data.retry = true;
+              response.data.token = apiToken;
+              console.log(response.data);
+              return Promise.resolve(response);
+            })
+            .catch((error) => Promise.reject(error));
+        }
+        return Promise.reject(error);
+      }
+    );
+
+    this.api = axiosInstance;
   }
 
   getConstituencies(query) {
@@ -145,8 +191,7 @@ class MaePaySohAPI {
         page,
         item_per_page,
       },
-    })
-      .catch(console.error);
+    });
   }
 
   getPartyById(id) {
