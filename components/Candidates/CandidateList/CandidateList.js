@@ -64,7 +64,7 @@ const CandidateList = (props) => {
                               (
                                 <>
                                   <img src={individualLogo}  className="flag"/>&nbsp;
-                                  {'တစ်သီးပုက္ကလ'}
+                                  {'တစ်သီးပုဂ္ဂလ'}
                                 </>
                               )
                           }
