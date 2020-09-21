@@ -32,9 +32,10 @@ const Candidates = () => {
     }
 
     const stateRegion = localStorage.getItem('stateRegion')
-    const isNPT = stateRegion.includes('နေပြည်တော်');
+    const township = localStorage.getItem('township');
+    const wardVillage = localStorage.getItem('wardVillage');
 
-    if (isNPT) {
+    if (isNPT()) {
       setStateOrRegion('တိုင်းဒေသကြီး'); // NPT defaults to တိုင်းဒေသ
     } else {
       const stateOrRegion = /တိုင်း/.test(stateRegion) ? 'တိုင်းဒေသကြီး' : 'ပြည်နယ်';
@@ -143,12 +144,16 @@ const Candidates = () => {
     return '';
   }
 
+  function isNPT() {
+    const stateRegion = localStorage.getItem('stateRegion');
+    const township = localStorage.getItem('township');
+    const wardVillage = localStorage.getItem('wardVillage');
+    return stateRegion.includes('နေပြည်တော်') || township === wardVillage;
+  }
+
   function renderStateRegionCandidateList(candidates) {
     // This is NPT Edge case
-    const stateRegion = localStorage.getItem('stateRegion');
-    const isNPT = stateRegion.includes('နေပြည်တော်');
-
-    if (!candidates && isNPT) {
+    if (!candidates && isNPT()) {
       return (
         <div className="text-center mt-5">နေပြည်တော် ပြည်ထောင်စုနယ်မြေတွင် <br />တိုင်းဒေသကြီး လွှတ်တော်ကိုယ်စားလှယ် ရွေးချယ်ရန် မလိုအပ်ပါ။</div>
       );
