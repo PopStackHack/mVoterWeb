@@ -37,7 +37,7 @@ const Candidates = () => {
     if (isNPT) {
       setStateOrRegion('တိုင်းဒေသကြီး'); // NPT defaults to တိုင်းဒေသ
     } else {
-      const stateOrRegion = /တိုင်း/.test() ? 'တိုင်းဒေသကြီး' : 'ပြည်နယ်';
+      const stateOrRegion = /တိုင်း/.test(stateRegion) ? 'တိုင်းဒေသကြီး' : 'ပြည်နယ်';
       setStateOrRegion(stateOrRegion);
     }
 
