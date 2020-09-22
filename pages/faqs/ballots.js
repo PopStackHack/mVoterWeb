@@ -14,6 +14,7 @@ import Layout from '../../components/Layout/Layout';
 import './slick.scss';
 import './slick-theme.scss';
 import './ballots.module.scss';
+import useAPI from '../../hooks/useAPI';
 
 function PrevArrow(props) {
   const { className, style, onClick, currentSlide } = props;
@@ -57,6 +58,7 @@ const Ballots = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const sliderRef = useRef();
   const router = useRouter();
+  const [, fetchData] = useAPI();
 
   const settings = {
     dots: false,
@@ -76,9 +78,12 @@ const Ballots = () => {
 
   async function fetchBallots(category = 'normal') {
     setLoading(true);
-    const response = await fetch(`/api/ballots?category=${category}`);
-    const result = await response.json();
-    setBallots(result.data);
+
+    const { data } = await useAPI('/api/ballots', {
+      category,
+    });
+
+    setBallots(data);
 
     // const validIndex = result.data.filter(({ attributes: { is_valid } }) => is_valid).length - 1;
     // setValidBallotIndex(validIndex);
