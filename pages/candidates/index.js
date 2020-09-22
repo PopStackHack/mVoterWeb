@@ -112,18 +112,18 @@ const Candidates = () => {
       return;
     }
 
-    const response = await fetchData('/api/candidates', {
+    const { data } = await fetchData('/api/candidates', {
       constituency_id: constituencyId,
     });
 
     // Set Candidates based on house type
     if (house === 'pyithu') {
       // Cache and don't fetch again
-      setPyiThuCandidates(response.data.data);
+      setPyiThuCandidates(data);
     } else if (house === 'amyotha') {
-      setAmyoThaCandidates(response.data.data);
+      setAmyoThaCandidates(data);
     } else if (house === 'state') {
-      setStateCandidates(response.data.data);
+      setStateCandidates(data);
     } else {
       throw new Error('House type not defined.');
     }
