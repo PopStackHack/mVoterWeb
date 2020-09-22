@@ -14,6 +14,8 @@ import MaePaySohAPI from '../../gateway/api';
 
 import './candidate.module.scss';
 import { useEffect, useState } from 'react';
+import useAPI from '../../hooks/useAPI';
+import { useAuthContext } from '../../context/AuthProvider';
 
 const Candidates = (props) => {
   const {
@@ -39,6 +41,7 @@ const Candidates = (props) => {
         }
       },
       party,
+      token,
     },
   } = props;
 
@@ -52,10 +55,14 @@ const Candidates = (props) => {
   } = party || {};
 
   const [competitors, setCompetitors] = useState([]);
+  const [, fetchData] = useAPI();
   const router = useRouter();
+  const { updateToken } = useAuthContext();
 
   async function fetchCompetitors() {
-    const response = await fetch(`/api/candidates?constituency_id=${constituencyId}`);
+    const response = await fetchData('/api/candidates', {
+      constituency_id: constituencyId,
+    });
     const { data: candidates } = await response.json();
 
     // Filter based on constituency id
@@ -64,6 +71,12 @@ const Candidates = (props) => {
       .filter((candidate) => candidate.id !== id);
     setCompetitors(filteredCandidates);
   }
+
+  useEffect(() => {
+    if (token) {
+      updateToken(token);
+    }
+  }, [token]);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Quick hack to fake page reload
@@ -229,11 +242,12 @@ export async function getServerSideProps(context) {
   const api = new MaePaySohAPI(cookies.token);
 
   const response = await api.getCandidateById(params.candidate);
-  const { data } = response.data;
+  const { data, token } = response.data;
 
   return {
     props: {
       candidate: { ...data, ...data.attributes },
+      ...(token && { token }),
     },
   };
 }

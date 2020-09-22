@@ -1,3 +1,4 @@
+import axios from 'axios';
 import nookies, { parseCookies } from 'nookies';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { fetchToken } from '../pages/api/auth';
@@ -29,7 +30,7 @@ const AuthProvider = (props) => {
         return;
       };
 
-      const response = await fetch(`/api/auth`, {
+      const response = await axios.get(`/api/auth`, {
         method: 'POST',
       });
 

@@ -38,8 +38,10 @@ const TownshipModal = (props) => {
 
     if (townshipsLoaded) return;
 
-    const response = await fetch(`/api/locations?type=townships&state_region=${stateRegion}`);
-    const result = await response.json();
+    const response = await fetchData('/api/locations', {
+      type: 'townships',
+      state_region: stateRegion,
+    });
 
     const clonedTownships = [...townships];
 
