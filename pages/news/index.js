@@ -10,24 +10,25 @@ import NewsList from '../../components/News/NewsList/NewsList';
 
 import './news.module.scss';
 import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
+import useAPI from '../../hooks/useAPI';
 
 const News = () => {
   const [news, setNews] = useState([]);
   const [page, setPage] = useState(1);
+  const [, fetchData] = useAPI();
 
   useEffect(() => {
     fetchNews();
   }, []);
 
+
   async function fetchNews(pageToLoad = 1) {
     try {
-      const response = await fetch(`/api/news?page=${pageToLoad}`, {
-        credentials: 'same-origin',
+      const { data } = await fetchData('/api/news', {
+        page: pageToLoad,
       });
 
-      const result = await response.json();
-
-      return setNews(news.concat(result.data));
+      return setNews(news.concat(data));
     } catch (error) {
       console.error(error);
     }

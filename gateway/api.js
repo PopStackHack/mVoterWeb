@@ -1,10 +1,9 @@
+import axios from 'axios';
 import {
   signToken,
   decodeToken,
 } from '../utils/authClient';
 
-import axios from 'axios';
-// Not a graceful implementation. Please someone enlighten me on this one.
 import { fetchToken } from '../pages/api/auth';
 
 class MaePaySohAPI {
@@ -16,8 +15,7 @@ class MaePaySohAPI {
 
     axiosInstance.interceptors.request.use(
       async (config) => {
-        const decodedToken = await decodeToken(token);
-        config.headers['api-token'] = decodedToken;
+        config.headers['api-token'] = token;
         return config;
       },
       (error) => {
@@ -29,27 +27,24 @@ class MaePaySohAPI {
       (response) => {
         return response;
       }, async function (error) {
+
         if (error.response.status !== 401) {
           return Promise.reject(error);
         }
 
         const config = error.config;
 
-        if (error.response.status === 401 && !config.retry) { // Token key not authorized for use
 
+        if (error.response.status === 401 && !error.response.retry) { // Token key not authorized for use
           const apiToken = await fetchToken(); // This is signed
           config.headers['api-token'] = apiToken;
-          config.retry = true;
-          config.data = { token: apiToken };
 
-          return axios.request(config)
-            .then((response) => {
-              response.data.retry = true;
-              response.data.token = apiToken;
-              console.log(response.data);
-              return Promise.resolve(response);
-            })
-            .catch((error) => Promise.reject(error));
+          const response = await axios.request(config);
+
+          response.retry = true;
+          response.data.token = apiToken;
+
+          return Promise.resolve(response);
         }
         return Promise.reject(error);
       }

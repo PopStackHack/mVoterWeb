@@ -9,9 +9,8 @@ export default async function (req, res) {
 
     const api = new MaePaySohAPI(req.cookies.token);
     const response = await api.getFaqs({ page, category });
-    const { data, pagination } = response.data;
 
-    return res.status(200).send({ data, pagination });
+    return res.status(200).send(response.data);
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal server error');

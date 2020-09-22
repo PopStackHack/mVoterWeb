@@ -29,9 +29,10 @@ const AuthProvider = (props) => {
         return;
       };
 
-      const response = await fetch((`/api/auth`), {
-        method: 'POST'
+      const response = await fetch(`/api/auth`, {
+        method: 'POST',
       });
+
       const result = await response.json();
       const {
         token: apiToken,

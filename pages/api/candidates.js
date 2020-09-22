@@ -12,6 +12,7 @@ export default async function (req, res) {
 
     return res.status(200).send({
       // pre-sort the data here before Frontend
+      token: response.data.token,
       data: data
         .sort((a, b) => a.attributes.ballot_order - b.attributes.ballot_order),
     });

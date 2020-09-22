@@ -3,13 +3,14 @@ import Head from 'next/head';
 import myanmarNumber from 'myanmar-numbers';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import nookies from 'nookies';
+
 import Layout from '../../components/Layout/Layout';
 import PeopleFillIcon from '../../components/Common/Icons/activePeople';
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { formatHouse, formatConstituency, formatBirthDay } from '../../utils/textFormatter';
 import MaePaySohAPI from '../../gateway/api';
-import { fetchToken } from '../api/auth';
 
 import './candidate.module.scss';
 import { useEffect, useState } from 'react';
@@ -224,8 +225,8 @@ export async function getServerSideProps(context) {
     params,
   } = context;
 
-  const token = await fetchToken(context);
-  const api = new MaePaySohAPI(token);
+  const cookies = nookies.get(context);
+  const api = new MaePaySohAPI(cookies.token);
 
   const response = await api.getCandidateById(params.candidate);
   const { data } = response.data;

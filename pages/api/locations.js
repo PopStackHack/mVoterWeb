@@ -12,25 +12,21 @@ export default async function (req, res) {
 
     const api = new MaePaySohAPI(req.cookies.token);
 
-    let result;
+    let response;
 
     if (type === 'state_regions') {
-      const response = await api.getStateRegions();
-      result = response.data.data; // ¯\_(ツ)_/¯
+      response = await api.getStateRegions();
     } else if (type === 'townships') {
-      const response = await api.getTownships(state_region);
-      result = response.data.data; // ¯\_(ツ)_/¯
+      response = await api.getTownships(state_region);
     } else if (type === 'wards') {
-      const response = await api.getWards(state_region, township);
-      result = response.data.data; // ¯\_(ツ)_/¯
+      response = await api.getWards(state_region, township);
     } else if (type === 'details') {
-      const response = await api.getWardDetails(state_region, township, ward);
-      result = response.data.data;
+      response = await api.getWardDetails(state_region, township, ward);
     } else {
       throw new Error('Location type not provided.');
     }
 
-    return res.status(200).send({ data: result });
+    return res.status(200).send(response.data);
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal server error');

@@ -11,10 +11,10 @@ export default async function (req, res) {
 
     const api = new MaePaySohAPI(req.cookies.token);
 
-    const response = await api.searchFaqs({ query, page, item_per_page });
-    const { data } = response.data;
+    const response = await api
+      .searchFaqs({ query, page, item_per_page });
 
-    return res.status(200).send({ data });
+    return res.status(200).send(response.data);
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal server error');

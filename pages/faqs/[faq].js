@@ -1,8 +1,10 @@
+import nookies from 'nookies';
 import Head from 'next/head';
+import { useEffect } from 'react';
 import MaePaySohAPI from '../../gateway/api';
 import Layout from '../../components/Layout/Layout';
 import { formatFAQCategory } from '../../utils/textFormatter';
-import { fetchToken } from '../api/auth';
+import { useAuthContext } from '../../context/AuthProvider';
 
 import './faq.module.scss';
 
@@ -17,7 +19,16 @@ const FAQ = (props) => {
       law_source: lawSource,
       article_source: articleSource,
     },
+    token,
   } = props;
+
+  const { updateToken } = useAuthContext();
+
+  useEffect(() => {
+    if (token) {
+      updateToken(token);
+    }
+  }, [token]);
 
   return (
     <Layout shouldHideBottomNav>
@@ -60,12 +71,12 @@ export async function getServerSideProps(context) {
   const {
     params,
   } = context;
- // IDEA: Could map the snake cased fields dynamically with camel case
-  const token = await fetchToken(context);
-  const api = new MaePaySohAPI(token);
 
+  const cookies = nookies.get(context);
+  const api = new MaePaySohAPI(cookies.token);
   const response = await api.getFaqById(params.faq);
-  const { data } = response.data;
+
+  const { data, token } = response.data;
 
   return {
     props: {
@@ -73,6 +84,7 @@ export async function getServerSideProps(context) {
         ...data,
         ...data.attributes,
       },
+      ...(token && { token }),
     },
   };
 }

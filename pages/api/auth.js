@@ -12,14 +12,11 @@ const authAPI = axios.create({
   },
 });
 
-export async function fetchToken(context) {
+export async function fetchToken() {
   // This is rather a side effect
   const response = await authAPI.post('/authenticate');
   const { token: apiToken } = response.data;
-  // Sign JWT from here
-  const token = signToken(apiToken);
-
-  return token;
+  return apiToken;
 }
 
 export default async function auth(req, res) {

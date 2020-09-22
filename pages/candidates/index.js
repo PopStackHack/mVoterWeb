@@ -12,6 +12,7 @@ import StateRegionCandidateList from '../../components/Candidates/StateRegionCan
 import { hasFullLocation } from '../../utils/helpers';
 
 import './candidates.module.scss';
+import useAPI from '../../hooks/useAPI';
 
 const Candidates = () => {
   const [constituencies, setConstituencies] = useState([]);
@@ -21,6 +22,7 @@ const Candidates = () => {
   const [stateOrRegion, setStateOrRegion] = useState('');
   const [shouldShowLocationLink, setShowLocationLink] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [, fetchData] = useAPI();
 
   // Pre-fetch constituencies
   useEffect(() => {
@@ -62,14 +64,18 @@ const Candidates = () => {
     const township = localStorage.getItem('township');
     const ward = localStorage.getItem('wardVillage');
 
-    const response = await fetch(`/api/locations?type=details&state_region=${stateRegion}&township=${township}&ward=${ward}`);
-    const result = await response.json();
+    const { data } = await fetchData('/api/locations', {
+      type: 'details',
+      state_region: stateRegion,
+      township,
+      ward,
+    });
 
     const {
       pyithu_hluttaw_constituency,
       amyotha_hluttaw_constituency,
       state_hluttaw_constituency,
-    } = result.data.attributes;
+    } = data.attributes;
 
     // map constituencies into house type
     setConstituencies([
@@ -105,17 +111,18 @@ const Candidates = () => {
       return;
     }
 
-    const response = await fetch(`/api/candidates?constituency_id=${constituencyId}`);
-    const result = await response.json();
+    const response = await fetchData('/api/candidates', {
+      constituency_id: constituencyId,
+    });
 
     // Set Candidates based on house type
     if (house === 'pyithu') {
       // Cache and don't fetch again
-      setPyiThuCandidates(result.data);
+      setPyiThuCandidates(response.data.data);
     } else if (house === 'amyotha') {
-      setAmyoThaCandidates(result.data);
+      setAmyoThaCandidates(response.data.data);
     } else if (house === 'state') {
-      setStateCandidates(result.data);
+      setStateCandidates(response.data.data);
     } else {
       throw new Error('House type not defined.');
     }
