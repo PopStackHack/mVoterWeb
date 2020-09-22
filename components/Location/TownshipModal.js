@@ -38,7 +38,7 @@ const TownshipModal = (props) => {
 
     if (townshipsLoaded) return;
 
-    const response = await fetchData('/api/locations', {
+    const { data } = await fetchData('/api/locations', {
       type: 'townships',
       state_region: stateRegion,
     });
@@ -47,7 +47,7 @@ const TownshipModal = (props) => {
 
     clonedTownships.push({
       stateRegion,
-      townships: result.data,
+      townships: data,
     });
 
     setTownships(clonedTownships);

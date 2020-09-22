@@ -21,13 +21,13 @@ const WardVillageModal = (props) => {
   }, [stateRegion, township]);
 
   async function fetchWardVillage() {
-    const response = await fetchData('/api/locations', {
+    const { data } = await fetchData('/api/locations', {
       type: 'wards',
       state_region: stateRegion,
       township,
     });
 
-    setWardVillages(response.data);
+    setWardVillages(data);
   }
 
   return (
