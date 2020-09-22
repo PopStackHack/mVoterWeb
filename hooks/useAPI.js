@@ -5,7 +5,7 @@ import { useAuthContext } from '../context/AuthProvider';
 function useAPI() {
   const { token, updateToken } = useAuthContext();
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(data);
+  const [data, setData] = useState();
   const [error, setError] = useState();
 
   async function fetchData(url, query) {

@@ -116,54 +116,60 @@ const FAQs = (props) => {
       </div>
       <section id="FAQS" className="FAQS">
         <div>
-          <div className="row align-items-center mb-3">
-            <div className="col-xs-12 col-lg-6">
-              <div className="ballot-stack row no-gutters align-items-center mb-xs-2 box-hover" onClick={() => router.push('/faqs/ballots')}>
-                <div className="col-4">
-                  <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
-                </div>
-                <div className="col-8">ပယ်မဲ၊ ခိုင်လုံမဲ နမူနာများ</div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-lg-6">
-              <div className="prohibitions row">
-                <div className="col-3 prohibition">
-                  <img src="/prohibition_signs/no_selfie.png" alt="No Selfie"/>
-                  <div>Selfie <br />မရိုက်ရ</div>
-                </div>
-                <div className="col-3 prohibition">
-                  <img src="/prohibition_signs/no_photo.png" alt="No Photo"/>
-                  <div>ဓာတ်ပုံ <br />မရိုက်ရ</div>
-                </div>
-                <div className="col-3 prohibition">
-                  <img src="/prohibition_signs/no_video.png" alt="No Video"/>
-                  <div>ဗီဒီယို <br />မရိုက်ရ</div>
-                </div>
-                <div className="col-3 prohibition">
-                  <img src="/prohibition_signs/no_recording.png" alt="No Recording"/>
-                  <div>အသံ <br />မသွင်းရ</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 d-flex justify-content-center">
-              <a
-                style={{ textDecoration: 'none' }}
-                href="//mvoterapp.com/election-law"
-                rel="noopener"
-                target="_blank">
-                <div className="unfair-law box-hover">
-                  <div>
-                    <GavelIcon />
-                  </div>
-                  <div className="unfair-law-text">
-                    ရွေးကောက်ပွဲဆိုင်ရာ ပြစ်မှု၊ ပြစ်ဒဏ်များနှင့် တရားမဲ့ပြုကျင့်မှုများ
+          {
+            faqCategory === 'voter_list' &&
+              <div className="row align-items-center mb-3">
+                <div className="col-xs-12 col-lg-6">
+                  <div className="ballot-stack row no-gutters align-items-center mb-xs-2 box-hover" onClick={() => router.push('/faqs/ballots')}>
+                    <div className="col-4">
+                      <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
+                    </div>
+                    <div className="col-8">ပယ်မဲ၊ ခိုင်လုံမဲ နမူနာများ</div>
                   </div>
                 </div>
-              </a>
-            </div>
-          </div>
+                <div className="col-xs-12 col-lg-6">
+                  <div className="prohibitions row">
+                    <div className="col-3 prohibition">
+                      <img src="/prohibition_signs/no_selfie.png" alt="No Selfie"/>
+                      <div>Selfie <br />မရိုက်ရ</div>
+                    </div>
+                    <div className="col-3 prohibition">
+                      <img src="/prohibition_signs/no_photo.png" alt="No Photo"/>
+                      <div>ဓာတ်ပုံ <br />မရိုက်ရ</div>
+                    </div>
+                    <div className="col-3 prohibition">
+                      <img src="/prohibition_signs/no_video.png" alt="No Video"/>
+                      <div>ဗီဒီယို <br />မရိုက်ရ</div>
+                    </div>
+                    <div className="col-3 prohibition">
+                      <img src="/prohibition_signs/no_recording.png" alt="No Recording"/>
+                      <div>အသံ <br />မသွင်းရ</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          }
+          {
+            faqCategory === 'candidate' &&
+              <div className="row">
+                <div className="col-12 d-flex justify-content-center">
+                  <a
+                    style={{ textDecoration: 'none' }}
+                    href="//mvoterapp.com/election-law"
+                    rel="noopener"
+                    target="_blank">
+                    <div className="unfair-law box-hover">
+                      <div>
+                        <GavelIcon />
+                      </div>
+                      <div className="unfair-law-text">
+                        ရွေးကောက်ပွဲဆိုင်ရာ ပြစ်မှု၊ ပြစ်ဒဏ်များနှင့် တရားမဲ့ပြုကျင့်မှုများ
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          }
         </div>
           <InfiniteScroll
             next={loadMoreFaqs}

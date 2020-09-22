@@ -59,7 +59,7 @@ const AuthProvider = (props) => {
 
   return (
     <AuthContext.Provider value={{ token, updateToken }}>
-      {token ? children : <div></div>}
+      {children}
     </AuthContext.Provider>
   );
 }
