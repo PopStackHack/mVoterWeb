@@ -79,9 +79,11 @@ const Ballots = () => {
   async function fetchBallots(category = 'normal') {
     setLoading(true);
 
-    const { data } = await useAPI('/api/ballots', {
+    const { data } = await fetchData('/api/ballots', {
       category,
     });
+
+    console.log(data);
 
     setBallots(data);
 
