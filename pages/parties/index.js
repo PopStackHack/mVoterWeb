@@ -3,18 +3,21 @@ import Head from 'next/head';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import useAPI from '../../hooks/useAPI';
 import Layout from '../../components/Layout/Layout';
-import { getParties } from '../../gateway/api';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import Button from '../../components/Common/Button/Button';
 import PartyList from '../../components/Parties/PartyList/PartyList';
+import { useAuthContext } from '../../context/AuthProvider';
 
 import './parties.module.scss';
 
 const Parties = (props) => {
   // Inject AJAX call on first load
+  const { updateToken } = useAuthContext();
   const [parties, setParties] = useState([]);
   const [page, setPage] = useState(1);
+  const [, fetchData] = useAPI();
 
   useEffect(() => {
     // initial load
@@ -32,8 +35,10 @@ const Parties = (props) => {
         itemPerPage = 10;
       }
 
-      const response = await fetch(`/api/parties?page=${pageQuery}&item_per_page=${itemPerPage}`);
-      const { data, pagination } = await response.json();
+      const { data } = await fetchData('/api/parties', {
+        page: pageQuery,
+        item_per_page: itemPerPage,
+      });
 
       setParties(parties.concat(data));
     } catch (error) {

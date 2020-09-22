@@ -7,8 +7,8 @@ const FaqList = ({ faqs = [] }) => {
   return (
     <ul className="FaqList">
       {
-        faqs.map((faq) => (
-          <FaqItem key={faq.id} faq={faq} />
+        faqs.map((faq, index) => (
+          <FaqItem key={index} faq={faq} />
         ))
       }
     </ul>

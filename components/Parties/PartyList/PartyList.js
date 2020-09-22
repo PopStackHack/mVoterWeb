@@ -6,8 +6,8 @@ const PartyList = ({ parties = [] }) => {
     <div className="container-lg-fluid">
       <ul className="PartyList row no-gutters">
         {
-          parties.map((party) => (
-            <li key={party.id} className="col-lg-6 col-xs-12 PartyList__itemWrapper">
+          parties.map((party, index) => (
+            <li key={index} className="col-lg-6 col-xs-12 PartyList__itemWrapper">
               <PartyItem party={party} />
             </li>
           ))

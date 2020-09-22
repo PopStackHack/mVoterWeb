@@ -1,6 +1,7 @@
 import 'flexboxgrid';
 import Head from 'next/head';
 import App from 'next/app';
+import AuthProvider from '../context/AuthProvider';
 import 'bootstrap/dist/css/bootstrap-reboot.css';
 import 'bootstrap/dist/css/bootstrap-grid.css';
 import '../styles/base.scss';
@@ -21,7 +22,9 @@ function mVoterApp({ Component, pageProps }) {
         <meta property="og:site_name" content="mVoter 2020" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       </Head>
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </>
   );
 }

@@ -1,13 +1,15 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import nookies from 'nookies';
 import Head from 'next/head';
 import myanmarNumbers from 'myanmar-numbers';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import MaePaySohAPI from '../../gateway/api';
-import { fetchToken } from '../api/auth';
+import Button from '../../components/Common/Button/Button';
+import { useAuthContext } from '../../context/AuthProvider';
 
 import './party.module.scss';
-import Button from '../../components/Common/Button/Button';
 
 const Party = (props) => {
   const {
@@ -29,9 +31,18 @@ const Party = (props) => {
       registration_application_date: registrationApplicationDate,
       registration_approved_date: registrationApprovedDate,
     },
+    token = null,
   } = props;
 
   const router = useRouter();
+  const { updateToken } = useAuthContext(token);
+
+  useEffect(() => {
+    if (token) {
+      updateToken(token);
+    }
+  }, [token]);
+
   return (
     <Layout>
       <Head>
@@ -178,12 +189,11 @@ export async function getServerSideProps(context) {
     params,
   } = context;
 
-  const token = await fetchToken(context);
-  const api = new MaePaySohAPI(token);
-
+  const cookies = nookies.get(context);
+  const api = new MaePaySohAPI(cookies.token);
   const response = await api.getPartyById(params.party);
-  const { data } = response.data;
 
+  const { data, token } = response.data;
   // expand everything inside data attributes to primary object
   return {
     props: {
@@ -191,6 +201,7 @@ export async function getServerSideProps(context) {
         ...data,
         ...data.attributes,
       },
+      ...(token && { token }),
     },
   };
 }

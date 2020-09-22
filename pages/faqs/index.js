@@ -14,6 +14,7 @@ import GavelIcon from '../../components/Common/Icons/gavel';
 import { FAQ_CATEGORY } from '../../utils/constants';
 
 import './faqs.module.scss';
+import useAPI from '../../hooks/useAPI';
 
 const FAQs = (props) => {
   const [faqs, setFaqs] = useState([]);
@@ -22,7 +23,7 @@ const FAQs = (props) => {
   const [faqCategory, setFaqCategory] = useState('voter_list');
 
   const router = useRouter();
-
+  const [, fetchData] = useAPI();
 
   useEffect(() => {
     fetchFaqs()
@@ -35,10 +36,12 @@ const FAQs = (props) => {
 
   async function fetchFaqs(category = 'voter_list', pageToLoad = 1) {
     try {
-      const response = await fetch(`/api/faqs?page=${pageToLoad}&category=${category}`);
-      const { data, pagination } = await response.json();
+      const data = await fetchData('/api/faqs', {
+        page: pageToLoad,
+        category,
+      });
 
-      return { data, pagination };
+      return data;
     } catch (error) {
       if (error.response) {
         console.log(error.response);

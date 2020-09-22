@@ -8,6 +8,7 @@ import { debounce } from '../../utils/helpers';
 import React, { useCallback, useState, Children } from 'react';
 
 import './SearchPage.scss';
+import useAPI from '../../hooks/useAPI';
 
 const SearchPage = (props) => {
   const {
@@ -21,6 +22,7 @@ const SearchPage = (props) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [searchString, setSearchString] = useState('');
+  const [, fetchData] = useAPI();
 
   const debouncedCall = useCallback(
     debounce((value) => apiCall(value), 600)
@@ -33,13 +35,14 @@ const SearchPage = (props) => {
       itemPerPage = 10;
     }
 
-    const response = await fetch(
-      `/api/${endpoint}?page=${page}&query=${value || searchString}&item_per_page=${itemPerPage}`
-    );
-    const result = await response.json();
+    const { data } = await fetchData(`/api/${endpoint}`, {
+      page,
+      query: value || searchString,
+      item_per_page: itemPerPage,
+    });
 
     setPage(page + 1);
-    return setList(list.concat(result.data));
+    return setList(list.concat(data));
   }
 
   function loadMoreData() {

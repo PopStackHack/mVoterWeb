@@ -9,19 +9,14 @@ export default async function (req, res) {
       item_per_page = 25,
     } = req.query;
 
-    const token = await fetchToken(req);
+    const api = new MaePaySohAPI(req.cookies.token);
 
-    if (!token) {
-      return res.status(500).send({ error: 'No secret token provided.' })
-    }
+    const response = await api
+      .searchFaqs({ query, page, item_per_page });
 
-    const api = new MaePaySohAPI(token);
-
-    const response = await api.searchFaqs({ query, page, item_per_page });
-    const { data } = response.data;
-
-    return res.status(200).send({ data });
+    return res.status(200).send(response.data);
   } catch (error) {
     console.error(error);
+    return res.status(500).send('Internal server error');
   }
 }

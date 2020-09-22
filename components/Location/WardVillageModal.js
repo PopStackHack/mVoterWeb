@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import useAPI from '../../hooks/useAPI';
 import Modal from '../Common/Modal/Modal';
 
 const WardVillageModal = (props) => {
@@ -11,6 +12,7 @@ const WardVillageModal = (props) => {
   } = props;
 
   const [wardVillages, setWardVillages] = useState([]);
+  const [, fetchData] = useAPI();
 
   useEffect(() => {
     if (stateRegion && township) {
@@ -19,10 +21,13 @@ const WardVillageModal = (props) => {
   }, [stateRegion, township]);
 
   async function fetchWardVillage() {
-    const response = await fetch(`/api/locations?type=wards&state_region=${stateRegion}&township=${township}`)
-    const result = await response.json();
+    const response = await fetchData('/api/locations', {
+      type: 'wards',
+      state_region: stateRegion,
+      township,
+    });
 
-    setWardVillages(result.data);
+    setWardVillages(response.data);
   }
 
   return (

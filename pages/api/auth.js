@@ -1,6 +1,9 @@
 import axios from 'axios';
 import nookies from 'nookies';
+import { signToken } from '../../utils/authClient';
 import { serializedCookie } from '../../utils/authClient';
+
+const jwtKey = process.env.JWT_KEY;
 
 const authAPI = axios.create({
   baseURL: process.env.BASE_URL,
@@ -9,20 +12,11 @@ const authAPI = axios.create({
   },
 });
 
-export async function fetchToken(context) {
+export async function fetchToken() {
   // This is rather a side effect
-  const cookies = nookies.get(context);
-
-  if (cookies && cookies.token) {
-    return cookies.token;
-  }
-
   const response = await authAPI.post('/authenticate');
-  const { token } = response.data;
-
-  nookies.set(context, 'token', token);
-
-  return token;
+  const { token: apiToken } = response.data;
+  return apiToken;
 }
 
 export default async function auth(req, res) {
@@ -32,5 +26,6 @@ export default async function auth(req, res) {
     return res.status(200).send({ token });
   } catch (error) {
     console.error(error);
+    return res.status(500).send('Internal server error');
   }
 };

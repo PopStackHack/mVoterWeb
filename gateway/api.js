@@ -1,15 +1,56 @@
 import axios from 'axios';
+import {
+  signToken,
+  decodeToken,
+} from '../utils/authClient';
+
+import { fetchToken } from '../pages/api/auth';
 
 class MaePaySohAPI {
   constructor(token) {
-    this.token = token;
-    this.api = axios.create({
+    const axiosInstance = axios.create({
       baseURL: process.env.BASE_URL,
       timeout: 10000,
-      headers: {
-        'api-token': token,
-      },
     });
+
+    axiosInstance.interceptors.request.use(
+      async (config) => {
+        config.headers['api-token'] = token;
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      },
+    );
+
+    axiosInstance.interceptors.response.use(
+      (response) => {
+        return response;
+      }, async function (error) {
+
+        if (error.response.status !== 401) {
+          return Promise.reject(error);
+        }
+
+        const config = error.config;
+
+
+        if (error.response.status === 401 && !error.response.retry) { // Token key not authorized for use
+          const apiToken = await fetchToken(); // This is signed
+          config.headers['api-token'] = apiToken;
+
+          const response = await axios.request(config);
+
+          response.retry = true;
+          response.data.token = apiToken;
+
+          return Promise.resolve(response);
+        }
+        return Promise.reject(error);
+      }
+    );
+
+    this.api = axiosInstance;
   }
 
   getConstituencies(query) {
@@ -145,8 +186,7 @@ class MaePaySohAPI {
         page,
         item_per_page,
       },
-    })
-      .catch(console.error);
+    });
   }
 
   getPartyById(id) {

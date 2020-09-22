@@ -5,6 +5,7 @@ import Collapsible from 'react-collapsible';
 import Modal from '../Common/Modal/Modal';
 
 import './locationCollapse.scss';
+import useAPI from '../../hooks/useAPI';
 
 const TownshipModal = (props) => {
   const {
@@ -15,6 +16,7 @@ const TownshipModal = (props) => {
   const [stateRegions, setStateRegions] = useState([]);
   const [townships, setTownships] = useState([]);
   const [isTownshipsLoading, setTownshipsLoading] = useState(false);
+  const [, fetchData] = useAPI();
 
   useEffect(() => {
     if (isModalOpen) {
@@ -23,10 +25,11 @@ const TownshipModal = (props) => {
   }, [isModalOpen]);
 
   async function fetchStateRegions() {
-    const response = await fetch(`/api/locations?type=state_regions`);
-    const result = await response.json();
+    const response = await fetchData('/api/locations', {
+      type: 'state_regions',
+    });
 
-    setStateRegions(result.data);
+    setStateRegions(response.data);
   }
 
   async function fetchTownships(stateRegion) {

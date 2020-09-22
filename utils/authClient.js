@@ -1,17 +1,22 @@
-import cookie from 'cookie';
+import jwt from 'jsonwebtoken';
 
-const MPS_COOKIE_SECRET = process.env.COOKIE_SECRET;
+const jwtSecret = process.env.JWT_KEY;
 
-export const extractMPSToken = (cookieToParse) => {
-  const cookies = cookie.parse(cookieToParse ?? '');
-  return cookies[MPS_COOKIE_SECRET];
+async function signToken (tokenToSign) {
+  const signedToken = jwt.sign({ token: tokenToSign }, jwtSecret, { algorithm: 'HS256' });
+  return signedToken;
 }
 
-export const serializedCookie = (userSecret) => {
-  return cookie.serialize(process.env.COOKIE_SECRET, userSecret, {
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 864000,
-    httpOnly: true,
-    path: '/',
-  });
+async function decodeToken (jwtToken) {
+  try {
+    const decoded = await jwt.verify(jwtToken, jwtSecret, { algorithms: ['HS256'] });
+    return decoded;
+  } catch (error) {
+    console.error('DECODING ERROR => ', error);
+  }
 }
+
+module.exports = {
+  signToken,
+  decodeToken,
+};
