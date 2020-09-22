@@ -60,10 +60,9 @@ const Candidates = (props) => {
   const { updateToken } = useAuthContext();
 
   async function fetchCompetitors() {
-    const response = await fetchData('/api/candidates', {
+    const { data: candidates } = await fetchData('/api/candidates', {
       constituency_id: constituencyId,
     });
-    const { data: candidates } = await response.json();
 
     // Filter based on constituency id
     const filteredCandidates = candidates

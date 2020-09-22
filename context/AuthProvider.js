@@ -30,14 +30,13 @@ const AuthProvider = (props) => {
         return;
       };
 
-      const response = await axios.get(`/api/auth`, {
+      const {
+        data: {
+          token: apiToken,
+        },
+      } = await axios.get(`/api/auth`, {
         method: 'POST',
       });
-
-      const result = await response.json();
-      const {
-        token: apiToken,
-      } = result;
 
       nookies.set(null, 'token', apiToken, {
         path: '/',
