@@ -15,7 +15,11 @@ class MaePaySohAPI {
 
     axiosInstance.interceptors.request.use(
       async (config) => {
-        config.headers['api-token'] = token;
+
+        if (token) {
+          config.headers['api-token'] = token;
+        }
+
         return config;
       },
       (error) => {
