@@ -38,7 +38,7 @@ const CandidateList = (props) => {
             } = party || {};
 
             return (
-              <div className="col-lg-6 col-xs-12 CandidateList__itemWrapper" key={id}>
+              <div className="col-lg-6 col-12 CandidateList__itemWrapper" key={id}>
                 <Link href={`/candidates/${id}`} prefetch={false}>
                   <div>
                     <Card className="CandidateList__item box-hover">

@@ -19,7 +19,7 @@
     background-color: #b6b6b6;
   }
   &__info {
-    max-width: 62.5%;
+    max-width: 60%;
     margin-left: 8px;
     .name {
       font-weight: 700;
@@ -27,6 +27,7 @@
   }
   &__party {
     margin-top: 5px;
+    line-height: 25px;
   }
   &__partyFlag {
     position: absolute;

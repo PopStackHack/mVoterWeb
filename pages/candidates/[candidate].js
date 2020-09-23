@@ -109,7 +109,7 @@ const Candidates = (props) => {
       </AppHeader>
       <section className="Candidate">
         <div className="row">
-          <div className="col-xs-12 col-lg-3">
+          <div className="col-12 col-lg-3">
             <div className="Candidate__imageWrapper">
               {/* <img src={image} className="Candidate__image" alt={name}/> */}
               <div className="Candidate__image" style={{ backgroundImage: `url("${image}")` }}></div>
@@ -118,7 +118,7 @@ const Candidates = (props) => {
                 အနိုင်ရ</div> */}
             </div>
           </div>
-          <div className="col-xs-12 col-lg-9 Candidate__infoHeaderWrapper">
+          <div className="col-12 col-lg-9 Candidate__infoHeaderWrapper">
             <h1 className="Candidate__name">{name}</h1>
             <div className="">
               <img src={partySealImage ?? individualLogo} alt={partyName} className="Candidate__partyFlag" />
@@ -142,13 +142,13 @@ const Candidates = (props) => {
           </div>
         </div>
         <div className="row align-items-center Candidate__info" style={{ marginTop: 12 }}>
-          <div className="col-xs-3 offset-lg-3 col-lg-3">
+          <div className="col-3 offset-lg-3 col-lg-3">
             <span className="Candidate__age">
               {myanmarNumber(age, 'my')}
             </span>
             &nbsp; နှစ်
           </div>
-          <div className="col-xs-9 col-lg-3">
+          <div className="col-9 col-lg-3">
             <div className="Candidate__infoLabel">
               မွေးသက္ကရာဇ်
             </div>
@@ -159,22 +159,22 @@ const Candidates = (props) => {
         </div>
 
         <div className="row Candidate__info">
-          <div className="col-xs-12 offset-lg-3 col-lg-3">
+          <div className="col-12 offset-lg-3 col-lg-3">
             <div className="Candidate__infoLabel">ပညာအရည်အချင်း</div>
             <div className="Candidate__infoAnswer">{education}</div>
           </div>
-          <div className="col-xs-12 col-lg-3">
+          <div className="col-12 col-lg-3">
             <div className="Candidate__infoLabel">အလုပ်အကိုင်</div>
             <div className="Candidate__infoAnswer">{work}</div>
           </div>
-          <div className="col-xs-12 col-lg-3">
+          <div className="col-12 col-lg-3">
             <div className="Candidate__infoLabel">လူမျိုး၊ ဘာသာ</div>
             <div className="Candidate__infoAnswer">{ethnicity}၊ {religion}</div>
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-type Candidate__infoLabel">မိခင်</div>
-          <div className="col-xs-10 offset-lg-3 col-lg-6 parent-info">
+          <div className="col-2 offset-lg-3 col-lg-3 parent-type Candidate__infoLabel">မိခင်</div>
+          <div className="col-10 offset-lg-3 col-lg-6 parent-info">
             <div className="parent-info-name">
               <div className="Candidate__infoLabel">
                 အမည်
@@ -196,8 +196,8 @@ const Candidates = (props) => {
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-type Candidate__infoLabel">ဖခင်</div>
-          <div className="col-xs-10 offset-lg-3 col-lg-6 parent-info">
+          <div className="col-2 offset-lg-3 col-lg-3 parent-type Candidate__infoLabel">ဖခင်</div>
+          <div className="col-10 offset-lg-3 col-lg-6 parent-info">
             <div className="parent-info-name">
               <div className="Candidate__infoLabel">
                 အမည်
@@ -220,7 +220,7 @@ const Candidates = (props) => {
         </div>
 
         <div className="row competitors-wrapper mb-1">
-          <div className="col-xs-12 text-center">
+          <div className="col-12 text-center">
             {PeopleFillIcon}
             <p className="text-bold competitors-text">ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ</p>
           </div>

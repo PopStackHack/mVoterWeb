@@ -70,10 +70,10 @@ const Party = (props) => {
       </AppHeader>
       <section className="Party">
         <div className="Party__headInfo row">
-          <div className="col-xs-12 col-lg-3">
+          <div className="col-12 col-lg-3">
             <img src={sealImage} alt="Party Seal" className="Party__seal mb-1" />
           </div>
-          <div className="col-xs-12 col-lg-9">
+          <div className="col-12 col-lg-9">
             <h1 className="Party__title">{nameBurmese}</h1>
             <h1 className="Party__engTitle">{nameEnglish}</h1>
             {
@@ -89,7 +89,7 @@ const Party = (props) => {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 offset-lg-3 col-lg-9">
+          <div className="col-12 offset-lg-3 col-lg-9">
             <div className="Party__info Party__flagInfo">
               <img src={flagImage} alt="" className="Party__flag"/>
               <div className="ml-3">

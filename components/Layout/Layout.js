@@ -19,7 +19,7 @@ const Layout = (props) => {
           <div className="col-lg-3 d-none-xs Layout__sideNav">
             <Navigation />
           </div>
-          <div className="col-xs-12 col-lg-9">
+          <div className="col-12 col-lg-9">
             <div id="Layout" className="Layout__wrapper" {...other}>
               {children}
             </div>

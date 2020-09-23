@@ -1,4 +1,3 @@
-import 'flexboxgrid';
 import Head from 'next/head';
 import App from 'next/app';
 import AuthProvider from '../context/AuthProvider';

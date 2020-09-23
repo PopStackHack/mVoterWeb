@@ -20,7 +20,7 @@ const About = () => {
       </AppHeader>
       <section className="About container">
         <div className="row text-center my-2">
-          <div className="col-xs-12">
+          <div className="col-12">
             <img src="/about/mvoter2020_new_logo.png" alt="mVoter Logo" className="mVoterLogo"/>
             <h1>mVoter</h1>
             <p>Award-winning voter education app for Myanmar elections since 2015.</p>
@@ -57,20 +57,20 @@ const About = () => {
         </div>
 
         <div className="row text-center my-3">
-          <div className="col-xs-12">
+          <div className="col-12">
             <a href="//mvoterapp.com/terms" rel="noopener" target="_blank">အသုံးပြုမှုဆိုင်ရာ စည်းကမ်းချက်များ</a>
           </div>
         </div>
 
         <div className="row text-center my-3">
-          <div className="col-xs-12">
+          <div className="col-12">
             <a href="//mvoterapp.com/privacy" rel="noopener" target="_blank">ကိုယ်ရေးအချက်အလက် မူဝါဒ</a>
           </div>
         </div>
 
         <div className="row text-center my-3">
-          <div className="col-xs-12">မေးမြန်းအကြံပြုလိုပါက ဆက်သွယ်ရန်</div>
-          <div className="col-xs-12 suggestive-links">
+          <div className="col-12">မေးမြန်းအကြံပြုလိုပါက ဆက်သွယ်ရန်</div>
+          <div className="col-12 suggestive-links">
             <a href="//m.me/mvoterapp" target="_blank" rel="noopener">
               <i className="material-icons">facebook</i>
             </a>
@@ -81,7 +81,7 @@ const About = () => {
               <i className="material-icons">language</i>
             </a>
           </div>
-          <div className="col-xs-12">&#169;2015-2020 Team PopStack. All rights reserved.</div>
+          <div className="col-12">&#169;2015-2020 Team PopStack. All rights reserved.</div>
         </div>
       </section>
     </Layout>

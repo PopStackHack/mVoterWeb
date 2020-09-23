@@ -119,7 +119,7 @@ const FAQs = (props) => {
           {
             faqCategory === 'voter_list' &&
               <div className="row align-items-center mb-3">
-                <div className="col-xs-12 col-lg-6">
+                <div className="col-12 col-lg-6">
                   <div className="ballot-stack row no-gutters align-items-center mb-xs-2 box-hover" onClick={() => router.push('/faqs/ballots')}>
                     <div className="col-4">
                       <img className="ballot-stack-picture" src="/ballot_stack.png" alt="Ballot Stack"/>
@@ -127,7 +127,7 @@ const FAQs = (props) => {
                     <div className="col-8">ပယ်မဲ၊ ခိုင်လုံမဲ နမူနာများ</div>
                   </div>
                 </div>
-                <div className="col-xs-12 col-lg-6">
+                <div className="col-12 col-lg-6">
                   <div className="prohibitions row">
                     <div className="col-3 prohibition">
                       <img src="/prohibition_signs/no_selfie.png" alt="No Selfie"/>

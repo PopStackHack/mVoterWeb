@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-} from 'react-accessible-accordion';
 
 import Layout from '../../components/Layout/Layout';
 import Modal from '../../components/Common/Modal/Modal';
@@ -93,7 +86,7 @@ const Location = (props) => {
       <section className="text-center Location">
         <div className="container Location__wrapper">
           <div className="row">
-            <div className="col-xs-12">
+            <div className="col-12">
               <div className="people-icon">
                 {ActivePeopleIcon}
               </div>
@@ -108,7 +101,7 @@ const Location = (props) => {
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-12">
+            <div className="col-12">
               <button
                 disabled={!wardVillage}
                 className="Location__done"

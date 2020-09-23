@@ -70,7 +70,7 @@ const SearchPage = (props) => {
       </AppHeader>
       <section className="container">
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col-12">
             <InfiniteScroll
               next={loadMoreData}
               dataLength={list.length}
