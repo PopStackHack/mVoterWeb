@@ -1,9 +1,5 @@
 import axios from 'axios';
 import nookies from 'nookies';
-import { signToken } from '../../utils/authClient';
-import { serializedCookie } from '../../utils/authClient';
-
-const jwtKey = process.env.JWT_KEY;
 
 const authAPI = axios.create({
   baseURL: process.env.BASE_URL,

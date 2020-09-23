@@ -1,9 +1,4 @@
 import axios from 'axios';
-import {
-  signToken,
-  decodeToken,
-} from '../utils/authClient';
-
 import { fetchToken } from '../pages/api/auth';
 
 class MaePaySohAPI {
