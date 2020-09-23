@@ -1,16 +1,17 @@
 .CandidateList {
   &__item {
+    position: relative;
     box-sizing: border-box;
     border-radius: 5px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
   }
   &__avatar {
     flex: none;
-    width: 74px;
-    height: 74px;
+    width: 85px;
+    height: 85px;
     border-radius: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -18,6 +19,7 @@
     background-color: #b6b6b6;
   }
   &__info {
+    max-width: 62.5%;
     margin-left: 8px;
     .name {
       font-weight: 700;
@@ -25,10 +27,14 @@
   }
   &__party {
     margin-top: 5px;
-    .flag {
-      width: 30px;
-      height: auto;
-    }
+  }
+  &__partyFlag {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: auto;
   }
 }
 
@@ -48,6 +54,7 @@
       cursor: pointer;
     }
     &__info {
+      max-width: 230px;
       margin-left: 16px;
     }
   }

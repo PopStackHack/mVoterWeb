@@ -49,26 +49,14 @@ const CandidateList = (props) => {
                           { name }
                         </div>
                         <div className="CandidateList__party">
-                          {
-                            // Determine if this is individual candidate
-                            party &&
-                              (
-                                <>
-                                  <img src={partySealImage} className="flag" />&nbsp;
-                                  {partyNameBurmese}
-                                </>
-                              )
-                          }
-                          {
-                            !party &&
-                              (
-                                <>
-                                  <img src={individualLogo}  className="flag"/>&nbsp;
-                                  {'တစ်သီးပုဂ္ဂလ'}
-                                </>
-                              )
-                          }
+                          { party ? partyNameBurmese : 'တစ်သီးပုဂ္ဂလ' }
                         </div>
+                        {
+                          party ?
+                            <img src={partySealImage} className="flag" className="CandidateList__partyFlag" />
+                            :
+                            <img src={individualLogo} className="flag" className="CandidateList__partyFlag" />
+                        }
                       </div>
                     </Card>
                   </div>

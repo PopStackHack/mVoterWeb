@@ -19,7 +19,7 @@ const About = () => {
         </Button>
       </AppHeader>
       <section className="About container">
-        <div className="row text-center my-3">
+        <div className="row text-center my-2">
           <div className="col-xs-12">
             <img src="/about/mvoter2020_new_logo.png" alt="mVoter Logo" className="mVoterLogo"/>
             <h1>mVoter</h1>
@@ -33,24 +33,26 @@ const About = () => {
 
         <p className="text-center">Supported by</p>
 
-        <div className="row text-center my-3">
-          <div className="col-xs-4">
+        <div className="row align-items-center text-center my-1 no-gutters">
+          <div className="col-3 col-lg-3">
             <img src="/about/UEC_logo_mm.png" alt="UEC Logo"/>
           </div>
-          <div className="col-xs-4">
+          <div className="col-6 col-lg-6">
             <img src="/about/taf_logo.webp" alt="TAF Logo"/>
           </div>
-          <div className="col-xs-4">
+          <div className="col-3 col-lg-3">
             <img src="/about/maepaysoh.png" alt="Maepaysoh Logo"/>
           </div>
-          <div className="col-xs-4">
-            <img src="/about/step_logo.webp" alt="Step Logo"/>
+        </div>
+        <div className="row align-items-center text-center my-1">
+          <div className="col-4 col-lg-4">
+            <img src="/about/step_logo.webp" alt="Step Logo" className="large-logo step-logo"/>
           </div>
-          <div className="col-xs-4">
-            <img src="/about/idea_logo.webp" alt="IDEA Logo"/>
+          <div className="col-4 col-lg-4">
+            <img src="/about/idea_logo.webp" alt="IDEA Logo" className="large-logo"/>
           </div>
-          <div className="col-xs-4">
-            <img src="/about/eu_logo.webp" alt="EU Logo"/>
+          <div className="col-4 col-lg-4">
+            <img src="/about/eu_logo.webp" alt="EU Logo" className="large-logo eu-logo"/>
           </div>
         </div>
 

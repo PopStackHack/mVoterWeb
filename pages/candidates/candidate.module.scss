@@ -38,7 +38,8 @@
   &__partyFlag {
     display: inline-block;
     width: auto;
-    height: 20px;
+    height: 30px;
+    margin-bottom: 5px;
   }
   &__name {
     display: inline-block;
@@ -84,6 +85,13 @@
     font-size: 0.875rem;
     color: rgba($color: #000000, $alpha: 0.85);
   }
+  .parent-info {
+    div {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
   &__infoAnswer {
     font-size: 1rem;
   }
@@ -102,19 +110,21 @@
 
 @media (min-width: 1200px) {
   .Candidate {
-    margin-bottom: 25px;
     &__infoHeaderWrapper {
       text-align: left;
     }
     &__infoLabel {
       color: $primary-color;
     }
+    &__partyFlag {
+      margin-bottom: unset;
+    }
     &__info {
       .col-xs-12 {
         margin-top: 0;
         margin-bottom: 0;
       }
-      .parent-name {
+      .parent-type {
         color: $primary-color;
       }
     }
@@ -127,6 +137,12 @@
     margin-top: 0px;
     display: flex;
     justify-content: space-between;
+    &-name {
+      width: 50%;
+    }
+    &-ethnicity, &-religion {
+      width: 25%;
+    }
     .Candidate__infoLabel {
       color: rgba($color: #000000, $alpha: 0.65);
     }

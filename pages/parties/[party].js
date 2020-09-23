@@ -71,8 +71,7 @@ const Party = (props) => {
       <section className="Party">
         <div className="Party__headInfo row">
           <div className="col-xs-12 col-lg-3">
-            <img src={sealImage} alt="Party Seal" className="Party__seal" />
-              {/* <div className="Party__seal" style={{ backgroundImage: `url(${sealImage})` }}></div> */}
+            <img src={sealImage} alt="Party Seal" className="Party__seal mb-1" />
           </div>
           <div className="col-xs-12 col-lg-9">
             <h1 className="Party__title">{nameBurmese}</h1>

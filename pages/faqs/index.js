@@ -81,15 +81,15 @@ const FAQs = (props) => {
         <div>
           <Link href="/faqs/search">
             <a>
-              <Button className="color-primary">
-                <i className="material-icons">search</i>
+              <Button className="color-primary" style={{ marginRight: 8 }}>
+                <i className="material-icons vert-align-middle">search</i>
               </Button>
             </a>
           </Link>
           <Link href="/about">
             <a>
               <Button className="color-primary no-padding">
-                <i className="material-icons">info</i>
+                <i className="material-icons vert-align-middle">info</i>
               </Button>
             </a>
           </Link>

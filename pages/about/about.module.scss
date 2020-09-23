@@ -1,7 +1,6 @@
 @import '../../styles/partials/colors';
 
 .About {
-  max-width: 85%;
   h1, p {
     margin: 0;
   }
@@ -16,9 +15,15 @@
     width: 150px;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
   }
   img {
+    width: 100%;
+    height: auto;
+  }
+  img.large-logo {
     width: 100%;
     height: auto;
   }
@@ -34,6 +39,26 @@
       color: white;
       background-color: $primary-color;
       border-radius: 100%;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .About {
+    max-width: 85%;
+    .PopStack {
+      width: auto;
+      height: 180px;
+    }
+    img.large-logo {
+      width: auto;
+      height: 170px;
+    }
+    img.step-logo {
+      height: 130px;
+    }
+    img.eu-logo {
+      height: 120px;
     }
   }
 }

@@ -53,7 +53,7 @@ const News = () => {
           <Link href="/news/search">
             <a>
               <Button className="color-primary">
-                <i className="material-icons">search</i>
+                <i className="material-icons vert-align-middle">search</i>
               </Button>
             </a>
           </Link>

@@ -173,21 +173,21 @@ const Candidates = (props) => {
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-name">မိခင်</div>
+          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-type Candidate__infoLabel">မိခင်</div>
           <div className="col-xs-10 offset-lg-3 col-lg-6 parent-info">
-            <div>
+            <div className="parent-info-name">
               <div className="Candidate__infoLabel">
                 အမည်
               </div>
               {mother.name}
             </div>
-            <div>
+            <div className="parent-info-ethnicity">
               <div className="Candidate__infoLabel">
                 လူမျိုး
               </div>
               {mother.ethnicity}
             </div>
-            <div>
+            <div className="parent-info-religion">
               <div className="Candidate__infoLabel">
                 ဘာသာ
               </div>
@@ -196,21 +196,21 @@ const Candidates = (props) => {
           </div>
         </div>
         <div className="row Candidate__info">
-          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-name">ဖခင်</div>
+          <div className="col-xs-2 offset-lg-3 col-lg-3 parent-type Candidate__infoLabel">ဖခင်</div>
           <div className="col-xs-10 offset-lg-3 col-lg-6 parent-info">
-            <div>
+            <div className="parent-info-name">
               <div className="Candidate__infoLabel">
                 အမည်
               </div>
               {father.name}
             </div>
-            <div>
+            <div className="parent-info-ethnicity">
               <div className="Candidate__infoLabel">
                 လူမျိုး
               </div>
               {father.ethnicity}
             </div>
-            <div>
+            <div className="parent-info-religion">
               <div className="Candidate__infoLabel">
                 ဘာသာ
               </div>
@@ -219,7 +219,7 @@ const Candidates = (props) => {
           </div>
         </div>
 
-        <div className="row competitors-wrapper">
+        <div className="row competitors-wrapper mb-1">
           <div className="col-xs-12 text-center">
             {PeopleFillIcon}
             <p className="text-bold competitors-text">ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ</p>

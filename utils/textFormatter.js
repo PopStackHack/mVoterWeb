@@ -28,5 +28,5 @@ export function formatPublishDateToMMLocale(dateStr) {
 
 export function formatBirthDay(birthday) {
   const strArr = birthday.split('-');
-  return `${myanmarNumbers(strArr[2], 'my')}-${myanmarNumbers(strArr[1], 'my')}-${myanmarNumbers(strArr[0], 'my')}`
+  return `${myanmarNumbers(strArr[2], 'my')}၊ ${myanmarNumbers(strArr[1], 'my')}၊ ${myanmarNumbers(strArr[0], 'my')}`
 }
