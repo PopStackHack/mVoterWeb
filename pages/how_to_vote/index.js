@@ -17,7 +17,7 @@ export default function howToVote() {
   return (
     <Layout>
       <Head>
-        <title>မဲပေးနည်း</title>
+        <title>မဲပေးနည်း | mVoter 2020</title>
       </Head>
       <AppHeader>
         <span className="text-bold">မဲပေးနည်း</span>

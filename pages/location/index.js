@@ -68,7 +68,7 @@ const Location = (props) => {
   return (
     <Layout shouldHideBottomNav style={{ paddingBottom: 0 }}>
       <Head>
-        <title>မဲဆန္ဒနယ်ရွေးရန်</title>
+        <title>မဲဆန္ဒနယ်ရွေးရန် | mVoter 2020</title>
       </Head>
       {
         !isAppStart &&

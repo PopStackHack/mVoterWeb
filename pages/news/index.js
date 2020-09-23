@@ -43,7 +43,7 @@ const News = () => {
   return (
     <Layout>
       <Head>
-        <title>သတင်းများ</title>
+        <title>သတင်းများ | mVoter 2020</title>
       </Head>
       <AppHeader>
         <div className="text-bold">

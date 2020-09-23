@@ -9,6 +9,7 @@ import React, { useCallback, useState, Children } from 'react';
 
 import './SearchPage.scss';
 import useAPI from '../../hooks/useAPI';
+import Head from 'next/head';
 
 const SearchPage = (props) => {
   const {
@@ -57,6 +58,9 @@ const SearchPage = (props) => {
 
   return (
     <Layout>
+      <Head>
+        <title>mVoter 2020</title>
+      </Head>
       <AppHeader>
         <Button>
           <i className="material-icons" onClick={() => router.back()}>arrow_back</i>

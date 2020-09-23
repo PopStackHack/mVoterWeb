@@ -179,7 +179,7 @@ const Candidates = () => {
   return (
     <Layout>
       <Head>
-        <title>ကိုယ်စားလှယ်လောင်းများ</title>
+        <title>ကိုယ်စားလှယ်လောင်းများ | mVoter 2020</title>
       </Head>
       <AppHeader className="CandidateHeader">
         <div className="text-bold">ကိုယ်စားလှယ်လောင်းများ</div>

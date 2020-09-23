@@ -83,8 +83,6 @@ const Ballots = () => {
       category,
     });
 
-    console.log(data);
-
     setBallots(data);
 
     // const validIndex = result.data.filter(({ attributes: { is_valid } }) => is_valid).length - 1;

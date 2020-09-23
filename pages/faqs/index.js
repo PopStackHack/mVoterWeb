@@ -74,7 +74,7 @@ const FAQs = (props) => {
   return (
     <Layout>
       <Head>
-        <title>သိမှတ်ဖွယ်ရာများ</title>
+        <title>သိမှတ်ဖွယ်ရာများ | mVoter 2020</title>
       </Head>
       <AppHeader>
         <div className="text-bold">သိမှတ်ဖွယ်ရာများ</div>
