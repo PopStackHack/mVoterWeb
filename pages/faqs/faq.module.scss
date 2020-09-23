@@ -1,6 +1,7 @@
 @import '../../styles/partials/colors';
 
 .FAQ {
+  line-height: 25px;
   padding-top: 30px;
   &__question {
     color: $primary-color;

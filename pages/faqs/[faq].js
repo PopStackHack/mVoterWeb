@@ -1,3 +1,4 @@
+import htmlToText from 'html-to-text';
 import nookies from 'nookies';
 import Head from 'next/head';
 import { useEffect } from 'react';
@@ -77,6 +78,10 @@ export async function getServerSideProps(context) {
   const response = await api.getFaqById(params.faq);
 
   const { data, token } = response.data;
+
+  // Strip HTML characters into one string
+  const htmlStrippedAnswer = htmlToText.fromString(data.attributes.answer);
+  data.attributes.answer = htmlStrippedAnswer;
 
   return {
     props: {
