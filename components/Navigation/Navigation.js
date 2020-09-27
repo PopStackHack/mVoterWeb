@@ -78,8 +78,8 @@ const Navigation = () => {
             <div>
               <NavComponent
                 link='/how_to_vote'
-                activeIcon={ActiveStarIcon}
-                inActiveIcon={StarIcon}
+                activeIcon={ActiveCheckboxIcon}
+                inActiveIcon={CheckboxIcon}
                 text="မဲပေးနည်း"
               />
             </div>
