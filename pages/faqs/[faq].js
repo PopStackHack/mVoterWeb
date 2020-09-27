@@ -17,6 +17,7 @@ const FAQ = (props) => {
       question,
       answer,
       source,
+      strippedAnswer,
       law_source: lawSource,
       article_source: articleSource,
     },
@@ -37,7 +38,7 @@ const FAQ = (props) => {
         <title>{formatFAQCategory(category)} သိမှတ်ဖွယ်ရာ | mVoter 2020</title>
 
         <meta name="title" content={question} />
-        <meta name="description" content={answer} />
+        <meta name="description" content={strippedAnswer} />
 
         <meta property="og:url" content={`https://web.mvoterapp.com/faqs/${id}`} />
         <meta property="og:type" content="profile" />
@@ -58,7 +59,7 @@ const FAQ = (props) => {
           <div className="row">
             <div className="col-12">
               <h1 className="FAQ__question">{question}</h1>
-              <div className="FAQ__answer" dangerouslySetInnerHTML={{ __html: answer }}></div>
+              <span className="FAQ__answer" dangerouslySetInnerHTML={{ __html: answer }}></span>
             </div>
           </div>
         </div>
@@ -81,7 +82,7 @@ export async function getServerSideProps(context) {
 
   // Strip HTML characters into one string
   const htmlStrippedAnswer = htmlToText.fromString(data.attributes.answer);
-  data.attributes.answer = htmlStrippedAnswer;
+  data.attributes.strippedAnswer = htmlStrippedAnswer;
 
   return {
     props: {
