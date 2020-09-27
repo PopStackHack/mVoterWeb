@@ -9,6 +9,7 @@ const FaqSearch = (props) => {
       endpoint="searchParties"
       inputPlaceholder="ပါတီအမည်"
       emptyPlaceholder="မိမိ ရှာလိုသော ပါတီနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ။"
+      notFoundPlaceholder="သင်ရှာသော ပါတီအား ပါတီစာရင်းတွင် ရှာမတွေ့ပါ"
     >
       <PartyList />
     </SearchPage>

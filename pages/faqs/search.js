@@ -9,6 +9,7 @@ const FaqSearch = (props) => {
       endpoint="searchFaqs"
       inputPlaceholder="အမေးအဖြေ ရိုက်ထည့်ရန်"
       emptyPlaceholder="မိမိ ရှာလို့သော အမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ"
+      notFoundPlaceholder="သင်ရှာသော အမေးအဖြေအား ရှာမတွေ့ပါ"
     >
       <FaqList />
     </SearchPage>

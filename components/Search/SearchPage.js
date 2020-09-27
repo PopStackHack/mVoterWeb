@@ -19,10 +19,11 @@ const SearchPage = (props) => {
     children,
     inputPlaceholder = 'ရှာဖွေလိုသော အမည်ကို ရိုက်ထည့်ပါ',
     emptyPlaceholder = '',
+    notFoundPlaceholder = '',
   } = props;
 
   const router = useRouter();
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(null);
   const [page, setPage] = useState(1);
   const [searchString, setSearchString] = useState('');
   const [, fetchData] = useAPI();
@@ -37,6 +38,8 @@ const SearchPage = (props) => {
   , []);
 
   async function apiCall(value) {
+    let arr = list ?? [];
+
     let itemPerPage = 25;
 
     if (page > 1) {
@@ -50,7 +53,7 @@ const SearchPage = (props) => {
     });
 
     setPage(page + 1);
-    return setList(list.concat(data));
+    return setList(arr.concat(data));
   }
 
   function loadMoreData() {
@@ -87,19 +90,23 @@ const SearchPage = (props) => {
         <div className="row">
           <div className="col-12">
             {
-              list.length === 0 &&
+              !list &&
                 <p className="text-center color-primary mt-3">
                   {emptyPlaceholder}
                 </p>
             }
+            {
+              (list && list.length === 0) &&
+                <p className="text-center color-danger mt-3">{notFoundPlaceholder}</p>
+            }
             <InfiniteScroll
               next={loadMoreData}
-              dataLength={list.length}
+              dataLength={list && list.length}
               hasMore={true}
             >
               {
                 React.Children
-                  .map(children, child => React.cloneElement(child, { [type]: list }))
+                  .map(children, child => React.cloneElement(child, { [type]: list ?? [] }))
               }
             </InfiniteScroll>
           </div>

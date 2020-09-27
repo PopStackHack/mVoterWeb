@@ -37,6 +37,13 @@ p {
   }
 }
 
+.color-danger {
+  color: $danger-color;
+  * {
+    color: $danger-color;
+  }
+}
+
 .no-padding {
   padding: 0 !important;
 }
