@@ -1,11 +1,12 @@
 
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { AiOutlineLoading } from 'react-icons/ai';
 import Layout from '../../components/Layout/Layout';
 import Button from '../../components/Common/Button/Button';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 import { debounce } from '../../utils/helpers';
-import React, { useCallback, useState, Children } from 'react';
+import React, { useRef, useCallback, useState, Children, useEffect } from 'react';
 
 import './SearchPage.scss';
 import useAPI from '../../hooks/useAPI';
@@ -16,7 +17,8 @@ const SearchPage = (props) => {
     type = 'candidates',
     endpoint,
     children,
-    inputPlaceholder = 'ရှာဖွေလိုသော အမည်ကို ရိုက်ထည့်ပါ'
+    inputPlaceholder = 'ရှာဖွေလိုသော အမည်ကို ရိုက်ထည့်ပါ',
+    emptyPlaceholder = '',
   } = props;
 
   const router = useRouter();
@@ -24,9 +26,14 @@ const SearchPage = (props) => {
   const [page, setPage] = useState(1);
   const [searchString, setSearchString] = useState('');
   const [, fetchData] = useAPI();
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    searchInputRef.current.focus();
+  }, []);
 
   const debouncedCall = useCallback(
-    debounce((value) => apiCall(value), 600)
+    debounce((value) => apiCall(value), 500)
   , []);
 
   async function apiCall(value) {
@@ -69,12 +76,22 @@ const SearchPage = (props) => {
           <i className="material-icons">search</i>
           <input
             type="text"
-            className="search-input" placeholder={inputPlaceholder} onChange={onChangeSearch} value={searchString} />
+            className="search-input"
+            ref={searchInputRef}
+            placeholder={inputPlaceholder}
+            onChange={onChangeSearch} value={searchString}
+          />
         </div>
       </AppHeader>
-      <section className="container">
+      <section>
         <div className="row">
           <div className="col-12">
+            {
+              list.length === 0 &&
+                <p className="text-center color-primary mt-3">
+                  {emptyPlaceholder}
+                </p>
+            }
             <InfiniteScroll
               next={loadMoreData}
               dataLength={list.length}

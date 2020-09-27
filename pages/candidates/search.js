@@ -7,6 +7,8 @@ const CandidateSearch = (props) => {
     <SearchPage
       type="candidates"
       endpoint="searchCandidates"
+      inputPlaceholder="ကိုယ်စားလှယ်လောင်း အမည်"
+      emptyPlaceholder="မိမိရှာလိုသော ကိုယ်စားလှယ်လောင်းနာမည်ကို အပေါ်တွင် ရိုက်ထည့်ပါ။"
     >
       <CandidateList />
     </SearchPage>

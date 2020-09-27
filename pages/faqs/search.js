@@ -6,8 +6,9 @@ const FaqSearch = (props) => {
   return (
     <SearchPage
       type="faqs"
-      inputPlaceholder="ရှာလိုသော အမေးအဖြေကို ရိုက်ထည့်ပါ"
       endpoint="searchFaqs"
+      inputPlaceholder="အမေးအဖြေ ရိုက်ထည့်ရန်"
+      emptyPlaceholder="မိမိ ရှာလို့သော အမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ"
     >
       <FaqList />
     </SearchPage>
