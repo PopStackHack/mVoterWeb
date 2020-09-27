@@ -18,24 +18,28 @@ const ElectionCountdown = () => {
   }).utcOffset('+0630');
 
   useEffect(() => {
+    const intervalHandler = setInterval(() => {
+        const current = moment();
+        const nowEpoch = current.unix();
+        const towardsEpoch = towards.unix();
+
+        const duration = moment
+          .duration((towardsEpoch - nowEpoch) * 1000, 'milliseconds');
+
+        // Still need to fix for precision
+        const hoursUntil = Math.round(duration.asHours());
+        const minutesUntil = Math.round(duration.asMinutes() - now.get('minutes') / 60) % 60;
+        const secondsUntil = Math.round(duration.asSeconds() - now.get('seconds')) % 60;
+
+        setHours(hoursUntil);
+        setMinutes(minutesUntil);
+        setSeconds(secondsUntil);
+      }, 1000);
     // Change to epoch for easier calculation
-    setInterval(() => {
-      const current = moment();
-      const nowEpoch = current.unix();
-      const towardsEpoch = towards.unix();
 
-      const duration = moment
-        .duration((towardsEpoch - nowEpoch) * 1000, 'milliseconds');
-
-      // Still need to fix for precision
-      const hoursUntil = Math.round(duration.asHours());
-      const minutesUntil = Math.round(duration.asMinutes() - now.get('minutes') / 60) % 60;
-      const secondsUntil = Math.round(duration.asSeconds() - now.get('seconds')) % 60;
-
-      setHours(hoursUntil);
-      setMinutes(minutesUntil);
-      setSeconds(secondsUntil);
-    }, 1000);
+    return function cleanup() {
+      clearInterval(intervalHandler);
+    }
   }, []);
 
   const remainingDays = towards.startOf('day').diff(now.startOf('day'), 'days');
