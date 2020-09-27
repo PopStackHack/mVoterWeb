@@ -28,7 +28,7 @@ const About = () => {
             <p>Proudly and voluntarily presented by</p>
           </div>
 
-          <img src="/about/popstack_logo.webp" alt="PopStack" className="PopStack"/>
+          <img src="/about/popstack_logo.png" alt="PopStack" className="PopStack"/>
         </div>
 
         <p className="text-center">Supported by</p>
@@ -38,7 +38,7 @@ const About = () => {
             <img src="/about/UEC_logo_mm.png" alt="UEC Logo"/>
           </div>
           <div className="col-6 col-lg-6">
-            <img src="/about/taf_logo.webp" alt="TAF Logo"/>
+            <img src="/about/taf_logo.png" alt="TAF Logo"/>
           </div>
           <div className="col-3 col-lg-3">
             <img src="/about/maepaysoh.png" alt="Maepaysoh Logo"/>
@@ -46,13 +46,13 @@ const About = () => {
         </div>
         <div className="row align-items-center text-center my-1">
           <div className="col-4 col-lg-4">
-            <img src="/about/step_logo.webp" alt="Step Logo" className="large-logo step-logo"/>
+            <img src="/about/step_logo.png" alt="Step Logo" className="large-logo step-logo"/>
           </div>
           <div className="col-4 col-lg-4">
-            <img src="/about/idea_logo.webp" alt="IDEA Logo" className="large-logo"/>
+            <img src="/about/idea_logo.png" alt="IDEA Logo" className="large-logo"/>
           </div>
           <div className="col-4 col-lg-4">
-            <img src="/about/eu_logo.webp" alt="EU Logo" className="large-logo eu-logo"/>
+            <img src="/about/eu_logo.png" alt="EU Logo" className="large-logo eu-logo"/>
           </div>
         </div>
 
