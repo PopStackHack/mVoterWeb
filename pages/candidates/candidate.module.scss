@@ -116,6 +116,9 @@
     &__infoLabel {
       color: $primary-color;
     }
+    &__infoAnswer {
+      word-wrap: break-word;
+    }
     &__partyFlag {
       margin-bottom: unset;
     }
