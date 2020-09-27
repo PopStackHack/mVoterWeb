@@ -76,7 +76,7 @@ const Location = (props) => {
             <div className="d-flex">
                 <Button>
               <Link href="/candidates">
-                  <i className="material-icons">arrow_back</i>
+                <i className="material-icons">arrow_back</i>
               </Link>
               </Button>
               <span className="d-inline-block ml-3">ကိုယ်စားလှယ်လောင်းများ</span>
