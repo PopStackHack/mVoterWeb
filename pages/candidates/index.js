@@ -200,14 +200,14 @@ const Candidates = () => {
               မိမိ မဲဆန္ဒနယ်မှ ကိုယ်စားလှယ်လောင်းများကို ကြည့်ရှုရန် တည်နေရာအား ရွေးချယ်ပေးပါ။
             </div>
             <Link href="/location">
-              <>
+              <a>
                 <Button className="show-location-chooser-button">
                   <i className="material-icons">location_on</i>
                   <span>
                     တည်နေရာရွေးချယ်ရန်
                   </span>
                 </Button>
-              </>
+              </a>
             </Link>
           </div>
       }
