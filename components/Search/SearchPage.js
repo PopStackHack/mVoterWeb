@@ -48,7 +48,7 @@ const SearchPage = (props) => {
     const { data } = await fetchData(`/api/${endpoint}`, {
       page,
       query: value || searchString,
-      item_per_page: 20,
+      item_per_page: 25,
     });
 
     if (data.length === 0) {
