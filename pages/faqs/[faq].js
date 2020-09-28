@@ -33,7 +33,7 @@ const FAQ = (props) => {
   }, [token]);
 
   return (
-    <Layout shouldHideBottomNav>
+    <Layout>
       <Head>
         <title>{formatFAQCategory(category)} သိမှတ်ဖွယ်ရာ | mVoter 2020</title>
 
