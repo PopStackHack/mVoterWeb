@@ -93,10 +93,10 @@ const Location = (props) => {
               <p className="text-center">မိမိ မဲပေးရွေးချယ်ရမည့် ကိုယ်စားလှယ်လွှတ်တော်လောင်းများကို သိရှိရန် နေထိုင်ရာအရပ်ကို ရွေးပါ</p>
               <div className="my-2"></div>
                 <button className="locationSelector" type="button" onClick={onClickChooseTownship}>
-                  <span>{ township || 'မြို့နယ်' }</span>
+                  <span>{ township || 'မြို့နယ်' } <i className="material-icons vert-align-middle">expand_more</i></span>
                 </button>
                 <button disabled={!township} className="locationSelector" type="button" onClick={onClickChooseWardVillage}>
-                  <span>{ wardVillage || 'ရပ်ကွက်/ကျေးရွာအုပ်စု' }</span>
+                  <span>{ wardVillage || 'ရပ်ကွက်/ကျေးရွာအုပ်စု' } <i className="material-icons vert-align-middle">expand_more</i></span>
                 </button>
             </div>
           </div>

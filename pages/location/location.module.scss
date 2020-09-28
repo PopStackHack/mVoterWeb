@@ -11,13 +11,13 @@
   text-align: center;
   border: 0;
   background: none;
-  &:active {
-    color: $primary-color;
-  }
   &:disabled {
-    color: rgba($color: #000000, $alpha: 0.25);
+    span {
+      color: rgba($color: #000000, $alpha: 0.25) !important;
+    }
   }
   span {
+    color: $primary-color;
     margin-right: 4px;
     font-weight: 700;
     font-size: 1.3rem;
@@ -55,7 +55,7 @@
       @extend %button-hover;
     }
     &:disabled {
-      pointer-events: none;
+      cursor: not-allowed !important;
       background-color: rgba($color: #000000, $alpha: 0.25);
     }
     i {

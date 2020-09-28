@@ -22,6 +22,10 @@
   font-weight: 700;
 }
 
+*:disabled {
+  cursor: not-allowed !important;
+}
+
 p {
   line-height: 26px;
 }
