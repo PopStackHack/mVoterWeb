@@ -26,7 +26,8 @@ const SearchPage = (props) => {
   const [list, setList] = useState(null);
   const [page, setPage] = useState(1);
   const [searchString, setSearchString] = useState('');
-  const [, fetchData] = useAPI();
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, fetchData] = useAPI();
   const searchInputRef = useRef(null);
 
   useEffect(() => {
@@ -40,19 +41,27 @@ const SearchPage = (props) => {
   async function apiCall(value) {
     let arr = list ?? [];
 
-    let itemPerPage = 25;
-
-    if (page > 1) {
-      itemPerPage = 10;
+    if (page === 1) {
+      setList(null);
     }
 
     const { data } = await fetchData(`/api/${endpoint}`, {
       page,
       query: value || searchString,
-      item_per_page: itemPerPage,
+      item_per_page: 20,
     });
 
+    if (data.length === 0) {
+      setHasMore(false);
+    } else {
+      setHasMore(true);
+    }
+
     setPage(page + 1);
+
+    // console.log(data);
+    console.log(list);
+
     return setList(arr.concat(data));
   }
 
@@ -90,19 +99,23 @@ const SearchPage = (props) => {
         <div className="row">
           <div className="col-12">
             {
-              !list &&
+              (!list && !loading) &&
                 <p className="text-center color-primary mt-3">
                   {emptyPlaceholder}
                 </p>
             }
             {
-              (list && list.length === 0) &&
+              (list && list.length === 0 && !loading) &&
                 <p className="text-center color-danger mt-3">{notFoundPlaceholder}</p>
+            }
+            {
+              loading &&
+               <AiOutlineLoading className="loader search-page-loader" />
             }
             <InfiniteScroll
               next={loadMoreData}
               dataLength={list && list.length}
-              hasMore={true}
+              hasMore={hasMore}
             >
               {
                 React.Children
