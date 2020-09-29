@@ -26,13 +26,12 @@ const Parties = (props) => {
 
   async function fetchAndPushParties(init = false) {
     try {
+      const itemPerPage = 25;
       let pageQuery = page;
-      let itemPerPage = 25;
 
       if (!init) {
         pageQuery += 1;
         setPage(page + 1);
-        itemPerPage = 10;
       }
 
       const { data } = await fetchData('/api/parties', {
