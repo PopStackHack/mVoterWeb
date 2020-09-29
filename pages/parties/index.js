@@ -16,35 +16,40 @@ const Parties = (props) => {
   // Inject AJAX call on first load
   const { updateToken } = useAuthContext();
   const [parties, setParties] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
   const [, fetchData] = useAPI();
 
   useEffect(() => {
     // initial load
-    fetchAndPushParties(true);
+    fetchParties()
+      .then((result) => {
+        setParties(result.data);
+        setTotalCount(result.pagination.total);
+      })
+      .catch(console.error);
   }, []);
 
-  async function fetchAndPushParties(init = false) {
+
+  async function fetchParties(pageToLoad = 1) {
     try {
-      const itemPerPage = 25;
-      let pageQuery = page;
-
-      if (!init) {
-        pageQuery += 1;
-        setPage(page + 1);
-      }
-
-      const { data } = await fetchData('/api/parties', {
-        page: pageQuery,
-        item_per_page: itemPerPage,
+      const data = await fetchData('/api/parties', {
+        page: pageToLoad,
+        item_per_page: 25,
       });
 
-      setParties(parties.concat(data));
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response);
-      }
+      return data;
+    } catch(error) {
+      console.error(error);
     }
+  }
+
+  async function loadMoreParties() {
+    const nextPage = page + 1;
+    fetchParties(nextPage)
+      .then((result) => setParties(parties.concat(result.data)))
+      .then(() => setPage(nextPage))
+      .catch(console.error);
   }
 
   return (
@@ -79,9 +84,9 @@ const Parties = (props) => {
             </div>
           </div>
           <InfiniteScroll
-            next={fetchAndPushParties}
+            next={loadMoreParties}
             dataLength={parties.length}
-            hasMore={true}>
+            hasMore={parties.length !== totalCount}>
               <PartyList parties={parties} />
           </InfiniteScroll>
         </div>
