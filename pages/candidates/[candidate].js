@@ -126,7 +126,7 @@ const Candidates = (props) => {
                 {
                   partyName &&
                     <>
-                      <Link href={`/parties/${partyId}`}>
+                      <Link href={`/parties/${partyId}`} prefetch={false}>
                         <span className="Candidate__partyName">{partyName} <i className="material-icons">chevron_right</i></span>
                       </Link>
                     </>
@@ -167,9 +167,15 @@ const Candidates = (props) => {
             <div className="Candidate__infoLabel">အလုပ်အကိုင်</div>
             <div className="Candidate__infoAnswer">{work}</div>
           </div>
+        </div>
+        <div className="row Candidate__info">
+          <div className="col-12 offset-lg-3 col-lg-3">
+            <div className="Candidate__infoLabel">လူမျိုး</div>
+            <div className="Candidate__infoAnswer">{ethnicity}</div>
+          </div>
           <div className="col-12 col-lg-3">
-            <div className="Candidate__infoLabel">လူမျိုး၊ ဘာသာ</div>
-            <div className="Candidate__infoAnswer">{ethnicity}၊ {religion}</div>
+            <div className="Candidate__infoLabel">ဘာသာ</div>
+            <div className="Candidate__infoAnswer">{religion}</div>
           </div>
         </div>
         <div className="row Candidate__info">
