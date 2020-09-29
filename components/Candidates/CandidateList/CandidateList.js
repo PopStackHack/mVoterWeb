@@ -39,7 +39,7 @@ const CandidateList = (props) => {
 
             return (
               <div className="col-lg-6 col-12 CandidateList__itemWrapper" key={id}>
-                <Link href={`/candidates/${id}`} prefetch={false}>
+                <Link href={`/candidates/[candidate]`} as={`/candidates/${id}`} prefetch={false}>
                   <div>
                     <Card className="CandidateList__item box-hover">
                       <div className="CandidateList__avatar"
