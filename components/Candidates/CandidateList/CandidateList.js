@@ -40,7 +40,7 @@ const CandidateList = (props) => {
             return (
               <div className="col-lg-6 col-12 CandidateList__itemWrapper" key={id}>
                 <Link href={`/candidates/[candidate]`} as={`/candidates/${id}`} prefetch={false}>
-                  <div>
+                  <a className="no-style">
                     <Card className="CandidateList__item box-hover">
                       <div className="CandidateList__avatar"
                       style={{ backgroundImage: `url("${image}")` }}></div>
@@ -59,7 +59,7 @@ const CandidateList = (props) => {
                         }
                       </div>
                     </Card>
-                  </div>
+                  </a>
                 </Link>
               </div>
             );

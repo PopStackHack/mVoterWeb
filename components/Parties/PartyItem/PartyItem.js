@@ -27,7 +27,7 @@ const PartyCard = (props) => {
   return (
     <div className="PartyItem">
       <Link href={`/parties/[party]`} as={`/parties/${id}`} prefetch={false}>
-        <div>
+        <a className="no-style">
           <Card className="PartyItem__Card box-hover cursor-pointer">
             <div className="PartyItem__image" style={sealImageStyle}></div>
             <div className="PartyItem__Description">
@@ -35,7 +35,7 @@ const PartyCard = (props) => {
               <div className="text-muted constituency">{region}</div>
             </div>
           </Card>
-        </div>
+        </a>
       </Link>
     </div>
   );

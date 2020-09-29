@@ -26,6 +26,13 @@
   cursor: not-allowed !important;
 }
 
+a.no-style {
+  color: inherit !important;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
 p {
   line-height: 26px;
 }
