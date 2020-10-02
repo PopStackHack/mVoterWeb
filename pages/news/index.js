@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Head from 'next/head';
@@ -18,6 +19,8 @@ const News = () => {
   const [, fetchData] = useAPI();
 
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+
     fetchNews();
   }, []);
 

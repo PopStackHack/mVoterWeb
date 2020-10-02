@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -22,6 +23,8 @@ const Parties = (props) => {
 
   useEffect(() => {
     // initial load
+    ReactGA.pageview(window.location.pathname);
+
     fetchParties()
       .then((result) => {
         setParties(result.data);

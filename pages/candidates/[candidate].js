@@ -1,4 +1,4 @@
-import moment, { parseTwoDigitYear } from 'moment';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import myanmarNumber from 'myanmar-numbers';
 import Link from 'next/link';
@@ -79,6 +79,7 @@ const Candidates = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0); // Quick hack to fake page reload
+    ReactGA.pageview('/candidates/[candidate]');
     fetchCompetitors();
   }, [constituencyId, id]);
 

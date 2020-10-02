@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import nookies from 'nookies';
@@ -37,6 +38,7 @@ const Party = (props) => {
   const router = useRouter();
   const { updateToken } = useAuthContext(token);
 
+  useEffect(() => ReactGA.pageview('/parties/[party]'), []);
   useEffect(() => {
     if (token) {
       updateToken(token);
@@ -70,7 +72,7 @@ const Party = (props) => {
       </AppHeader>
       <section className="Party">
         <div className="Party__headInfo row">
-          <div className="col-12 col-lg-3">
+          <div className="col-12 col-lg-3 mb-3">
             <img src={sealImage} alt="Party Seal" className="Party__seal mb-1" />
           </div>
           <div className="col-12 col-lg-9">

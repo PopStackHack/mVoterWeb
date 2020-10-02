@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import App from 'next/app';
 import AuthProvider from '../context/AuthProvider';
@@ -5,8 +6,12 @@ import 'bootstrap/dist/css/bootstrap-reboot.css';
 import 'bootstrap/dist/css/bootstrap-grid.css';
 import '../styles/base.scss';
 import '../styles/helpers.scss';
+import { useEffect } from 'react';
 
 // https://fonts.googleapis.com/icon?family=Material+Iconsimport AuthProvider from '../context/AuthProvider';
+
+ReactGA.initialize(process.env.GA_TRACKING_ID);
+
 function mVoterApp({ Component, pageProps }) {
   return (
     <>

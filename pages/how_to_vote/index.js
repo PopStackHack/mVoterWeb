@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
@@ -7,6 +8,7 @@ import Clock4PM from '../../components/Common/Icons/clock4PM';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
 
 import './HowToVote.module.scss';
+import { useEffect } from 'react';
 
 const ElectionCountdown = dynamic(
   () => import('../../components/Countdown/ElectionCountdown'),
@@ -14,6 +16,10 @@ const ElectionCountdown = dynamic(
 );
 
 export default function howToVote() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+
   return (
     <Layout>
       <Head>

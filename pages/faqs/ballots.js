@@ -73,6 +73,8 @@ const Ballots = () => {
   };
 
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+
     fetchBallots();
   }, []);
 

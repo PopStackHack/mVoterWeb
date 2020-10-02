@@ -1,5 +1,6 @@
 // Component code is so messy. Need to refactor afterwards. <- A common lie I tell to myself.
 import React, { PureComponent, useState, useEffect } from 'react';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/Layout/Layout';
@@ -26,6 +27,8 @@ const Candidates = () => {
 
   // Pre-fetch constituencies
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+
     // Because we can't access localStorage before React is initiated.
     if (hasFullLocation()) {
       setShowLocationLink(false);

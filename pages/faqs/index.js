@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Select from 'react-select';
@@ -26,6 +27,8 @@ const FAQs = (props) => {
   const [, fetchData] = useAPI();
 
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+
     fetchFaqs()
       .then((result) => {
         setFaqs(result.data);

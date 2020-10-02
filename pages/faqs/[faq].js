@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import htmlToText from 'html-to-text';
 import nookies from 'nookies';
 import Head from 'next/head';
@@ -26,6 +27,7 @@ const FAQ = (props) => {
 
   const { updateToken } = useAuthContext();
 
+  useEffect(() => ReactGA.pageview('/faqs/[faq]'), []);
   useEffect(() => {
     if (token) {
       updateToken(token);

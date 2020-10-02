@@ -1,4 +1,4 @@
-
+import ReactGA from 'react-ga';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { AiOutlineLoading } from 'react-icons/ai';
@@ -31,6 +31,7 @@ const SearchPage = (props) => {
   const searchInputRef = useRef(null);
 
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
     searchInputRef.current.focus();
   }, []);
 
@@ -58,9 +59,6 @@ const SearchPage = (props) => {
     }
 
     setPage(page + 1);
-
-    // console.log(data);
-    console.log(list);
 
     return setList(arr.concat(data));
   }
