@@ -90,7 +90,7 @@ const Location = (props) => {
               <div className="people-icon">
                 {ActivePeopleIcon}
               </div>
-              <p className="text-center">မိမိ မဲပေးရွေးချယ်ရမည့် ကိုယ်စားလှယ်လွှတ်တော်လောင်းများကို သိရှိရန် နေထိုင်ရာအရပ်ကို ရွေးပါ</p>
+              <p className="text-center">မိမိ မဲပေးရွေးချယ်ရမည့် လွှတ်တော်ကိုယ်စားလှယ််လောင်းများကို သိရှိရန် နေထိုင်ရာအရပ်ကို ရွေးပါ</p>
               <div className="my-2"></div>
                 <button className="locationSelector" type="button" onClick={onClickChooseTownship}>
                   <span>{ township || 'မြို့နယ်' } <i className="material-icons vert-align-middle">expand_more</i></span>
