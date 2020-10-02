@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { useState, useEffect, useRef } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import Link from 'next/link';
