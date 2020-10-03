@@ -1,88 +1,67 @@
 // TODO: PROPERLY FIX COUNTDOWN LOGIC DOWN TO MS PRECISION
-import moment from 'moment';
 import myanmarNumbers from 'myanmar-numbers';
 import { useEffect, useState } from 'react';
+import { handleCountdown } from '../../utils/helpers';
+import './ElectionCountdown.scss';
 
 const ElectionCountdown = () => {
-  const [hours, setHours] = useState('');
-  const [minutes, setMinutes] = useState('');
-  const [seconds, setSeconds] = useState('');
-
-  const now = moment().utcOffset('+0630');
-  const towards = moment()
-    .set({
-      year: 2020,
-      months: 10,
-      date: 8,
-      hours: 6,
-      minute: 0
-    })
-    .utcOffset('+0630');
+  const [time, setTime] = useState();
+  const [timeType, setTimeType] = useState('');
 
   useEffect(() => {
-    const intervalHandler = setInterval(() => {
-      const current = moment();
-      const nowEpoch = current.unix();
-      const towardsEpoch = towards.unix();
-
-      const duration = moment.duration(
-        (towardsEpoch - nowEpoch) * 1000,
-        'milliseconds'
-      );
-
-      // Still need to fix for precision
-      const hoursUntil = Math.round(duration.asHours());
-      const minutesUntil =
-        Math.round(duration.asMinutes() - now.get('minutes') / 60) % 60;
-      const secondsUntil =
-        Math.round(duration.asSeconds() - now.get('seconds')) % 60;
-
-      setHours(hoursUntil);
-      setMinutes(minutesUntil);
-      setSeconds(secondsUntil);
-    }, 1000);
-    // Change to epoch for easier calculation
-
-    return function cleanup() {
-      clearInterval(intervalHandler);
-    };
+    handleCountdown((value, type) => {
+      setTime(value);
+      setTimeType(type);
+    });
   }, []);
 
-  const remainingDays = towards.startOf('day').diff(now.startOf('day'), 'days');
-
-  if (remainingDays > 0) {
-    return (
-      <div className="text-center mb-3" style={{ lineHeight: '2rem' }}>
-        <div>ရွေးကောက်ပွဲ ကျင်းပရန်</div>
-        <div>
-          <span className="color-primary text-bold">
-            {myanmarNumbers(remainingDays, 'my')}
-          </span>{' '}
-          ရက်
-        </div>
-        <div>သာ လိုတော့သည်</div>
-      </div>
-    );
+  function formatTime(timeStr) {
+    const splitStr = timeStr.split('-');
+    return `${myanmarNumbers(splitStr[0], 'my')}:${myanmarNumbers(
+      splitStr[1],
+      'my'
+    )}:${myanmarNumbers(splitStr[2], 'my')}`;
   }
 
   return (
-    <div className="text-center mb-3" style={{ lineHeight: '2rem' }}>
-      <div>ရွေးကောက်ပွဲ ကျင်းပရန်</div>
+    <div className="text-center mb-3" style={{ lineHeight: '2.25rem' }}>
       <div>
-        <span className="color-primary text-bold">
-          {myanmarNumbers(hours, 'my')}
-        </span>{' '}
-        နာရီ&nbsp;
-        <span className="color-primary text-bold">
-          {myanmarNumbers(minutes, 'my')}
-        </span>{' '}
-        မိနစ်&nbsp;
-        <span className="color-primary text-bold">
-          {myanmarNumbers(seconds, 'my')}
-        </span>{' '}
-        စက္ကန့်&nbsp;
+        {timeType === 'day' && (
+          <span>
+            ရွေးကောက်ပွဲကျင်းပရန်
+            <br />
+            <span className="color-primary text-bold countdown-text">
+              {myanmarNumbers(time, 'my')}
+            </span>
+            <br /> ရက်သာ လိုတော့သည်
+          </span>
+        )}
+        {timeType === 'over' && (
+          <span className="text-bold countdown-text">
+            မဲရုံများပိတ်သွားပါပြီ
+          </span>
+        )}
+        {timeType === 'start' && (
+          <span>
+            ရွေးကောက်ပွဲကျင်းပရန် <br />
+            <span className="color-primary text-bold countdown-text">
+              {formatTime(time)}
+            </span>
+            <br />
+            သာလိုတော့သည်
+          </span>
+        )}
+        {timeType === 'close' && (
+          <span>
+            မဲရုံများပိတ်ရန် <br />
+            <span className="color-primary text-bold countdown-text">
+              {formatTime(time)}
+            </span>
+            <br />
+            သာလိုတော့သည်
+          </span>
+        )}
       </div>
-      <div>သာ လိုတော့သည်</div>
     </div>
   );
 };
