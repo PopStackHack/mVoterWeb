@@ -7,6 +7,7 @@
     "build": "rm -rf ./build && NODE_ENV=production next build",
     "start": "next start -p 8080",
     "deploy": "npm run build && gcloud app deploy",
+    "test": "jest --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -39,7 +40,9 @@
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^26.3.0",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.0",
     "eslint-config-nextjs": "^1.0.6",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^14.1.1",
@@ -52,6 +55,7 @@
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.4.2",
     "prettier": "^1.19.1"
   }
 }
