@@ -37,6 +37,11 @@ jobs:
 
     - run: npm install
     - run: npm run lint
+
+    - name: Create ENV and Build
+      run: |
+        touch .env
+        echo "BASE_URL=${{ secrets.BASE_URL }}\nAPI_KEY=${{ secrets.API_KEY }}\nGA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }}" >> .env.local
     - run: npm run build --if-present
 
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
