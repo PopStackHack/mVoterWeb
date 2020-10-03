@@ -41,4 +41,4 @@ jobs:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       env:
         GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
-      run: gcloud app deploy --project=MaePaySoh2020 --silent
+    - run: gcloud app deploy --project=MaePaySoh2020 --silent
