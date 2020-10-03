@@ -1,17 +1,11 @@
-import { response } from 'express';
 import MaePaySohAPI from '../../gateway/api';
 
-export default async function (req, res) {
+// eslint-disable-next-line func-names
+export default async function(req, res) {
   try {
-    const {
-      type = 'state_regions',
-      state_region,
-      township,
-      ward,
-    } = req.query;
+    const { type = 'state_regions', state_region, township, ward } = req.query;
 
     const api = new MaePaySohAPI(req.cookies.token);
-
     let response;
 
     if (type === 'state_regions') {
@@ -28,7 +22,6 @@ export default async function (req, res) {
 
     return res.status(200).send(response.data);
   } catch (error) {
-    console.error(error);
     return res.status(500).send('Internal server error');
   }
 }

@@ -1,7 +1,7 @@
 import SearchPage from '../../components/Search/SearchPage';
 import PartyList from '../../components/Parties/PartyList/PartyList';
 
-const FaqSearch = (props) => {
+const FaqSearch = () => {
   // Why pass endpoint you may ask? Answer: I am lazy.
   return (
     <SearchPage
@@ -14,6 +14,6 @@ const FaqSearch = (props) => {
       <PartyList />
     </SearchPage>
   );
-}
+};
 
 export default FaqSearch;

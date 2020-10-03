@@ -5,7 +5,7 @@ import './NewsList.scss';
 const NewsList = ({ news = [] }) => {
   return (
     <ul className="NewsList">
-      {news.map((newsItem) => (
+      {news.map(newsItem => (
         <NewsItem key={newsItem.id} news={newsItem} />
       ))}
     </ul>
