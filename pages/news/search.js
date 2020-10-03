@@ -13,6 +13,6 @@ const NewsSearch = () => {
       <NewsList />
     </SearchPage>
   );
-}
+};
 
 export default NewsSearch;

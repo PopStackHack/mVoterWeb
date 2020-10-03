@@ -10,7 +10,6 @@ import Button from '../../components/Common/Button/Button';
 import NewsList from '../../components/News/NewsList/NewsList';
 
 import './news.module.scss';
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 import useAPI from '../../hooks/useAPI';
 
 const News = () => {
@@ -18,24 +17,23 @@ const News = () => {
   const [page, setPage] = useState(1);
   const [, fetchData] = useAPI();
 
+  async function fetchNews(pageToLoad = 1) {
+    try {
+      const { data } = await fetchData('/api/news', {
+        page: pageToLoad
+      });
+
+      return setNews(news.concat(data));
+    } catch (error) {
+      return error;
+    }
+  }
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname);
 
     fetchNews();
   }, []);
-
-
-  async function fetchNews(pageToLoad = 1) {
-    try {
-      const { data } = await fetchData('/api/news', {
-        page: pageToLoad,
-      });
-
-      return setNews(news.concat(data));
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   function loadMoreNews() {
     const nextPage = page + 1;
@@ -49,9 +47,7 @@ const News = () => {
         <title>သတင်းများ | mVoter 2020</title>
       </Head>
       <AppHeader>
-        <div className="text-bold">
-          သတင်းများ
-        </div>
+        <div className="text-bold">သတင်းများ</div>
         <div>
           <Link href="/news/search">
             <a>
@@ -68,15 +64,15 @@ const News = () => {
             <InfiniteScroll
               dataLength={news.length}
               next={loadMoreNews}
-              hasMore={true}
+              hasMore
             >
               <NewsList news={news} />
             </InfiniteScroll>
-            </div>
           </div>
+        </div>
       </div>
     </Layout>
   );
-}
+};
 
 export default News;

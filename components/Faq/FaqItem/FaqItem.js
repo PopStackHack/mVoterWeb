@@ -1,16 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 import './FaqItem.module.scss';
 
 const textLength = 120;
 
-const FaqItem = (props) => {
+const FaqItem = props => {
   const {
     faq: {
-      attributes: {
-        question,
-        answer,
-      }
+      attributes: { question, answer }
     }
   } = props;
 
@@ -24,20 +21,26 @@ const FaqItem = (props) => {
   return (
     <li>
       <div className="FaqItem">
-        <div className="FaqItem__question">
-          {question}
-        </div>
+        <div className="FaqItem__question">{question}</div>
         <div className="FaqItem__answer" ref={answerRef}>
           <span className="answer cursor-pointer">
-            {
-              answer.length > textLength && shouldAnswerTruncate ?
-                <div
-                  onClick={onClickSeeMore}
-                  dangerouslySetInnerHTML={{ __html: answer.slice(0, textLength).concat(` ... <span style="color: #696969">See more</span>`)}}>
-                  </div>
-                  :
-                <span onClick={onClickSeeMore} dangerouslySetInnerHTML={{ __html: answer }}></span>
-            }
+            {answer.length > textLength && shouldAnswerTruncate ? (
+              <div
+                onClick={onClickSeeMore}
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: answer
+                    .slice(0, textLength)
+                    .concat(' ... <span style="color: #696969">See more</span>')
+                }}
+              />
+            ) : (
+              <span
+                onClick={onClickSeeMore}
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{ __html: answer }}
+              />
+            )}
           </span>
         </div>
       </div>

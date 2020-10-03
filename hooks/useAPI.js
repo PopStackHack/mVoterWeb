@@ -1,12 +1,10 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAuthContext } from '../context/AuthProvider';
 
 function useAPI() {
-  const { token, updateToken } = useAuthContext();
+  const { updateToken } = useAuthContext();
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState();
-  const [error, setError] = useState();
 
   async function fetchData(url, query) {
     try {
@@ -14,7 +12,7 @@ function useAPI() {
 
       const { data } = await axios.get(url, {
         params: { ...query },
-        withCredentials: true,
+        withCredentials: true
       });
 
       // This is where we handle custom token
@@ -25,8 +23,8 @@ function useAPI() {
       setLoading(false);
       return data;
     } catch (error) {
-      console.error(error);
       setLoading(false);
+      return error;
     }
   }
 

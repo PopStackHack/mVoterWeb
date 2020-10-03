@@ -1,13 +1,8 @@
+import './Layout.module.scss';
 import Navigation from '../Navigation/Navigation';
 
-import './Layout.module.scss';
-
-const Layout = (props) => {
-  const {
-    children,
-    shouldHideBottomNav = false,
-    ...other
-  } = props;
+const Layout = props => {
+  const { children, shouldHideBottomNav = false, ...other } = props;
 
   return (
     <main id="app" className="Layout">
@@ -26,32 +21,33 @@ const Layout = (props) => {
           </div>
         </div>
       </div>
-      {
-        !shouldHideBottomNav &&
-          <div className="d-lg-none">
-            <Navigation />
-          </div>
-      }
-      <style jsx global>{`\
-      * {
-        box-sizing: border-box;
-      }
-      html, body {
-        padding: 0px;
-        margin: 0px;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-        position: relative;
-        font-size: 15px;
-        width: 100%;
-        height: 100%;
-        min-height: 100%;
-      }
+      {!shouldHideBottomNav && (
+        <div className="d-lg-none">
+          <Navigation />
+        </div>
+      )}
+      <style jsx global>{`
+        * {
+          box-sizing: border-box;
+        }
+        html,
+        body {
+          padding: 0px;
+          margin: 0px;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+            sans-serif;
+          position: relative;
+          font-size: 15px;
+          width: 100%;
+          height: 100%;
+          min-height: 100%;
+        }
 
-      @media (min-width: 1200px) {
-        overflow: auto;
-      }
-    `}</style>
+        @media (min-width: 1200px) {
+          overflow: auto;
+        }
+      `}</style>
     </main>
   );
 };

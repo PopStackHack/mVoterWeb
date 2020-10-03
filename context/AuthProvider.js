@@ -1,21 +1,18 @@
 import axios from 'axios';
 import nookies, { parseCookies } from 'nookies';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { fetchToken } from '../pages/api/auth';
 
 const AuthContext = createContext({
   token: null,
-  updateToken: () => {},
+  updateToken: () => {}
 });
 
 export function useAuthContext() {
   return useContext(AuthContext);
 }
 
-const AuthProvider = (props) => {
-  const {
-    children,
-  } = props;
+const AuthProvider = props => {
+  const { children } = props;
 
   const [token, setToken] = useState(null);
 
@@ -28,18 +25,16 @@ const AuthProvider = (props) => {
       if (cookies.token) {
         setToken(cookies.token);
         return;
-      };
+      }
 
       const {
-        data: {
-          token: apiToken,
-        },
-      } = await axios.get(`/api/auth`, {
-        method: 'POST',
+        data: { token: apiToken }
+      } = await axios.get('/api/auth', {
+        method: 'POST'
       });
 
       nookies.set(null, 'token', apiToken, {
-        path: '/',
+        path: '/'
       });
 
       if (apiToken) {
@@ -52,7 +47,7 @@ const AuthProvider = (props) => {
 
   function updateToken(apiToken) {
     nookies.set(null, 'token', apiToken, {
-      path: '/',
+      path: '/'
     });
     setToken(apiToken);
   }
@@ -62,6 +57,6 @@ const AuthProvider = (props) => {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export default AuthProvider;

@@ -2,24 +2,24 @@ import ReactGA from 'react-ga';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { AiOutlineLoading } from 'react-icons/ai';
-import Layout from '../../components/Layout/Layout';
-import Button from '../../components/Common/Button/Button';
-import AppHeader from '../../components/Layout/AppHeader/AppHeader';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
+import Head from 'next/head';
+import Layout from '../Layout/Layout';
+import Button from '../Common/Button/Button';
+import AppHeader from '../Layout/AppHeader/AppHeader';
 import { debounce } from '../../utils/helpers';
-import React, { useRef, useCallback, useState, Children, useEffect } from 'react';
 
 import './SearchPage.scss';
 import useAPI from '../../hooks/useAPI';
-import Head from 'next/head';
 
-const SearchPage = (props) => {
+const SearchPage = props => {
   const {
     type = 'candidates',
     endpoint,
     children,
     inputPlaceholder = 'ရှာဖွေလိုသော အမည်ကို ရိုက်ထည့်ပါ',
     emptyPlaceholder = '',
-    notFoundPlaceholder = '',
+    notFoundPlaceholder = ''
   } = props;
 
   const router = useRouter();
@@ -35,12 +35,8 @@ const SearchPage = (props) => {
     searchInputRef.current.focus();
   }, []);
 
-  const debouncedCall = useCallback(
-    debounce((value) => apiCall(value), 500)
-  , []);
-
   async function apiCall(value) {
-    let arr = list ?? [];
+    const arr = list ?? [];
 
     if (page === 1) {
       setList(null);
@@ -49,7 +45,7 @@ const SearchPage = (props) => {
     const { data } = await fetchData(`/api/${endpoint}`, {
       page,
       query: value || searchString,
-      item_per_page: 25,
+      item_per_page: 25
     });
 
     if (data.length === 0) {
@@ -63,12 +59,19 @@ const SearchPage = (props) => {
     return setList(arr.concat(data));
   }
 
+  const debouncedCall = useCallback(
+    debounce(value => apiCall(value), 500),
+    []
+  );
+
   function loadMoreData() {
     apiCall();
   }
 
   function onChangeSearch(e) {
-    const { target: { value } } = e;
+    const {
+      target: { value }
+    } = e;
     setSearchString(value);
     debouncedCall(value);
   }
@@ -80,7 +83,9 @@ const SearchPage = (props) => {
       </Head>
       <AppHeader>
         <Button>
-          <i className="material-icons" onClick={() => router.back()}>arrow_back</i>
+          <i className="material-icons" onClick={() => router.back()}>
+            arrow_back
+          </i>
         </Button>
         <div className="search-input-group">
           <i className="material-icons">search</i>
@@ -89,42 +94,41 @@ const SearchPage = (props) => {
             className="search-input"
             ref={searchInputRef}
             placeholder={inputPlaceholder}
-            onChange={onChangeSearch} value={searchString}
+            onChange={onChangeSearch}
+            value={searchString}
           />
         </div>
       </AppHeader>
       <section>
         <div className="row">
           <div className="col-12">
-            {
-              (!list && !loading) &&
-                <p className="text-center color-primary mt-3">
-                  {emptyPlaceholder}
-                </p>
-            }
-            {
-              (list && list.length === 0 && !loading) &&
-                <p className="text-center color-danger mt-3">{notFoundPlaceholder}</p>
-            }
-            {
-              loading &&
-               <AiOutlineLoading className="loader search-page-loader" />
-            }
+            {!list && !loading && (
+              <p className="text-center color-primary mt-3">
+                {emptyPlaceholder}
+              </p>
+            )}
+            {list && list.length === 0 && !loading && (
+              <p className="text-center color-danger mt-3">
+                {notFoundPlaceholder}
+              </p>
+            )}
+            {loading && (
+              <AiOutlineLoading className="loader search-page-loader" />
+            )}
             <InfiniteScroll
               next={loadMoreData}
               dataLength={list && list.length}
               hasMore={hasMore}
             >
-              {
-                React.Children
-                  .map(children, child => React.cloneElement(child, { [type]: list ?? [] }))
-              }
+              {React.Children.map(children, child =>
+                React.cloneElement(child, { [type]: list ?? [] })
+              )}
             </InfiniteScroll>
           </div>
         </div>
       </section>
     </Layout>
   );
-}
+};
 
 export default SearchPage;

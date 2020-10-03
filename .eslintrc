@@ -1,0 +1,10 @@
+{
+  "extends": "nextjs",
+  "rules": {
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/img-redundant-alt": "off",
+    "react/state-in-constructor": "off",
+    "react/no-string-refs": "off"
+  }
+}
