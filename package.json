@@ -6,7 +6,7 @@
     "dev": "NODE_ENV=development next dev -p 3009",
     "build": "rm -rf ./build && NODE_ENV=production next build",
     "start": "next start -p 8080",
-    "deploy": "npm run build && gcloud app deploy",
+    "deploy": "eslint . && npm run build && gcloud app deploy --silent",
     "test": "jest --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"

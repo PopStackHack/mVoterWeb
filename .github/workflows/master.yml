@@ -1,0 +1,47 @@
+name: Master Branch Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build Next
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.API_KEY }}
+      BASE_URL: ${{ secrets.BASE_URL }}
+      GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID}}
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node $
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: ~/.npm
+        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-
+
+    - run: npm install
+    - run: npm run lint
+    - run: npm run build --if-present
+
+    - uses: actions/gcloud/auth@master
+      env:
+        GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+
+    - uses: actions/gcloud/cli@master
+      with:
+        args: "app deploy --quiet --project=MaePaySoh2020"
