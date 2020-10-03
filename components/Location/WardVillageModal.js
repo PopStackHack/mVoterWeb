@@ -1,5 +1,5 @@
-import Modal from '../Common/Modal/Modal';
 import { useState, useEffect } from 'react';
+import Modal from '../Common/Modal/Modal';
 import useAPI from '../../hooks/useAPI';
 
 const WardVillageModal = props => {
