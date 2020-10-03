@@ -13,6 +13,7 @@ jobs:
       API_KEY: ${{ secrets.API_KEY }}
       BASE_URL: ${{ secrets.BASE_URL }}
       GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID}}
+      GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
 
     strategy:
       matrix:
@@ -39,6 +40,4 @@ jobs:
     - run: npm run build --if-present
 
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      env:
-        GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
     - run: gcloud app deploy --project=${{ secrets.PROJECT_ID }} --quiet
