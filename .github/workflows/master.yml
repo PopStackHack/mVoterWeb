@@ -38,10 +38,7 @@ jobs:
     - run: npm run lint
     - run: npm run build --if-present
 
-    - uses: actions/gcloud/auth@master
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       env:
         GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
-
-    - uses: actions/gcloud/cli@master
-      with:
-        args: "app deploy --quiet --project=MaePaySoh2020"
+      run: gcloud app deploy --project=MaePaySoh2020 --silent
