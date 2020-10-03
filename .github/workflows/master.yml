@@ -40,4 +40,9 @@ jobs:
     - run: npm run build --if-present
 
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.PROJECT_ID }}
+        service_account_key: ${{ secrets.GCLOUD_AUTH }}
+        export_default_credentials: true
+    - run: gcloud info
     - run: gcloud app deploy --project=${{ secrets.PROJECT_ID }} --quiet
