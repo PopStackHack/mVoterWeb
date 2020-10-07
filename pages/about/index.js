@@ -58,30 +58,6 @@ const About = () => {
             <img src="/about/maepaysoh.png" alt="Maepaysoh Logo" />
           </div>
         </div>
-        <div className="row align-items-center text-center my-1">
-          <div className="col-4 col-lg-4">
-            <img
-              src="/about/step_logo.png"
-              alt="Step Logo"
-              className="large-logo step-logo"
-            />
-          </div>
-          <div className="col-4 col-lg-4">
-            <img
-              src="/about/idea_logo.png"
-              alt="IDEA Logo"
-              className="large-logo"
-            />
-          </div>
-          <div className="col-4 col-lg-4">
-            <img
-              src="/about/eu_logo.png"
-              alt="EU Logo"
-              className="large-logo eu-logo"
-            />
-          </div>
-        </div>
-
         <div className="row text-center my-3">
           <div className="col-12">
             <a
