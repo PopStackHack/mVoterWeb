@@ -34,7 +34,7 @@ export default function howToVote() {
             <ElectionCountdown />
             <div className="HowToVote__announcement text-center">
               <span className="title">
-                (၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲနေ့
+                (၂၀၂၀) ပြည့်နှစ် အထွေထွေရွေးကောက်ပွဲနေ့
               </span>
               <br />
               <span className="date">နိုဝင်ဘာလ (၈) ရက်</span>
