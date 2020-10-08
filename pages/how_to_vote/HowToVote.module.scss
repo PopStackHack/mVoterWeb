@@ -10,6 +10,10 @@
   background: $primary-color;
   color: #ffffff;
   padding: 10px 30px;
+  transition: background 0.2s linear;
+  &:hover {
+    background: rgba($color: $primary-color, $alpha: 0.85);
+  }
 }
 
 .HowToVote {
