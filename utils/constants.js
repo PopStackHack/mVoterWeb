@@ -28,3 +28,21 @@ export const customSelectStyle = Object.freeze({
     cursor: 'pointer'
   })
 });
+
+export const VOTER_LIST_LINKS = [
+  { region: 'ကချင်ပြည်နယ်', url: 'http://bit.ly/kachin-voters' },
+  { region: 'ကယားပြည်နယ်', url: 'http://bit.ly/kayah-voters' },
+  { region: 'ကရင်ပြည်နယ်', url: 'http://bit.ly/kayin-voters' },
+  { region: 'ချင်းပြည်နယ်', url: 'http://bit.ly/chin-voters' },
+  { region: 'စစ်ကိုင်းတိုင်းဒေသကြီး', url: 'http://bit.ly/sagaing-voters' },
+  { region: 'တနင်္သာရီတိုင်းဒေသကြီး', url: 'http://bit.ly/tanintharyi-voters' },
+  { region: 'ပဲခူးတိုင်းဒေသကြီး', url: 'http://bit.ly/bago-voters' },
+  { region: 'မကွေးတိုင်းဒေသကြီး', url: 'http://bit.ly/magway-voters' },
+  { region: 'မန္တလေးတိုင်းဒေသကြီး', url: 'http://bit.ly/mandalay-voters' },
+  { region: 'မွန်ပြည်နယ်', url: 'http://bit.ly/mon-voters' },
+  { region: 'ရခိုင်ပြည်နယ်', url: 'http://bit.ly/rakhine-voters' },
+  { region: 'ရန်ကုန်တိုင်းဒေသကြီး', url: 'http://bit.ly/yangon-voters' },
+  { region: 'ရှမ်းပြည်နယ်', url: 'http://bit.ly/shan-voters' },
+  { region: 'ဧရာဝတီတိုင်းဒေသကြီး', url: 'http://bit.ly/ayarwaddy-voters' },
+  { region: 'ပြည်ထောင်စုနယ်မြေ', url: 'http://bit.ly/naypyitaw-voters' }
+];

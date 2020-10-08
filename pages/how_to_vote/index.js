@@ -1,5 +1,6 @@
 import ReactGA from 'react-ga';
 import { useEffect } from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
@@ -62,6 +63,17 @@ export default function howToVote() {
             </div>
           </div>
         </div>
+
+        <div className="row my-3">
+          <div className="col-12">
+            <Link href="/how_to_vote/voter_list">
+              <button type="button" className="check-voter-list-button">
+                မဲစာရင်းစစ်မယ်
+              </button>
+            </Link>
+          </div>
+        </div>
+
         <div className="row my-1">
           <div className="col-12">
             <div className="title">ရွေးကောက်ပွဲနေ့တွင်</div>
