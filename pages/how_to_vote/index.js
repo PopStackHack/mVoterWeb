@@ -68,7 +68,7 @@ export default function howToVote() {
           <div className="col-12">
             <Link href="/how_to_vote/voter_list">
               <button type="button" className="check-voter-list-button">
-                မဲစာရင်းစစ်မယ်
+                မဲစာရင်းစစ်ရန်
               </button>
             </Link>
           </div>
