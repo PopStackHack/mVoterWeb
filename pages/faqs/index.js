@@ -172,6 +172,20 @@ const FAQs = () => {
               </div>
             </div>
           )}
+          {faqCategory === 'voter_list' && (
+            <div className="row justify-content-center my-3">
+              <div className="col-12 col-lg-4">
+                <Link href="/how_to_vote/voter_list">
+                  <div className="check-voter-list box-hover cursor-pointer">
+                    <i className="color-primary material-icons vert-align-middle">
+                      how_to_reg
+                    </i>
+                    <span>မဲစာရင်းစစ်ရန်</span>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          )}
           {faqCategory === 'candidate' && (
             <div className="row">
               <div className="col-12 d-flex justify-content-center">

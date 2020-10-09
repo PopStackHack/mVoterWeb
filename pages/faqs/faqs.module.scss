@@ -7,6 +7,18 @@ $ballot-stack-height: 110px;
   line-height: 25px;
 }
 
+.check-voter-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba($color: #000000, $alpha: 0.1);
+  border-radius: 8px;
+  padding: 8px 10px;
+  i {
+    font-size: 3rem;
+  }
+}
+
 .ballot-stack, .unfair-law {
   padding: 8px 10px;
   margin-bottom: 10px;
