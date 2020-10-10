@@ -30,6 +30,10 @@ export const customSelectStyle = Object.freeze({
 });
 
 export const VOTER_LIST_LINKS = [
+  {
+    region: 'ပြည်နယ်တိုင်းအားလုံး',
+    url: 'https://findyourpollingstation.uec.gov.mm'
+  },
   { region: 'ကချင်ပြည်နယ်', url: 'http://bit.ly/kachin-voters' },
   { region: 'ကယားပြည်နယ်', url: 'http://bit.ly/kayah-voters' },
   { region: 'ကရင်ပြည်နယ်', url: 'http://bit.ly/kayin-voters' },
