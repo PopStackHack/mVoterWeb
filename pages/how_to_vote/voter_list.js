@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import Layout from '../../components/Layout/Layout';
 import AppHeader from '../../components/Layout/AppHeader/AppHeader';
@@ -8,6 +10,10 @@ import './voter_list.module.scss';
 
 const VoterListPage = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
   return (
     <Layout>
