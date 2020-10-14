@@ -47,15 +47,9 @@ const About = () => {
 
         <p className="text-center">Supported by</p>
 
-        <div className="row align-items-center text-center my-1 no-gutters">
-          <div className="col-3 col-lg-3">
+        <div className="row align-items-center justify-content-center text-center my-1 no-gutters">
+          <div className="col-12 col-lg-3">
             <img src="/about/UEC_logo_mm.png" alt="UEC Logo" />
-          </div>
-          <div className="col-6 col-lg-6">
-            <img src="/about/taf_logo.png" alt="TAF Logo" />
-          </div>
-          <div className="col-3 col-lg-3">
-            <img src="/about/maepaysoh.png" alt="Maepaysoh Logo" />
           </div>
         </div>
         <div className="row text-center my-3">
