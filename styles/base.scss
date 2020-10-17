@@ -48,6 +48,13 @@ p {
   }
 }
 
+.color-white {
+  color: $white-color;
+  * {
+    color: $white-color;
+  }
+}
+
 .color-danger {
   color: $danger-color;
   * {
