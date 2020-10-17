@@ -50,3 +50,10 @@ export const VOTER_LIST_LINKS = [
   { region: 'ဧရာဝတီတိုင်းဒေသကြီး', url: 'http://bit.ly/ayarwaddy-voters' },
   { region: 'ပြည်ထောင်စုနယ်မြေ', url: 'http://bit.ly/naypyitaw-voters' }
 ];
+
+export const LOCALSTORAGE_KEYS = {
+  STATE_REGION: 'stateRegion',
+  TOWNSHIP: 'township',
+  WARD_VILLAGE: 'wardVillage',
+  CANDIDATE_PROMPT_DISMISS: 'candidatePromptDismiss'
+};
