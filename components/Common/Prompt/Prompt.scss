@@ -1,0 +1,24 @@
+@import '../../../styles/partials/colors';
+
+.Prompt {
+  position: relative;
+  background-color: $primary-color;
+  border-radius: 8px;
+  padding: 18px;
+  &__children {
+    line-height: 28px;
+  }
+  &__close {
+    position: absolute;
+  }
+  &__buttons {
+    button {
+      padding: 0;
+      border: 0;
+      border-radius: 100%;
+      background-color: transparent;
+      vertical-align: bottom;
+      color: $white-color;
+    }
+  }
+}
