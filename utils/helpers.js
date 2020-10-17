@@ -1,10 +1,11 @@
 import moment from 'moment';
+import { LOCALSTORAGE_KEYS } from './constants';
 
 export function hasFullLocation() {
   return (
-    localStorage.getItem('stateRegion') &&
-    localStorage.getItem('township') &&
-    localStorage.getItem('wardVillage')
+    localStorage.getItem(LOCALSTORAGE_KEYS.STATE_REGION) &&
+    localStorage.getItem(LOCALSTORAGE_KEYS.TOWNSHIP) &&
+    localStorage.getItem(LOCALSTORAGE_KEYS.WARD_VILLAGE)
   );
 }
 

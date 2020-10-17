@@ -12,6 +12,7 @@ import WardVillageModal from '../../components/Location/WardVillageModal';
 
 import './location.module.scss';
 import { hasFullLocation } from '../../utils/helpers';
+import { LOCALSTORAGE_KEYS } from '../../utils/constants';
 
 const Location = () => {
   const [townshipModalOpen, setTownshipModalOpen] = useState(false);
@@ -25,16 +26,16 @@ const Location = () => {
   useEffect(() => {
     if (hasFullLocation()) {
       setIsAppStart(false);
-      setStateRegion(localStorage.getItem('stateRegion'));
-      setTownship(localStorage.getItem('township'));
-      setWardVillage(localStorage.getItem('wardVillage'));
+      setStateRegion(localStorage.getItem(LOCALSTORAGE_KEYS.STATE_REGION));
+      setTownship(localStorage.getItem(LOCALSTORAGE_KEYS.TOWNSHIP));
+      setWardVillage(localStorage.getItem(LOCALSTORAGE_KEYS.WARD_VILLAGE));
     }
   }, []);
 
   function onClickDone() {
-    localStorage.setItem('stateRegion', stateRegion);
-    localStorage.setItem('township', township);
-    localStorage.setItem('wardVillage', wardVillage);
+    localStorage.setItem(LOCALSTORAGE_KEYS.STATE_REGION, stateRegion);
+    localStorage.setItem(LOCALSTORAGE_KEYS.TOWNSHIP, township);
+    localStorage.setItem(LOCALSTORAGE_KEYS.WARD_VILLAGE, wardVillage);
     router.push('/candidates');
   }
 

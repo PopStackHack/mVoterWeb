@@ -11,9 +11,11 @@ import ConstituencyPlace from '../../components/Candidates/ConstituencyPlace/Con
 import CandidateList from '../../components/Candidates/CandidateList/CandidateList';
 import StateRegionCandidateList from '../../components/Candidates/StateRegionCandidateList/StateRegionCandidateList';
 import { hasFullLocation } from '../../utils/helpers';
+import { LOCALSTORAGE_KEYS } from '../../utils/constants';
 
 import './candidates.module.scss';
 import useAPI from '../../hooks/useAPI';
+import Prompt from '../../components/Common/Prompt/Prompt';
 
 const { TabPanel, Tab } = Tabs;
 
@@ -24,6 +26,7 @@ const Candidates = () => {
   const [stateCandidates, setStateCandidates] = useState(null);
   const [stateOrRegion, setStateOrRegion] = useState('');
   const [shouldShowLocationLink, setShowLocationLink] = useState(true);
+  const [isPromptDismissed, setPromptDismissed] = useState(false);
   const [, fetchData] = useAPI();
 
   function getConstituency(house) {
@@ -31,9 +34,9 @@ const Candidates = () => {
   }
 
   async function fetchWardDetails() {
-    const stateRegion = localStorage.getItem('stateRegion');
-    const township = localStorage.getItem('township');
-    const ward = localStorage.getItem('wardVillage');
+    const stateRegion = localStorage.getItem(LOCALSTORAGE_KEYS.STATE_REGION);
+    const township = localStorage.getItem(LOCALSTORAGE_KEYS.TOWNSHIP);
+    const ward = localStorage.getItem(LOCALSTORAGE_KEYS.WARD_VILLAGE);
 
     const { data } = await fetchData('/api/locations', {
       type: 'details',
@@ -99,15 +102,23 @@ const Candidates = () => {
   }
 
   function isNPT() {
-    const stateRegion = localStorage.getItem('stateRegion');
-    const township = localStorage.getItem('township');
-    const wardVillage = localStorage.getItem('wardVillage');
+    const stateRegion = localStorage.getItem(LOCALSTORAGE_KEYS.STATE_REGION);
+    const township = localStorage.getItem(LOCALSTORAGE_KEYS.TOWNSHIP);
+    const wardVillage = localStorage.getItem(LOCALSTORAGE_KEYS.WARD_VILLAGE);
     return stateRegion.includes('နေပြည်တော်') || township === wardVillage;
   }
 
   // Pre-fetch constituencies
   useEffect(() => {
     ReactGA.pageview(window.location.pathname);
+
+    const candidatePromptDismissed = localStorage.getItem(
+      LOCALSTORAGE_KEYS.CANDIDATE_PROMPT_DISMISS
+    );
+
+    if (candidatePromptDismissed) {
+      setPromptDismissed(true);
+    }
 
     // Because we can't access localStorage before React is initiated.
     if (hasFullLocation()) {
@@ -116,7 +127,7 @@ const Candidates = () => {
       return;
     }
 
-    const stateRegion = localStorage.getItem('stateRegion');
+    const stateRegion = localStorage.getItem(LOCALSTORAGE_KEYS.STATE_REGION);
 
     if (isNPT()) {
       setStateOrRegion('တိုင်းဒေသကြီး'); // NPT defaults to တိုင်းဒေသ
@@ -135,6 +146,11 @@ const Candidates = () => {
       fetchCandidates(constituency);
     }
   }, [constituencies]);
+
+  function dismissPrompt() {
+    localStorage.setItem(LOCALSTORAGE_KEYS.CANDIDATE_PROMPT_DISMISS, true);
+    setPromptDismissed(true);
+  }
 
   function onClickTab(value) {
     // Fetch each candidates filtered on values
@@ -283,6 +299,20 @@ const Candidates = () => {
           </TabPanel>
         </div>
       )}
+      <div className="my-2">
+        {!isPromptDismissed && (
+          <Prompt onClose={dismissPrompt}>
+            <span className="color-white">
+              ကိုယ်စားလှယ်လောင်းမည်သူမဆို ၎င်း၏ ကိုယ်ရေးအချက်အလက်များကို
+              အများပြည်သူထံ မထုတ်ပြန်စေလိုပါက
+              ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်သို့ စာဖြင့်
+              တင်ပြတောင်းဆိုနိုင်ပါသည်။ ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်သည်
+              mVoter2020 အက်ပလီကေးရှင်းမှ ၎င်း၏ ကိုယ်ရေးအချက်အလက်များကို
+              ဖယ်ရှားရန် ဆောင်ရွက်သွားမည် ဖြစ်ပါသည်။
+            </span>
+          </Prompt>
+        )}
+      </div>
     </Layout>
   );
 };
