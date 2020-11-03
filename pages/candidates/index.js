@@ -262,7 +262,7 @@ const Candidates = () => {
                     {constituencies[0].remark}
                   </div>
                 ) : (
-                  renderStateRegionCandidateList(pyiThuCandidates)
+                  renderCandidateList(pyiThuCandidates)
                 )}
               </div>
             </Tab>
@@ -286,7 +286,7 @@ const Candidates = () => {
                     {constituencies[1].remark}
                   </div>
                 ) : (
-                  renderStateRegionCandidateList(amyoThaCandidates)
+                  renderCandidateList(amyoThaCandidates)
                 )}
               </div>
             </Tab>
