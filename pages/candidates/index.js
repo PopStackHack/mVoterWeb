@@ -257,7 +257,13 @@ const Candidates = () => {
                 {constituencies.length > 0 && constituencies[0].id && (
                   <ConstituencyPlace place={constituencies[0].name} />
                 )}
-                {renderCandidateList(pyiThuCandidates)}
+                {constituencies.length > 0 && constituencies[0].remark ? (
+                  <div className="text-center text-bold mt-3">
+                    {constituencies[0].remark}
+                  </div>
+                ) : (
+                  renderStateRegionCandidateList(pyiThuCandidates)
+                )}
               </div>
             </Tab>
             <Tab
@@ -275,7 +281,13 @@ const Candidates = () => {
                 {constituencies.length > 0 && constituencies[1].id && (
                   <ConstituencyPlace place={constituencies[1].name} />
                 )}
-                {renderCandidateList(amyoThaCandidates)}
+                {constituencies.length > 0 && constituencies[1].remark ? (
+                  <div className="text-center text-bold mt-3">
+                    {constituencies[1].remark}
+                  </div>
+                ) : (
+                  renderStateRegionCandidateList(amyoThaCandidates)
+                )}
               </div>
             </Tab>
             <Tab
@@ -293,7 +305,13 @@ const Candidates = () => {
                 {constituencies.length > 0 && constituencies[2].id && (
                   <ConstituencyPlace place={constituencies[2].name} />
                 )}
-                {renderStateRegionCandidateList(stateCandidates)}
+                {constituencies.length > 0 && constituencies[2].remark ? (
+                  <div className="text-center text-bold mt-3">
+                    {constituencies[2].remark}
+                  </div>
+                ) : (
+                  renderStateRegionCandidateList(stateCandidates)
+                )}
               </div>
             </Tab>
           </TabPanel>
