@@ -18,7 +18,7 @@
     "bootstrap": "^4.5.1",
     "express": "^4.17.1",
     "html-to-text": "^5.1.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "myanmar-numbers": "^2.1.3",
     "next": "9.3.4",
     "node-gyp": "^7.0.0",
